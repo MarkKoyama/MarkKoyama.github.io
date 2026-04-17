@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <id>urn:iweb:58B25FFF-5100-4608-B8F6-5790400AF002</id>
+ <title>Page list Atom feed</title>
+ <updated>2014-04-03T21:20:13-04:00</updated>
+ <link rel="self" href="feed.xml"/>
+ <generator>iWeb</generator>
+ <author>
+  <name>iWeb</name>
+ </author>
+ <entry>
+  <id>urn:iweb:F240AF94-FB93-45AD-953F-6A7642E87848</id>
+  <title>About</title>
+  <title xmlns="urn:iweb:">About</title>
+  <in-navbar xmlns="urn:iweb:">F240AF94-FB93-45AD-953F-6A7642E87848</in-navbar>
+  <link rel="alternate" href="About.html"/>
+  <updated>2014-04-03T21:20:13.001-04:00</updated>
+  <content>About</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:003678DE-3820-467B-9510-C3F05C30812F</id>
+  <title>Papers</title>
+  <title xmlns="urn:iweb:">Papers</title>
+  <in-navbar xmlns="urn:iweb:">003678DE-3820-467B-9510-C3F05C30812F</in-navbar>
+  <link rel="alternate" href="Papers.html"/>
+  <updated>2014-04-03T21:20:13.002-04:00</updated>
+  <content>Papers</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:87D09603-B9B4-4476-BEE3-53AD3E97B938</id>
+  <title>Workshop</title>
+  <title xmlns="urn:iweb:">Workshop</title>
+  <in-navbar xmlns="urn:iweb:">87D09603-B9B4-4476-BEE3-53AD3E97B938</in-navbar>
+  <link rel="alternate" href="Workshop.html"/>
+  <updated>2014-04-03T21:20:13.003-04:00</updated>
+  <content>Workshop</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:36D1BC2F-907B-4A8E-BFCC-24328A3AA090</id>
+  <title>Teaching</title>
+  <title xmlns="urn:iweb:">Teaching</title>
+  <in-navbar xmlns="urn:iweb:">36D1BC2F-907B-4A8E-BFCC-24328A3AA090</in-navbar>
+  <link rel="alternate" href="Teaching.html"/>
+  <updated>2014-04-03T21:20:13.004-04:00</updated>
+  <content>Teaching</content>
+ </entry>
+</feed>
