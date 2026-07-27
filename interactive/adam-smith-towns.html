@@ -1,0 +1,2043 @@
+<!doctype html><html><head><title>Adam Smith and the Role of the Towns in Feudal Europe</title><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+
+
+<style>
+/* ============================================================
+   TOKENS — heraldic tinctures on cool-indigo neutrals
+   ============================================================ */
+:root {
+  --paper:      #edeef1;
+  --surface:    #f8f9fb;
+  --surface-2:  #e3e5ea;
+  --ink:        #171a21;
+  --ink-soft:   #3a404e;
+  --muted:      #5f6675;
+  --rule:       #d0d4dc;
+  --rule-soft:  #e0e3e9;
+
+  --azure:      #27488c;   /* King   — lapis */
+  --azure-dim:  #dde3f0;
+  --gules:      #9c2b23;   /* Lords  — cinnabar */
+  --gules-dim:  #f1dedc;
+  --or:         #96690f;   /* Towns  — gold */
+  --or-dim:     #f0e6cf;
+
+  --shadow: 0 1px 2px rgba(23,26,33,.06), 0 8px 24px -12px rgba(23,26,33,.18);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+  --col: 68ch;
+  --wide: 1120px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:     #101319;
+    --surface:   #171b23;
+    --surface-2: #1e2330;
+    --ink:       #e5e8ef;
+    --ink-soft:  #c3c9d6;
+    --muted:     #949cad;
+    --rule:      #2b3140;
+    --rule-soft: #232936;
+
+    --azure:     #8aabee;
+    --azure-dim: #1b2740;
+    --gules:     #e2857c;
+    --gules-dim: #351d1c;
+    --or:        #dcb14f;
+    --or-dim:    #322715;
+
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"] {
+  --paper:     #101319;
+  --surface:   #171b23;
+  --surface-2: #1e2330;
+  --ink:       #e5e8ef;
+  --ink-soft:  #c3c9d6;
+  --muted:     #949cad;
+  --rule:      #2b3140;
+  --rule-soft: #232936;
+  --azure:     #8aabee;
+  --azure-dim: #1b2740;
+  --gules:     #e2857c;
+  --gules-dim: #351d1c;
+  --or:        #dcb14f;
+  --or-dim:    #322715;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+}
+:root[data-theme="light"] {
+  --paper:      #edeef1;
+  --surface:    #f8f9fb;
+  --surface-2:  #e3e5ea;
+  --ink:        #171a21;
+  --ink-soft:   #3a404e;
+  --muted:      #5f6675;
+  --rule:       #d0d4dc;
+  --rule-soft:  #e0e3e9;
+  --azure:      #27488c;
+  --azure-dim:  #dde3f0;
+  --gules:      #9c2b23;
+  --gules-dim:  #f1dedc;
+  --or:         #96690f;
+  --or-dim:     #f0e6cf;
+  --shadow: 0 1px 2px rgba(23,26,33,.06), 0 8px 24px -12px rgba(23,26,33,.18);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; text-wrap: balance; margin: 0; }
+
+p { margin: 0; }
+
+a { color: var(--azure); text-decoration-color: color-mix(in srgb, var(--azure) 35%, transparent); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--azure); }
+
+:focus-visible { outline: 2px solid var(--azure); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: var(--wide); margin: 0 auto; padding: 0 28px; }
+.col  { max-width: var(--col); }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ============================================================
+   MASTHEAD NAV
+   ============================================================ */
+#nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid var(--rule);
+}
+#nav .wrap { display: flex; align-items: center; gap: 22px; height: 52px; }
+#nav .brand {
+  font-family: var(--serif); font-size: 15px; font-weight: 600;
+  white-space: nowrap; letter-spacing: .01em;
+}
+#nav .brand em { font-style: normal; color: var(--muted); font-weight: 400; }
+#nav ol {
+  display: flex; gap: 2px; list-style: none; margin: 0 0 0 auto; padding: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+#nav ol::-webkit-scrollbar { display: none; }
+#nav ol a {
+  display: block; padding: 5px 10px; border-radius: 3px;
+  font-size: 12.5px; color: var(--muted); text-decoration: none; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+#nav ol a:hover { color: var(--ink); background: var(--surface-2); }
+#nav ol a.on { color: var(--ink); background: var(--surface-2); }
+#themebtn {
+  border: 1px solid var(--rule); background: var(--surface); color: var(--muted);
+  width: 30px; height: 30px; border-radius: 4px; cursor: pointer; flex: none;
+  display: grid; place-items: center; font-size: 13px;
+}
+#themebtn:hover { color: var(--ink); border-color: var(--muted); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero { padding: 64px 0 12px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 56px; align-items: start; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+.hero-kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.hero-kicker .dash { flex: none; width: 26px; height: 1px; background: var(--gules); }
+
+h1 {
+  font-size: clamp(34px, 5.2vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  margin-bottom: 22px;
+}
+h1 .thin { font-style: italic; font-weight: 400; color: var(--ink-soft); }
+
+.byline { font-size: 16px; color: var(--ink-soft); margin-bottom: 4px; }
+.byline strong { font-weight: 600; color: var(--ink); }
+.pubinfo { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .01em; }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.btn {
+  font: inherit; font-size: 13px; line-height: 1;
+  padding: 9px 15px; border-radius: 4px; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--surface); color: var(--ink);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 7px;
+}
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--azure); border-color: var(--azure); color: var(--paper); }
+:root[data-theme="dark"] .btn.primary, :root:not([data-theme="light"]) .btn.primary { }
+@media (prefers-color-scheme: dark) { .btn.primary { color: #0d1017; } }
+:root[data-theme="dark"] .btn.primary { color: #0d1017; }
+:root[data-theme="light"] .btn.primary { color: #f7f8fb; }
+.btn.primary:hover { filter: brightness(1.08); }
+
+/* Abstract */
+.abstract {
+  margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--rule);
+  max-width: 74ch;
+}
+.abstract p { font-family: var(--serif); font-size: 18.5px; line-height: 1.66; color: var(--ink-soft); }
+.abstract .eyebrow { display: block; margin-bottom: 12px; }
+
+/* ============================================================
+   THE MARK — three players, three coalitions
+   ============================================================ */
+.mark { width: 100%; height: auto; }
+.mark .edge { stroke-width: 2.5; fill: none; stroke: var(--rule); transition: stroke .5s, stroke-width .5s, opacity .5s; }
+.mark .edge.lit { stroke-width: 6; }
+.mark .edge.KT { stroke: var(--rule); }
+.mark .node circle { transition: fill .5s, stroke .5s, opacity .4s; }
+.mark .node text { font-family: var(--serif); font-size: 15px; font-weight: 600; fill: var(--paper); }
+.mark .nlabel { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; fill: var(--muted); text-transform: uppercase; }
+.mark .node.dim { opacity: .3; }
+.mark-cap { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; margin-top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section.chapter { padding: 60px 0 10px; scroll-margin-top: 64px; }
+.chapter-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; }
+.chapter-num {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--gules);
+  padding-top: 2px; flex: none;
+}
+h2 { font-size: clamp(25px, 3.2vw, 33px); letter-spacing: -.012em; line-height: 1.15; }
+h3 { font-size: 19px; margin: 34px 0 10px; letter-spacing: -.005em; }
+.lede { font-family: var(--serif); font-size: 19px; line-height: 1.6; color: var(--ink-soft); }
+
+.prose > * + * { margin-top: 17px; }
+.prose { max-width: var(--col); }
+.prose p { color: var(--ink-soft); }
+
+blockquote {
+  margin: 26px 0; padding: 0 0 0 20px;
+  border-left: 2px solid var(--gules);
+  font-family: var(--serif); font-size: 18px; line-height: 1.55; font-style: italic;
+  color: var(--ink);
+}
+blockquote cite { display: block; margin-top: 9px; font-size: 12px; font-style: normal; font-family: var(--mono); color: var(--muted); letter-spacing: .04em; }
+
+.pill {
+  display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: .06em; padding: 2px 7px; border-radius: 3px; vertical-align: 1px;
+}
+.pill.KT { background: var(--azure-dim); color: var(--azure); }
+.pill.KL { background: var(--gules-dim); color: var(--gules); }
+.pill.LT { background: var(--or-dim);   color: var(--or); }
+.pill.SQ { background: var(--surface-2); color: var(--muted); }
+
+var, .v { font-family: var(--mono); font-style: normal; font-size: .92em; }
+
+/* ============================================================
+   PLATES — interactive modules
+   ============================================================ */
+.plate {
+  margin: 44px 0; background: var(--surface);
+  border: 1px solid var(--rule); border-radius: 6px; box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.plate-head {
+  padding: 14px 20px; border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  background: color-mix(in srgb, var(--surface-2) 45%, var(--surface));
+}
+.plate-head h4 { font-size: 15.5px; }
+.plate-head .eyebrow { margin-right: auto; }
+.plate-body { padding: 20px; }
+.plate-foot {
+  padding: 12px 20px; border-top: 1px solid var(--rule-soft);
+  font-size: 12.5px; color: var(--muted); line-height: 1.5;
+}
+.plate-foot strong { color: var(--ink-soft); font-weight: 600; }
+
+/* --- solver layout --- */
+.solver { display: grid; grid-template-columns: 268px minmax(0,1fr) 250px; gap: 24px; }
+@media (max-width: 1040px) { .solver { grid-template-columns: 1fr 1fr; } .solver .sv-mark { grid-column: 1 / -1; } }
+@media (max-width: 720px)  { .solver { grid-template-columns: 1fr; } }
+
+.controls { display: flex; flex-direction: column; gap: 13px; }
+.ctl label { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 3px; }
+.ctl .name { font-size: 12.5px; color: var(--ink-soft); }
+.ctl .name b { font-family: var(--mono); font-weight: 600; font-size: 12.5px; color: var(--ink); }
+.ctl .val { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+input[type=range] {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 18px;
+  background: transparent; cursor: pointer; display: block;
+}
+input[type=range]::-webkit-slider-runnable-track { height: 3px; background: var(--rule); border-radius: 2px; }
+input[type=range]::-moz-range-track { height: 3px; background: var(--rule); border-radius: 2px; }
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 14px; height: 14px; margin-top: -5.5px;
+  border-radius: 50%; background: var(--azure); border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--azure);
+}
+input[type=range]::-moz-range-thumb {
+  width: 12px; height: 12px; border-radius: 50%; background: var(--azure);
+  border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--azure);
+}
+input[type=range].t-L::-webkit-slider-thumb { background: var(--gules); box-shadow: 0 0 0 1px var(--gules); }
+input[type=range].t-L::-moz-range-thumb     { background: var(--gules); box-shadow: 0 0 0 1px var(--gules); }
+input[type=range].t-T::-webkit-slider-thumb { background: var(--or); box-shadow: 0 0 0 1px var(--or); }
+input[type=range].t-T::-moz-range-thumb     { background: var(--or); box-shadow: 0 0 0 1px var(--or); }
+
+.ctl-group-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--muted); padding-bottom: 5px; border-bottom: 1px solid var(--rule-soft); margin-bottom: 4px;
+}
+
+/* --- payoff matrix --- */
+.matrix { width: 100%; border-collapse: collapse; font-size: 13px; }
+.matrix th, .matrix td { padding: 7px 9px; text-align: right; border-bottom: 1px solid var(--rule-soft); }
+.matrix th:first-child, .matrix td:first-child { text-align: left; }
+.matrix thead th { font-family: var(--mono); font-size: 11px; letter-spacing: .07em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+.matrix td { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.matrix tr.win td { background: color-mix(in srgb, var(--azure) 8%, transparent); }
+.matrix tr.win td:first-child { font-weight: 700; }
+.matrix .rowname { font-family: var(--sans) !important; font-size: 13px; }
+.matrix .best { font-weight: 700; color: var(--ink); }
+.matrix .best::after { content: " ◂"; color: var(--gules); }
+
+/* bar cell */
+.barwrap { position: relative; height: 6px; background: var(--surface-2); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.barwrap i { position: absolute; inset: 0 auto 0 0; display: block; border-radius: 3px; transition: width .35s ease; }
+
+/* --- verdict panel --- */
+.verdict { display: flex; flex-direction: column; gap: 14px; }
+.verdict-badge {
+  border: 1px solid var(--rule); border-radius: 5px; padding: 14px 16px; background: var(--paper);
+  transition: border-color .4s, background .4s;
+}
+.verdict-badge .eq {
+  font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1.1; margin-bottom: 2px;
+}
+.verdict-badge .eqsub { font-size: 13px; color: var(--muted); }
+.verdict-badge.KT { border-color: var(--azure); background: color-mix(in srgb, var(--azure) 8%, var(--paper)); }
+.verdict-badge.KT .eq { color: var(--azure); }
+.verdict-badge.KL { border-color: var(--gules); background: color-mix(in srgb, var(--gules) 8%, var(--paper)); }
+.verdict-badge.KL .eq { color: var(--gules); }
+.verdict-badge.LT { border-color: var(--or); background: color-mix(in srgb, var(--or) 10%, var(--paper)); }
+.verdict-badge.LT .eq { color: var(--or); }
+.verdict-badge.SQ { border-color: var(--rule); }
+
+.checks { display: flex; flex-direction: column; gap: 7px; font-size: 12.5px; }
+.check { display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+.check .box { flex: none; width: 15px; height: 15px; border-radius: 3px; border: 1px solid var(--rule); display: grid; place-items: center; font-size: 10px; margin-top: 1px; color: var(--muted); }
+.check.yes .box { background: color-mix(in srgb, var(--azure) 18%, transparent); border-color: var(--azure); color: var(--azure); }
+.check.no .box  { background: transparent; }
+.check .txt { color: var(--muted); }
+.check.yes .txt { color: var(--ink-soft); }
+.check .txt code { font-family: var(--mono); font-size: 11.5px; color: var(--ink); }
+
+/* --- presets --- */
+.presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.preset {
+  font: inherit; font-size: 12px; padding: 6px 11px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--paper); color: var(--ink-soft); line-height: 1.2;
+}
+.preset:hover { border-color: var(--muted); color: var(--ink); }
+.preset.on { border-color: var(--azure); background: var(--azure-dim); color: var(--azure); font-weight: 600; }
+.preset .y { font-family: var(--mono); font-size: 10.5px; opacity: .7; margin-left: 5px; }
+
+/* --- game tree --- */
+.tree { width: 100%; height: auto; display: block; }
+.tree .lnk { stroke: var(--rule); stroke-width: 1.5; fill: none; transition: stroke .4s, stroke-width .4s; }
+.tree .lnk.path { stroke: var(--azure); stroke-width: 3; }
+.tree .lnk.off { stroke: var(--rule-soft); }
+.tree .dot { fill: var(--ink); }
+.tree .elabel { font-family: var(--mono); font-size: 8.5px; fill: var(--muted); letter-spacing: .04em; }
+.tree .elabel.path { fill: var(--azure); font-weight: 700; }
+.tree .plabel { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+.tree .out { font-family: var(--serif); font-size: 12.5px; font-weight: 600; fill: var(--muted); transition: fill .4s; }
+.tree .out.path { fill: var(--ink); }
+.tree .outsub { font-family: var(--mono); font-size: 8px; fill: var(--muted); }
+
+/* ============================================================
+   PHASE / DYNAMICS
+   ============================================================ */
+.dyn { display: grid; grid-template-columns: minmax(0,1.25fr) 300px; gap: 24px; }
+@media (max-width: 900px) { .dyn { grid-template-columns: 1fr; } }
+.canvas-hold { position: relative; border: 1px solid var(--rule); border-radius: 5px; background: var(--paper); overflow: hidden; }
+.canvas-hold canvas { display: block; width: 100%; height: auto; cursor: crosshair; }
+#tsHold { margin-top: 14px; }
+#tsHold canvas { cursor: default; }
+.dyn-side { display: flex; flex-direction: column; gap: 16px; }
+.readout { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.stat { border: 1px solid var(--rule); border-radius: 4px; padding: 8px 10px; background: var(--paper); }
+.stat .k { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
+.stat .n { font-family: var(--mono); font-size: 17px; font-variant-numeric: tabular-nums; margin-top: 1px; }
+.stat.W .n { color: var(--or); }
+.stat.k .n { color: var(--azure); }
+.stat.l .n { color: var(--gules); }
+.shocks { display: flex; flex-direction: column; gap: 6px; }
+.shock {
+  font: inherit; font-size: 12.5px; text-align: left; padding: 8px 11px; border-radius: 4px; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--paper); color: var(--ink-soft); line-height: 1.35;
+}
+.shock:hover { border-color: var(--muted); color: var(--ink); }
+.shock b { display: block; font-weight: 600; color: var(--ink); font-size: 12.5px; }
+.shock span { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+.epoch { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.regime-strip { display: flex; height: 8px; border-radius: 3px; overflow: hidden; background: var(--surface-2); }
+.regime-strip i { display: block; height: 100%; }
+
+/* ============================================================
+   CASE CARDS
+   ============================================================ */
+.cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px,1fr)); gap: 16px; margin: 30px 0; }
+.case {
+  border: 1px solid var(--rule); border-top-width: 3px; border-radius: 5px;
+  background: var(--surface); padding: 18px; display: flex; flex-direction: column; gap: 9px;
+}
+.case.KT { border-top-color: var(--azure); }
+.case.KL { border-top-color: var(--gules); }
+.case.LT { border-top-color: var(--or); }
+.case .yr { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--muted); }
+.case h4 { font-size: 17.5px; line-height: 1.2; }
+.case p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+.case .mech { font-size: 13px; color: var(--ink-soft); border-top: 1px solid var(--rule-soft); padding-top: 9px; margin-top: auto; }
+.case .mech b { font-family: var(--mono); font-size: 12px; font-weight: 600; }
+
+/* ============================================================
+   MAP
+   ============================================================ */
+.mapgrid { display: grid; grid-template-columns: minmax(0,1fr) 262px; gap: 24px; }
+@media (max-width: 860px) { .mapgrid { grid-template-columns: 1fr; } }
+#mapSvg { width: 100%; height: auto; display: block; background: var(--paper); border: 1px solid var(--rule); border-radius: 5px; }
+#mapSvg .coast { fill: var(--surface-2); stroke: var(--rule); stroke-width: .9; stroke-linejoin: round; }
+#mapSvg .town { cursor: pointer; transition: opacity .25s; }
+#mapSvg .town.mute { opacity: .16; }
+#mapSvg .tlabel {
+  font-family: var(--mono); font-size: 6.6px; fill: var(--ink-soft); letter-spacing: .02em;
+  paint-order: stroke; stroke: var(--paper); stroke-width: 2.6px; stroke-linejoin: round;
+  pointer-events: none;
+}
+.legend { display: flex; flex-direction: column; gap: 5px; }
+.lgd {
+  display: flex; align-items: center; gap: 9px; font-size: 13px; padding: 7px 10px;
+  border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); cursor: pointer; color: var(--ink-soft);
+  font: inherit; font-size: 13px; text-align: left; width: 100%;
+}
+.lgd:hover { border-color: var(--muted); }
+.lgd.off { opacity: .42; }
+.lgd .swatch { flex: none; width: 13px; height: 13px; }
+.lgd .ct { margin-left: auto; font-family: var(--mono); font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+#townCard {
+  border: 1px solid var(--rule); border-radius: 5px; padding: 13px 15px; background: var(--paper); min-height: 132px;
+}
+#townCard .tn { font-family: var(--serif); font-size: 18px; font-weight: 600; }
+#townCard .tr { font-family: var(--mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin: 3px 0 8px; }
+#townCard .tnote { font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
+#townCard .empty { font-size: 13px; color: var(--muted); font-style: italic; }
+
+/* ============================================================
+   CONCORDANCE TABLE
+   ============================================================ */
+.tablewrap { overflow-x: auto; margin: 26px 0; border: 1px solid var(--rule); border-radius: 5px; background: var(--surface); }
+table.data { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
+table.data th, table.data td { padding: 11px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule-soft); }
+table.data thead th {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; background: color-mix(in srgb, var(--surface-2) 45%, var(--surface));
+  border-bottom: 1px solid var(--rule); position: sticky; top: 0;
+}
+table.data tbody tr:last-child td { border-bottom: none; }
+table.data td.q { font-family: var(--serif); font-style: italic; color: var(--ink); }
+table.data td.p { font-family: var(--mono); white-space: nowrap; color: var(--ink); }
+table.data td.g { color: var(--muted); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer { margin-top: 72px; border-top: 1px solid var(--rule); padding: 34px 0 60px; }
+.citebox {
+  font-family: var(--mono); font-size: 12.5px; line-height: 1.7; color: var(--ink-soft);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; padding: 14px 16px;
+  max-width: 74ch; word-break: break-word;
+}
+.footnote { font-size: 12.5px; color: var(--muted); max-width: 74ch; line-height: 1.6; }
+.footgrid { display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; }
+
+hr.rule { border: none; border-top: 1px solid var(--rule); margin: 46px 0; }
+</style>
+
+<nav id="nav">
+  <div class="wrap">
+    <div class="brand">Towns in Feudal Europe <em>· Koyama</em></div>
+    <ol>
+      <li><a href="#argument">Argument</a></li>
+      <li><a href="#model">Model</a></li>
+      <li><a href="#solver">Solver</a></li>
+      <li><a href="#history">Evidence</a></li>
+      <li><a href="#map">1465</a></li>
+      <li><a href="#dynamics">Dynamics</a></li>
+      <li><a href="#limits">Limits</a></li>
+    </ol>
+    <button id="themebtn" type="button" aria-label="Switch colour theme" title="Switch colour theme">◑</button>
+  </div>
+</nav>
+
+<header id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">
+          <span class="dash"></span>
+          <span class="eyebrow">Public Choice · Adam Smith &amp; political economy</span>
+        </div>
+        <h1>Adam Smith and the Role of the <span class="thin">Towns</span> in Feudal Europe</h1>
+        <p class="byline"><strong>Mark Koyama</strong> · Department of Economics, George Mason University</p>
+        <p class="pubinfo" id="publine">Public Choice · published online 2 June 2026 · open access (CC BY 4.0)</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#solver">Solve the coalition game →</a>
+          <a class="btn" href="https://doi.org/10.1007/s11127-026-01407-4" target="_blank" rel="noopener">Read the article ↗</a>
+          <a class="btn" href="https://link.springer.com/content/pdf/10.1007/s11127-026-01407-4.pdf" target="_blank" rel="noopener">PDF ↗</a>
+        </div>
+      </div>
+
+      <div>
+        <svg class="mark" id="heroMark" viewBox="0 0 300 250" role="img" aria-label="Diagram: three players — King, Lords, Towns — with three possible two-player coalitions as edges of a triangle.">
+          <g id="heroEdges">
+            <line class="edge e-KT" x1="150" y1="52" x2="248" y2="200"></line>
+            <line class="edge e-KL" x1="150" y1="52" x2="52"  y2="200"></line>
+            <line class="edge e-LT" x1="52"  y1="200" x2="248" y2="200"></line>
+          </g>
+          <g class="node n-K">
+            <circle cx="150" cy="52" r="25" fill="#27488c"></circle>
+            <text x="150" y="57" text-anchor="middle">K</text>
+            <text class="nlabel" x="150" y="18" text-anchor="middle">King</text>
+          </g>
+          <g class="node n-L">
+            <circle cx="52" cy="200" r="25" fill="#9c2b23"></circle>
+            <text x="52" y="205" text-anchor="middle">L</text>
+            <text class="nlabel" x="52" y="240" text-anchor="middle">Lords</text>
+          </g>
+          <g class="node n-T">
+            <circle cx="248" cy="200" r="25" fill="#96690f"></circle>
+            <text x="248" y="205" text-anchor="middle">T</text>
+            <text class="nlabel" x="248" y="240" text-anchor="middle">Towns</text>
+          </g>
+        </svg>
+        <div class="mark-cap">Three players · three possible alliances</div>
+      </div>
+    </div>
+
+    <div class="abstract col" style="max-width:74ch">
+      <span class="eyebrow">Abstract</span>
+      <p>Adam Smith's account of medieval towns in Book&nbsp;III of <em>The Wealth of Nations</em> remains one of the most influential analyses of how commerce transformed feudal Europe. This paper formalizes Smith's argument as a game between kings, lords, and towns. The king–town alliance emphasized by Smith emerges when towns are wealthy enough to offer fiscal and military support but lords remain a serious threat. However, when kings become excessively predatory, towns may ally with lords (as in the Magna Carta crisis); when towns are too weak to offer substantial support, kings ally with lords instead (as in Eastern Europe). A dynamic extension shows that the king–town equilibrium is self-undermining: commercial growth erodes lordly military power through Smith's “diamond buckles” mechanism, eventually enabling royal absolutism. In contrast, the king–lords equilibrium is self-reinforcing, suppressing urban development and preserving feudal institutions. The framework highlights how small differences in initial urban development could generate dramatically different long-run trajectories and illuminates both the brilliance and the limitations of Smith's conjectural history.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ==================== I. ARGUMENT ==================== -->
+<section class="chapter" id="argument">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-num">I</span>
+      <h2>The king and the towns against the barons</h2>
+    </div>
+
+    <div class="prose">
+      <p class="lede">The defining characteristic of feudalism was military decentralization. The king held no monopoly of legitimate violence; he depended on the armed retinues of his vassals. That dependence built a check on royal power into the system — and it left a door open.</p>
+
+      <p>Smith's way through that door was a three-way relationship between lords, towns, and the king. He envisioned the relationship between towns and lords as inherently conflictual, and saw in that conflict the basis of an alliance:</p>
+
+      <blockquote>
+        The burghers naturally hated and feared the lords. The king hated and feared them too; but though, perhaps, he might despise, he had no reason to either hate or fear the burghers. Mutual interest, therefore, disposed them to support the king, and the king to support them against the lords.
+        <cite>Wealth of Nations, Bk. III, Ch. 3</cite>
+      </blockquote>
+
+      <p>This paper restates that analysis in the language of game theory — and shows that Smith's equilibrium is <em>one of several possible outcomes</em>. A review of the historical record reveals that all three alliances occurred. Towns sometimes allied with lords against tyrannical kings. Kings sometimes allied with lords against overly independent towns.</p>
+
+      <h3>What each player brings</h3>
+      <p>The three players are asymmetric in a way that does most of the analytical work.</p>
+    </div>
+
+    <div class="cases" style="margin-top:22px">
+      <div class="case KT">
+        <div class="yr">Player K</div>
+        <h4>The King</h4>
+        <p>Legitimacy without overwhelming material power. Sacral authority made him hard to displace, but he ruled through a coalition — a network of bargains with magnates and towns — not by bureaucratic fiat.</p>
+        <div class="mech">Carries <b>κ</b>, fiscal and administrative capacity; sets <b>τ</b>, the tax rate on towns.</div>
+      </div>
+      <div class="case KL">
+        <div class="yr">Player L</div>
+        <h4>The Lords</h4>
+        <p>Independent military capability. Each lord controlled his own armed retainers, fortified castles, and local justice — and could defect from the royal coalition with those resources intact.</p>
+        <div class="mech">Carries <b>λ</b>, military power; extracts <b>φ</b> in seigneurial dues where towns fall under them.</div>
+      </div>
+      <div class="case LT">
+        <div class="yr">Player T</div>
+        <h4>The Towns</h4>
+        <p>Commercial wealth, defensive but not offensive military capacity, and a desire for self-governance. Towns could fund a king and man their own walls — but never threaten his throne.</p>
+        <div class="mech">Carries <b>W</b>, urban wealth; supplies <b>m(W)</b> in militia, loans, supply, intelligence.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>It is this asymmetry — towns valuable as allies, harmless as rivals — that made the king–town alliance mutually attractive whenever the lords threatened both. It is also why the alliance could not last.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== II. MODEL ==================== -->
+<section class="chapter" id="model">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-num">II</span>
+      <h2>The model</h2>
+    </div>
+
+    <div class="prose">
+      <p>Three players, <span class="v">i ∈ {K, L, T}</span>. Any two may form a coalition against the third. Payoffs are explicit functions of four state parameters: urban wealth <span class="v">W</span>, royal capacity <span class="v">κ</span>, lordly military power <span class="v">λ</span>, and the royal tax rate <span class="v">τ</span>.</p>
+
+      <p>The king moves first, proposing an alliance to either the towns or the lords. The proposed partner accepts or rejects; if rejected, the excluded party may propose the alternative coalition. The game is solved by backward induction; the equilibrium concept is subgame-perfect Nash equilibrium. Where no coalition forms, the status quo <span class="pill SQ">SQ</span> obtains — continued feudal disorder, assumed to be Pareto-dominated by all three coalitions.</p>
+    </div>
+
+    <!-- ---------- PLATE 1 : SOLVER ---------- -->
+    <div class="plate" id="solver" style="scroll-margin-top:64px">
+      <div class="plate-head">
+        <span class="eyebrow">Interactive · Figure 1</span>
+        <h4>Coalition solver</h4>
+        <div class="presets" id="presets"></div>
+      </div>
+
+      <div class="plate-body">
+        <div class="solver">
+
+          <!-- controls -->
+          <div class="controls" id="controls"></div>
+
+          <!-- centre: payoffs + tree -->
+          <div>
+            <table class="matrix" aria-live="polite">
+              <thead>
+                <tr><th>Coalition</th><th>π<sub>K</sub></th><th>π<sub>L</sub></th><th>π<sub>T</sub></th></tr>
+              </thead>
+              <tbody id="matrixBody"></tbody>
+            </table>
+
+            <svg class="tree" id="tree" viewBox="0 0 560 250" role="img" aria-label="Extensive form game tree with the equilibrium path highlighted."></svg>
+          </div>
+
+          <!-- right: verdict -->
+          <div class="verdict">
+            <div class="verdict-badge" id="badge">
+              <div class="eq" id="badgeEq">KT</div>
+              <div class="eqsub" id="badgeSub">King + Towns vs. Lords</div>
+            </div>
+
+            <svg class="mark" id="solverMark" viewBox="0 0 300 250" style="max-width:210px;margin:0 auto" role="img" aria-label="Equilibrium coalition shown as a lit edge of the player triangle.">
+              <g>
+                <line class="edge e-KT" x1="150" y1="52" x2="248" y2="200"></line>
+                <line class="edge e-KL" x1="150" y1="52" x2="52"  y2="200"></line>
+                <line class="edge e-LT" x1="52"  y1="200" x2="248" y2="200"></line>
+              </g>
+              <g class="node n-K"><circle cx="150" cy="52" r="25" fill="#27488c"></circle><text x="150" y="57" text-anchor="middle">K</text></g>
+              <g class="node n-L"><circle cx="52" cy="200" r="25" fill="#9c2b23"></circle><text x="52" y="205" text-anchor="middle">L</text></g>
+              <g class="node n-T"><circle cx="248" cy="200" r="25" fill="#96690f"></circle><text x="248" y="205" text-anchor="middle">T</text></g>
+            </svg>
+
+            <div class="checks" id="checks"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="plate-foot">
+        <strong>How to read this.</strong> Move the sliders and the game re-solves by backward induction. The <em>lit edge</em> of the triangle is the coalition that forms; the excluded player dims. The tree below the payoff table highlights the equilibrium path. Functional forms are an illustrative parameterization satisfying the sign restrictions in the paper (<span class="v">m′&gt;0</span>, <span class="v">∂c/∂λ&gt;0</span>, <span class="v">∂c/∂κ&lt;0</span>, <span class="v">∂s/∂κ&gt;0</span>, <span class="v">∂s/∂λ&gt;0</span>, <span class="v">p′&gt;0</span>, <span class="v">s<sub>L</sub>′&gt;0</span>, <span class="v">c<sub>K</sub>′&gt;0</span>); levels are ordinal, not estimates.
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>The switching condition</h3>
+      <p>The king prefers the towns to the lords when the net gain from the town alliance exceeds the cost of fighting the lords plus the support forgone by not allying with them:</p>
+    </div>
+
+    <div class="tablewrap" style="max-width:var(--col)">
+      <table class="data">
+        <thead><tr><th>Coalition</th><th>King's condition</th><th>Partner's condition</th><th>Historical context</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="pill KT">KT</span></td>
+            <td class="p">W &gt; W*(λ, κ)</td>
+            <td class="p">s − s<sub>L</sub> &gt; (τ − φ)W</td>
+            <td class="g">Philip Augustus; Smith's conjectural history</td>
+          </tr>
+          <tr>
+            <td><span class="pill LT">LT</span></td>
+            <td class="g">—</td>
+            <td class="p">h &gt; r + c<sub>K</sub>(κ)</td>
+            <td class="g">Magna Carta (1215); War of the Public Weal (1465)</td>
+          </tr>
+          <tr>
+            <td><span class="pill KL">KL</span></td>
+            <td class="p">W &lt; W*(λ, κ)</td>
+            <td class="p">r &gt; h − c<sub>K</sub>(κ)</td>
+            <td class="g">Frederick II; Eastern Europe</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <p>The threshold <span class="v">W*(λ, κ)</span> is rising in <span class="v">λ</span> — when lords are more powerful, towns must be richer to justify fighting them — and falling in <span class="v">κ</span>, since a stronger king finds the lords cheaper to subdue. That single boundary does most of the comparative-static work, and reappears in Section IV as the frontier the dynamics push against.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== III. HISTORY ==================== -->
+<section class="chapter" id="history">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-num">III</span>
+      <h2>Historical evidence</h2>
+    </div>
+
+    <div class="prose">
+      <p class="lede">All three coalitions occurred. Each case below loads its parameter configuration into the solver above.</p>
+    </div>
+
+    <div class="cases" id="caseCards"></div>
+
+    <div class="prose">
+      <h3>Charters as commitment technology</h3>
+      <p>Town charters are where the model's abstractions touch the documentary record. The grant by Louis VI to Lorris — later extended to scores of communities in the royal demesne — specified that residents would pay only fixed rents, be quit of all <em>taille</em> and forced exactions, owe one day of local military service, and be protected from purveyance. Fines were strictly limited; no one could be molested travelling to or from market.</p>
+      <p>In the language of the model, a charter raised <span class="v">s(κ, λ)</span> by replacing arbitrary exaction with predictable obligation, making royal protection credible. What it created was a <em>territorial immunity</em> — a settlement living under a special law guaranteed by a holder of regalian powers. In return the chartered town supplied fiscal revenue and military support, raising both <span class="v">m(W)</span> and <span class="v">τW</span>. That is what made the <span class="pill KT">KT</span> coalition attractive to the king.</p>
+      <p>Note the corollary: lords chartered towns for exactly the same reasons. By the mid-thirteenth century a craze for urban development had spread to every corner of France, with counts, dukes, and lesser lords all competing to charter <em>villes neuves</em> and <em>bastides</em>. The presence of a charter therefore does <em>not</em> predict allegiance to the king rather than to a lord. Both sides used chartering as a tool of coalition-building.</p>
+
+      <h3>Magna Carta: credibility as the binding constraint</h3>
+      <p>Towns switch to the lordly alliance when the tax savings from escaping royal taxation, plus lordly protection, exceed royal protection. For 1215 it helps to decompose lordly protection as <span class="v">s<sub>L</sub>(λ) = θ(λ)·R</span>, where <span class="v">R</span> is the value of the rights promised and <span class="v">θ</span> the credibility of the lords' commitment to deliver them. The content of the barons' offer mattered only insofar as the offer was enforceable.</p>
+      <p>John imposed a high effective tax rate but also provided security, so the credibility threshold <span class="v">θ*</span> stayed high and London stayed loyal despite real grievance. Two things then moved together. Bouvines (July 1214) cut <span class="v">κ</span> sharply, which lowered <span class="v">s(κ, λ)</span> and so lowered <span class="v">θ*</span>. And the barons did something with little precedent: they wrote the charter down, with an enforcement mechanism — the committee of twenty-five — which raised <span class="v">θ</span>.</p>
+      <blockquote>
+        The City of London shall enjoy all its ancient liberties and free customs, both by land and by water. We also will and grant that all other cities, boroughs, towns, and ports shall enjoy all their liberties and free customs.
+        <cite>Magna Carta, 1215 · clause 13</cite>
+      </blockquote>
+      <p>Threshold down, credibility up: <span class="v">θ &gt; θ*</span>. The largest town in England switched, and London's support proved decisive at Runnymede.</p>
+    </div>
+
+    <!-- ---------- PLATE 2 : MAP ---------- -->
+    <div class="plate" id="map" style="scroll-margin-top:64px">
+      <div class="plate-head">
+        <span class="eyebrow">Interactive · Figure 2</span>
+        <h4>Urban loyalty in the War of the Public Weal, 1465</h4>
+      </div>
+      <div class="plate-body">
+        <div class="mapgrid">
+          <div>
+            <svg id="mapSvg" viewBox="0 0 560 560" role="img" aria-label="Map of France showing towns coloured by their allegiance during the War of the Public Weal of 1465."></svg>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="legend" id="mapLegend"></div>
+            <div id="townCard"><div class="empty">Hover or tap a town to read the evidence for its coding.</div></div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.5;margin:0">
+              A striking feature of 1465 is that different regions saw different equilibria emerge <em>simultaneously</em>. Loyalty tracks princely territories, not distance from Paris.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="plate-foot">
+        <strong>Sources.</strong> Loyalty coded from Murphy (2024); coordinates from Buringh and van Zanden (2021). Coastline is modern, shown for orientation only — it is not the political geography of 1465. The magnates who opposed Louis XI were themselves patrons who had cultivated urban alliances with the same tools — charters, commercial patronage, tax relief — that the king deployed in his own domain. The result was simultaneous <span class="pill KT">KT</span>-type equilibria at different levels of the political hierarchy.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== IV. DYNAMICS ==================== -->
+<section class="chapter" id="dynamics">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-num">IV</span>
+      <h2>Dynamics and the diamond-buckle puzzle</h2>
+    </div>
+
+    <div class="prose">
+      <p class="lede">Smith's account is not static. The alliance between king and towns does not merely persist — it transforms the conditions that gave rise to it.</p>
+
+      <p>Play the stage game repeatedly. Players are myopic: they pick the coalition that maximizes current-period payoffs, which is a natural assumption for medieval politics, where dynasties ended, lords were killed or dispossessed, and town governments turned over. The coalition that forms then determines how the state variables move.</p>
+
+      <p>Under <span class="pill KT">KT</span>, urban wealth grows because royal protection lets commerce flourish; royal capacity accumulates out of tax revenue; and lordly military power <em>falls</em> in proportion to urban wealth. That last term is Smith's celebrated mechanism — lords "gradually exchanged their whole power and authority" for "trinkets and baubles."</p>
+
+      <blockquote>
+        All for ourselves, and nothing for other people, seems, in every age of the world, to have been the vile maxim of the masters of mankind. … For a pair of diamond buckles, or for something as frivolous and useless, they exchanged the maintenance, or what is the same thing, the price of the maintenance of a thousand men for a year, and with it the whole weight and authority which it could give them.
+        <cite>Wealth of Nations, Bk. III, Ch. 4</cite>
+      </blockquote>
+    </div>
+
+    <!-- ---------- PLATE 3 : PHASE DIAGRAM ---------- -->
+    <div class="plate">
+      <div class="plate-head">
+        <span class="eyebrow">Interactive · Figure 3</span>
+        <h4>Phase diagram in (W, λ) space</h4>
+        <div style="margin-left:auto;display:flex;gap:6px;align-items:center">
+          <button class="btn" id="runBtn" type="button">▶ Run</button>
+          <button class="btn" id="resetBtn" type="button">Reset</button>
+        </div>
+      </div>
+      <div class="plate-body">
+        <div class="dyn">
+          <div>
+            <div class="canvas-hold"><canvas id="phase" width="900" height="620"></canvas></div>
+            <div class="canvas-hold" id="tsHold"><canvas id="ts" width="900" height="220"></canvas></div>
+          </div>
+
+          <div class="dyn-side">
+            <div class="readout">
+              <div class="stat W"><div class="k">W</div><div class="n" id="roW">—</div></div>
+              <div class="stat k"><div class="k">κ</div><div class="n" id="roK">—</div></div>
+              <div class="stat l"><div class="k">λ</div><div class="n" id="roL">—</div></div>
+            </div>
+
+            <div>
+              <div class="ctl-group-label">Regime history</div>
+              <div class="regime-strip" id="regimeStrip"></div>
+              <div class="epoch" id="epochLine" style="margin-top:7px">Period 0 · press Run</div>
+            </div>
+
+            <div>
+              <div class="ctl-group-label">Critical junctures</div>
+              <div class="shocks" id="shocks"></div>
+            </div>
+
+            <div>
+              <div class="ctl-group-label">Starting point</div>
+              <div class="presets" id="dynPresets"></div>
+              <p style="font-size:12px;color:var(--muted);margin:9px 0 0;line-height:1.5">Or click anywhere on the phase diagram to place the polity by hand.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="plate-foot">
+        <strong>Reading the diagram.</strong> The rising red curve is the switching boundary <span class="v">W*(λ, κ)</span>: above and to the right of it the <span class="pill KT">KT</span> equilibrium obtains, below and to the left <span class="pill KL">KL</span>. The dashed blue line is <span class="v">λ̲</span>, the threshold below which lords cease to be a relevant political force — cross it and the three-player game collapses into a two-player contest that the king, now rich in <span class="v">κ</span>, wins. Because <span class="v">κ</span> grows under <span class="v">KT</span>, the boundary itself drifts leftward as the trajectory runs; the curve is redrawn each period.
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Why the two equilibria are asymmetric</h3>
+      <p>Under <span class="pill KT">KT</span> the system moves right and down. Rising <span class="v">W</span> pushes it deeper into the KT region; falling <span class="v">λ</span> lowers the boundary, reinforcing its position; growing <span class="v">κ</span> lowers the boundary further still. In the short and medium run the king–town alliance is self-reinforcing. In the long run the same decline in <span class="v">λ</span> carries the system below <span class="v">λ̲</span>, the lords cease to matter, and urban privileges become grants from above rather than bargains between equals. This is the world of early modern absolutism — a canonical <em>self-undermining</em> institution, in Greif and Laitin's sense.</p>
+
+      <p>Under <span class="pill KL">KL</span> the system moves left while <span class="v">λ</span> is preserved. Urban wealth stagnates, so towns become still less attractive as allies; commerce does not develop, so lords are not tempted by luxury spending and keep their retinues. The configuration reproduces itself. This is a poverty trap: towns that start weak stay weak, lords that start strong stay strong.</p>
+
+      <p>The asymmetry generates <em>divergence from similar initial conditions</em>. Small differences in <span class="v">W₀</span>, amplified by the self-reinforcing logic of whichever coalition forms, produce dramatically different long-run trajectories — commercial development and eventual absolutism in one case, the second serfdom in the other.</p>
+
+      <h3>What the boundary leaves out</h3>
+      <p>As derived, the switching boundary treats regime change as frictionless. In practice accumulated institutional relationships create switching costs that make it sticky. A town whose commercial networks, governance structures, and political relationships are built around one patron faces real costs in switching to another, even where current payoffs would favour defection. In 1465 the Loire towns stayed loyal not because the king rewarded loyalty but because their economic and institutional lives were oriented toward the royal domain — while Bourges, Rouen, and Dijon had commercial ties to ducal households that made defection to the royal cause costly. The system must be pushed not merely across <span class="v">W*</span> but far enough across to overcome the weight of existing relationships.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== V. CONCORDANCE + LIMITS ==================== -->
+<section class="chapter" id="limits">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-num">V</span>
+      <h2>Smith's text and the model's parts</h2>
+    </div>
+
+    <div class="prose">
+      <p>The formalization earns its keep only if each object in it answers to something Smith actually says. The concordance below is the audit.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table class="data">
+        <thead><tr><th style="width:44%">Smith</th><th style="width:16%">Object</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="q">“in those days the sovereign of perhaps no country in Europe was able to protect … the weaker part of his subjects from the oppression of the great lords”</td>
+            <td class="p">λ, κ</td>
+            <td class="g">Military decentralization: royal capacity is small relative to lordly power, so protection is not a given but a service the king must be able to afford.</td>
+          </tr>
+          <tr>
+            <td class="q">“he had no reason to either hate or fear the burghers”</td>
+            <td class="p">m(W)</td>
+            <td class="g">Towns supply support without posing a threat — the asymmetry that makes the KT coalition attractive rather than merely available.</td>
+          </tr>
+          <tr>
+            <td class="q">“establishing magistrates and a town council in every considerable town of his demesne”</td>
+            <td class="p">s(κ, λ)</td>
+            <td class="g">Chartering as commitment technology: arbitrary exaction replaced by predictable obligation makes royal protection credible.</td>
+          </tr>
+          <tr>
+            <td class="q">“making the inhabitants of those towns … march out upon proper occasions to the assistance of the king”</td>
+            <td class="p">m(W)</td>
+            <td class="g">Urban militias as the military half of the exchange, alongside the fiscal half, τW.</td>
+          </tr>
+          <tr>
+            <td class="q">“gradually exchanged their whole power and authority” for “trinkets and baubles”</td>
+            <td class="p">∂λ/∂W &lt; 0</td>
+            <td class="g">The diamond-buckles mechanism, and the engine of the whole dynamic argument: commerce disarms the lords.</td>
+          </tr>
+          <tr>
+            <td class="q">“A regular government was established in the country as well as in the city, nobody having sufficient power to disturb its operations”</td>
+            <td class="p">λ &lt; λ̲</td>
+            <td class="g">The absolutist terminus: with the lords irrelevant, the three-player game collapses and urban privileges become grants from above.</td>
+          </tr>
+          <tr>
+            <td class="q">“the cities generally became independent republics, and conquered all the nobility in their neighbourhood”</td>
+            <td class="p">κ &lt; κ̲</td>
+            <td class="g">Smith's own limiting case — Italy and Switzerland — where the king drops out and the game reduces to towns against lords.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="rule">
+
+    <div class="prose">
+      <h3>Complications the framework does not carry</h3>
+      <p><strong>Towns were not unitary.</strong> In early fourteenth-century Flanders, Bruges, Ghent, and Ypres were split between the <em>Leliaerts</em> — wealthier merchants and patricians who backed Philip IV — and the <em>Klauwaerts</em>, artisans and guildsmen who sought representation and allied with the Count of Flanders against the French crown. Where towns are internally divided the relevant question is not whether towns ally with king or lords, but which faction within them forms the dominant coalition.</p>
+      <p><strong>Nor were the lords.</strong> During the Magna Carta crisis roughly two-thirds of the leading barons joined the rebellion; at least a third stayed loyal to John. And by the later Middle Ages the instinctive class hostility Smith describes had given way — the French nobility of 1465 understood perfectly well the value of urban support.</p>
+      <p><strong>The peasantry is absent.</strong> The Jacquerie of 1358 and the Comuneros revolt of 1521 both work as <span class="pill KL">KL</span> episodes only because an external shock made towns threatening to lords and crown alike. Modelling that properly needs a fourth player.</p>
+      <p><strong>And the scope closes around 1600.</strong> After that, Paris at 400–500,000 and a rapidly growing London posed a new kind of threat: not chartered magistrates bargaining with a king, but an urban crowd that could mobilize directly. That is a different game, and well beyond Smith's analysis.</p>
+
+      <h3>What the framework does explain</h3>
+      <p>Not why some regions had weak kings and others strong ones, or why some towns were richer than others — those are prior questions about geography, trade routes, military technology, and contingency. What it explains is how, <em>given</em> a configuration of parameters, coalitions formed and reformed; and how shocks to those parameters could tip a society from one equilibrium to another, with consequences that then persist and amplify.</p>
+      <p>One implication is worth stating plainly. The medieval urban liberties were <em>inherently temporary</em>. They arose from a particular configuration of power — weak kings, strong lords, growing towns — that could not persist indefinitely. Once the lords were weakened, the bargain that sustained urban privileges dissolved. Which may be why the constitutional achievements of the medieval period so often proved fragile in the face of early modern state-building.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div style="flex:1 1 420px">
+        <div class="eyebrow" style="margin-bottom:10px">Cite as</div>
+        <div class="citebox" id="citebox">Koyama, Mark. 2026. “Adam Smith and the Role of the Towns in Feudal Europe.” <em>Public Choice</em>. Published online June 2, 2026. <a href="https://doi.org/10.1007/s11127-026-01407-4" target="_blank" rel="noopener">https://doi.org/10.1007/s11127-026-01407-4</a></div>
+        <p class="footnote" style="margin-top:10px">Volume, issue, and page numbers are not yet assigned — the article is Online First. Published open access under CC BY 4.0.</p>
+        <p class="footnote" style="margin-top:16px">
+          Mark Koyama is Professor of Economics at George Mason University. He thanks the Editor, Ennio Piano, and two anonymous referees; and Desiree Desierto, Jacob Hall, and Kristen Collins for comments. He acknowledges regular research support from the Mercatus Center. This paper received no funding.
+        </p>
+      </div>
+      <div style="flex:0 1 280px">
+        <div class="eyebrow" style="margin-bottom:10px">About this page</div>
+        <p class="footnote">
+          An interactive companion to the article. The solver and phase diagram implement the model's payoff structure and transition equations with an illustrative parameterization chosen to satisfy the paper's sign restrictions; they are instruments for reasoning about the comparative statics, not calibrated estimates. Historical presets locate each case qualitatively in parameter space.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+/* ============================================================
+   THEME
+   ============================================================ */
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("themebtn");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+    window.dispatchEvent(new Event("themechange"));
+  });
+})();
+
+function cssv(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+
+/* ============================================================
+   THE MODEL
+   All state variables live on [0,1]. Functional forms are an
+   illustrative parameterization satisfying the paper's sign
+   restrictions. Levels are ordinal.
+   ============================================================ */
+var BASE_L = 1.0;                                  // \bar{pi}_L
+var SQ = { K: 0.15, L: 0.55, T: 0.20 };            // status quo payoffs
+
+function f_m(W)       { return 1.60 * Math.pow(W, 0.80); }              // town support to king,  m'>0
+function f_c(lam, ka) { return 0.70 * Math.pow(lam, 1.25) / (0.55 + ka); } // cost of subduing lords: ↑λ, ↓κ
+function f_s(ka, lam) { return 1.05 * Math.pow(ka, 0.75) * (0.35 + lam); } // royal protection: ↑κ, ↑λ
+function f_l(ka)      { return 0.80 * ka; }                              // lords' loss under KT
+function f_mL(lam)    { return 0.55 * Math.pow(lam, 0.80); }             // lordly support to king
+function f_p(lam)     { return 0.90 * lam; }                             // predation on towns under KL
+function f_d(lam, W)  { return 1.10 * lam * (0.40 + W); }                // damage to king under LT
+function f_theta(lam) { return Math.pow(lam, 0.60); }                    // credibility of lordly commitment
+function f_sL(lam, R) { return f_theta(lam) * R; }                       // lordly protection = θ(λ)·R
+function f_cK(ka)     { return 1.20 * Math.pow(ka, 1.20); }              // cost to lords of opposing king
+
+function payoffs(p) {
+  var W = p.W, ka = p.kappa, lam = p.lambda, tau = p.tau, phi = p.phi,
+      al = p.alpha, h = p.h, r = p.r, R = p.R;
+
+  var KT = {
+    K: tau * W + f_m(W) + ka - f_c(lam, ka),
+    T: (1 - tau) * W + f_s(ka, lam),
+    L: BASE_L - f_l(ka)
+  };
+  var KL = {
+    K: al * tau * W + f_mL(lam) + ka,
+    T: (1 - tau) * W - f_p(lam),
+    L: BASE_L + r
+  };
+  var LT = {
+    K: ka - f_d(lam, W),
+    T: (1 - phi) * W + f_sL(lam, R),
+    L: BASE_L + h - f_cK(ka)
+  };
+  return { KT: KT, KL: KL, LT: LT, SQ: { K: SQ.K, L: SQ.L, T: SQ.T } };
+}
+
+/* Backward induction on the extensive form of Figure 1.
+   Left branch  : K proposes to T. T accepts -> KT. T rejects -> L chooses LT or SQ.
+   Right branch : K proposes to L. L accepts -> KL. L rejects -> T chooses LT or SQ. */
+function solve(p) {
+  var pi = payoffs(p);
+
+  // subgame after T rejects: Lords decide whether to take LT
+  var o1 = (pi.LT.L >= pi.SQ.L) ? "LT" : "SQ";
+  var towns_accept = pi.KT.T >= pi[o1].T;
+  var left = towns_accept ? "KT" : o1;
+
+  // subgame after L rejects: Towns decide whether to take LT
+  var o2 = (pi.LT.T >= pi.SQ.T) ? "LT" : "SQ";
+  var lords_accept = pi.KL.L >= pi[o2].L;
+  var right = lords_accept ? "KL" : o2;
+
+  var proposeTo = (pi[left].K >= pi[right].K) ? "T" : "L";
+  var eq = proposeTo === "T" ? left : right;
+
+  return {
+    pi: pi, eq: eq, proposeTo: proposeTo,
+    left: left, right: right, o1: o1, o2: o2,
+    townsAccept: towns_accept, lordsAccept: lords_accept
+  };
+}
+
+/* W*(λ,κ): solve (1-α)τW* + m(W*) = c(λ,κ) + m_L(λ) on [0,1] by bisection.
+   Returns null when no root exists in range (boundary lies above the plot). */
+function Wstar(lam, ka, tau, al) {
+  var rhs = f_c(lam, ka) + f_mL(lam);
+  var lhs = function (W) { return (1 - al) * tau * W + f_m(W); };
+  if (lhs(1) < rhs) return null;
+  if (lhs(0) >= rhs) return 0;
+  var lo = 0, hi = 1;
+  for (var i = 0; i < 48; i++) {
+    var mid = (lo + hi) / 2;
+    if (lhs(mid) < rhs) lo = mid; else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
+
+var EQ_NAME = {
+  KT: "King + Towns vs. Lords",
+  KL: "King + Lords vs. Towns",
+  LT: "Lords + Towns vs. King",
+  SQ: "No coalition — feudal disorder"
+};
+var EQ_EDGE = { KT: "KT", KL: "KL", LT: "LT", SQ: null };
+var EQ_EXCLUDED = { KT: "L", KL: "T", LT: "K", SQ: null };
+
+/* ============================================================
+   PARAMETERS + PRESETS
+   ============================================================ */
+var PARAMS = [
+  { key: "W",      sym: "W", name: "Urban wealth",         t: "T", min: 0.02, max: 1, step: .01 },
+  { key: "lambda", sym: "λ", name: "Lordly military power", t: "L", min: 0.02, max: 1, step: .01 },
+  { key: "kappa",  sym: "κ", name: "Royal capacity",        t: "K", min: 0.02, max: 1, step: .01 },
+  { key: "tau",    sym: "τ", name: "Royal tax rate on towns", t: "K", min: 0, max: .9, step: .01 },
+  { key: "phi",    sym: "φ", name: "Seigneurial exactions", t: "L", min: 0, max: .9, step: .01 },
+  { key: "alpha",  sym: "α", name: "Tax compliance under KL", t: "K", min: .05, max: 1, step: .01 },
+  { key: "h",      sym: "h", name: "Lords' gain from town alliance", t: "L", min: 0, max: 1.6, step: .02 },
+  { key: "r",      sym: "r", name: "Lords' predation rents under KL", t: "L", min: 0, max: 1.6, step: .02 },
+  { key: "R",      sym: "R", name: "Value of promised liberties", t: "T", min: 0, max: 1.6, step: .02 }
+];
+
+var PRESETS = [
+  {
+    id: "philip", label: "Philip Augustus", year: "c. 1200", eq: "KT",
+    p: { W: .58, lambda: .62, kappa: .46, tau: .22, phi: .30, alpha: .40, h: .55, r: .60, R: .55 },
+    note: "Philip confirmed existing communes and created new ones along the frontiers of an expanding royal domain. Revenues, defense, and the extension of royal influence — Baldwin's threefold advantage."
+  },
+  {
+    id: "john", label: "Magna Carta", year: "1215", eq: "LT",
+    p: { W: .60, lambda: .74, kappa: .22, tau: .58, phi: .16, alpha: .45, h: 1.05, r: .30, R: 1.10 },
+    note: "Bouvines cut royal capacity sharply, lowering the credibility threshold; the written charter with its committee of twenty-five raised baronial credibility. London switched."
+  },
+  {
+    id: "weal", label: "War of the Public Weal", year: "1465", eq: "LT",
+    p: { W: .62, lambda: .70, kappa: .30, tau: .60, phi: .18, alpha: .45, h: 1.00, r: .32, R: 1.05 },
+    note: "Louis XI taxed towns heavily; the princes' manifestos promised tax abolition and the restoration of regional liberties. Normandy, Burgundy, and the Bourbonnais followed their dukes."
+  },
+  {
+    id: "fred", label: "Frederick II", year: "1220–32", eq: "KL",
+    p: { W: .30, lambda: .78, kappa: .34, tau: .25, phi: .34, alpha: .40, h: .40, r: .95, R: .45 },
+    note: "The emperor's ambitions lay in Italy. German towns could not supply armed knights for Italian campaigns; the princes could. The Confoederatio and Statutum were the price."
+  },
+  {
+    id: "east", label: "Eastern Europe", year: "c. 1500", eq: "KL",
+    p: { W: .14, lambda: .82, kappa: .28, tau: .25, phi: .40, alpha: .35, h: .35, r: 1.00, R: .40 },
+    note: "Weak urban development meant towns could never offer enough to justify the cost of fighting the lords. The equilibrium then suppressed the commerce that might have changed it — the second serfdom."
+  }
+];
+
+var CASES = [
+  { preset: "philip", eq: "KT", yr: "France · 1180–1223", title: "Philip Augustus",
+    body: "Philip more than tripled the royal domain and made the crown more powerful than any feudal lord. Between 1204 and 1214 he issued twenty-eight charters — to Norman towns, to Poitou where the English had been expelled, and to the north-east in preparation for the showdown with the Anglo-German-Flemish coalition.",
+    mech: "But not unconditional: he intervened at Noyon against the commune and suppressed the Commune of Étampes outright in 1199. A strategic alliance, not a principle." },
+  { preset: "john", eq: "LT", yr: "England · 1215 &amp; 1258–65", title: "London and the barons",
+    body: "The mayor of London sat among the twenty-five barons charged with enforcing the charter, and the barons' capture of London in May 1215 was decisive in bringing John to Runnymede. Holt argues Magna Carta owed a general debt to the doctrines underlying municipal self-government.",
+    mech: "London sided against the crown again in the Second Barons' War. Thomas fitz Thomas fought beside de Montfort at Lewes, where the Londoners took the full brunt of Prince Edward's charge." },
+  { preset: "weal", eq: "LT", yr: "France · 1465", title: "The War of the Public Weal",
+    body: "Against the traditional entente cordiale reading, Murphy shows that many French towns supported the princes. Rather than joining the king to build a centralised royal state, urban populations put themselves in opposition to the Crown whenever they felt their particular interests threatened.",
+    mech: "And they did so unevenly: the Loire heartland held for Louis XI while Rouen, Dijon, and Bourges went with their dukes. Different equilibria, simultaneously, across one kingdom." },
+  { preset: "fred", eq: "KL", yr: "Germany · 1220–1232", title: "Frederick II and the princes",
+    body: "The Confoederatio cum principibus ecclesiasticis (1220) and Statutum in favorem principum (1231–32) granted the princes rights to build castles, hold markets, mint coin, levy tolls, and dispense justice. Frederick promised not to erect new towns, castles, or mints in princely territory.",
+    mech: "Toch calls it simply anti-town legislation. The princes were recognised as domini terrae for the first time in imperial law — and reconfirmed the arrangement in reign after reign." },
+  { preset: "east", eq: "KL", yr: "Eastern Europe · after 1350", title: "The second serfdom",
+    body: "Where urban development was weak, the KL equilibrium obtained — and then suppressed the very commercial growth that might have lifted W above the threshold. Peters finds that polities with smaller cities were more likely to impose the second serfdom.",
+    mech: "The Black Death may have tipped marginal polities across the boundary: absorbed without regime change in the West, it pushed W further below W* in the East." },
+  { preset: null, eq: "KL", yr: "France · 1358", title: "The Jacquerie and Étienne Marcel",
+    body: "Marcel's Parisian reform movement initially drew noble support, including Charles of Navarre. But when Marcel allied with the peasant rising of May 1358, the nobility and the Dauphin found common cause: both now faced an existential threat.",
+    mech: "Marcel was assassinated on 31 July; the Dauphin re-entered Paris two days later. The powers of the municipal government were considerably reduced. A KL outcome driven by a shock from outside the three-player frame." }
+];
+
+/* ============================================================
+   BUILD CONTROLS
+   ============================================================ */
+var state = {};
+PRESETS[0].p && Object.keys(PRESETS[0].p).forEach(function (k) { state[k] = PRESETS[0].p[k]; });
+
+var inputs = {};
+(function buildControls() {
+  var host = document.getElementById("controls");
+  var groups = [
+    { label: "State of the polity", keys: ["W", "lambda", "kappa"] },
+    { label: "Extraction", keys: ["tau", "phi", "alpha"] },
+    { label: "Coalition terms", keys: ["h", "r", "R"] }
+  ];
+  groups.forEach(function (g) {
+    var gl = document.createElement("div");
+    gl.className = "ctl-group-label";
+    gl.textContent = g.label;
+    host.appendChild(gl);
+    g.keys.forEach(function (key) {
+      var P = PARAMS.filter(function (x) { return x.key === key; })[0];
+      var wrap = document.createElement("div");
+      wrap.className = "ctl";
+      var id = "in_" + key;
+      wrap.innerHTML =
+        '<label for="' + id + '"><span class="name"><b>' + P.sym + '</b> &nbsp;' + P.name +
+        '</span><span class="val" id="v_' + key + '"></span></label>' +
+        '<input type="range" class="t-' + P.t + '" id="' + id + '" min="' + P.min + '" max="' + P.max +
+        '" step="' + P.step + '" value="' + state[key] + '">';
+      host.appendChild(wrap);
+      var inp = wrap.querySelector("input");
+      inputs[key] = inp;
+      inp.addEventListener("input", function () {
+        state[key] = parseFloat(inp.value);
+        activePreset = null;
+        renderSolver();
+      });
+    });
+  });
+})();
+
+(function buildPresets() {
+  var host = document.getElementById("presets");
+  PRESETS.forEach(function (pr) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "preset";
+    b.dataset.id = pr.id;
+    b.innerHTML = pr.label + '<span class="y">' + pr.year + '</span>';
+    b.addEventListener("click", function () { loadPreset(pr.id); });
+    host.appendChild(b);
+  });
+})();
+
+var activePreset = null;
+function loadPreset(id) {
+  var pr = PRESETS.filter(function (x) { return x.id === id; })[0];
+  if (!pr) return;
+  Object.keys(pr.p).forEach(function (k) {
+    state[k] = pr.p[k];
+    if (inputs[k]) inputs[k].value = pr.p[k];
+  });
+  activePreset = id;
+  renderSolver();
+}
+
+/* ============================================================
+   RENDER SOLVER
+   ============================================================ */
+function fmtNum(x) { return (x >= 0 ? " " : "") + x.toFixed(2); }
+
+function renderSolver() {
+  // slider readouts
+  PARAMS.forEach(function (P) {
+    var el = document.getElementById("v_" + P.key);
+    if (el) el.textContent = state[P.key].toFixed(2);
+  });
+
+  // preset chips
+  Array.prototype.forEach.call(document.querySelectorAll("#presets .preset"), function (b) {
+    b.classList.toggle("on", b.dataset.id === activePreset);
+  });
+
+  var sol = solve(state);
+  var pi = sol.pi;
+
+  // ----- payoff matrix -----
+  var rows = ["KT", "KL", "LT", "SQ"];
+  var bestK = rows.reduce(function (a, b) { return pi[a].K >= pi[b].K ? a : b; });
+  var bestL = rows.reduce(function (a, b) { return pi[a].L >= pi[b].L ? a : b; });
+  var bestT = rows.reduce(function (a, b) { return pi[a].T >= pi[b].T ? a : b; });
+
+  var html = "";
+  rows.forEach(function (rk) {
+    var isEq = rk === sol.eq;
+    html += '<tr class="' + (isEq ? "win" : "") + '">' +
+      '<td class="rowname"><span class="pill ' + rk + '">' + rk + '</span></td>' +
+      '<td class="' + (bestK === rk ? "best" : "") + '">' + fmtNum(pi[rk].K) + '</td>' +
+      '<td class="' + (bestL === rk ? "best" : "") + '">' + fmtNum(pi[rk].L) + '</td>' +
+      '<td class="' + (bestT === rk ? "best" : "") + '">' + fmtNum(pi[rk].T) + '</td>' +
+      '</tr>';
+  });
+  document.getElementById("matrixBody").innerHTML = html;
+
+  // ----- badge -----
+  var badge = document.getElementById("badge");
+  badge.className = "verdict-badge " + sol.eq;
+  document.getElementById("badgeEq").textContent = sol.eq;
+  document.getElementById("badgeSub").textContent = EQ_NAME[sol.eq];
+
+  // ----- triangle mark -----
+  setMark(document.getElementById("solverMark"), sol.eq);
+
+  // ----- condition checks -----
+  var Ws = Wstar(state.lambda, state.kappa, state.tau, state.alpha);
+  var c1 = (Ws !== null) ? (state.W > Ws) : false;
+  var c2 = (f_s(state.kappa, state.lambda) - f_sL(state.lambda, state.R)) > (state.tau - state.phi) * state.W;
+  var c3 = state.h > state.r + f_cK(state.kappa);
+
+  var checks = [
+    { ok: c1, txt: "King prefers towns: <code>W &gt; W*(λ,κ)</code>" +
+        (Ws === null ? " &nbsp;<span style='opacity:.7'>(W* above range)</span>"
+                     : " &nbsp;<span style='opacity:.7'>(W* = " + Ws.toFixed(2) + ")</span>") },
+    { ok: c2, txt: "Towns prefer king: <code>s − s<sub>L</sub> &gt; (τ − φ)W</code>" },
+    { ok: c3, txt: "Lords prefer towns: <code>h &gt; r + c<sub>K</sub>(κ)</code>" }
+  ];
+  document.getElementById("checks").innerHTML = checks.map(function (c) {
+    return '<div class="check ' + (c.ok ? "yes" : "no") + '">' +
+      '<span class="box">' + (c.ok ? "✓" : "") + '</span>' +
+      '<span class="txt">' + c.txt + '</span></div>';
+  }).join("");
+
+  drawTree(sol);
+}
+
+function setMark(svg, eq) {
+  if (!svg) return;
+  var edge = EQ_EDGE[eq], excl = EQ_EXCLUDED[eq];
+  var colors = { KT: cssv("--azure"), KL: cssv("--gules"), LT: cssv("--or") };
+  ["KT", "KL", "LT"].forEach(function (e) {
+    var el = svg.querySelector(".e-" + e);
+    if (!el) return;
+    var lit = (e === edge);
+    el.classList.toggle("lit", lit);
+    el.style.stroke = lit ? colors[e] : cssv("--rule");
+  });
+  ["K", "L", "T"].forEach(function (n) {
+    var el = svg.querySelector(".n-" + n);
+    if (el) el.classList.toggle("dim", n === excl);
+  });
+}
+
+/* ============================================================
+   GAME TREE
+   ============================================================ */
+function drawTree(sol) {
+  var svg = document.getElementById("tree");
+  var W = 560, H = 250;
+  var root = { x: 280, y: 22 };
+  var lT = { x: 150, y: 92 }, lL = { x: 410, y: 92 };
+  // left branch children
+  var KTn = { x: 70,  y: 172 }, lLn = { x: 218, y: 152 };
+  var LTn1 = { x: 176, y: 214 }, SQn1 = { x: 254, y: 214 };
+  // right branch children
+  var lTn = { x: 342, y: 152 }, KLn = { x: 492, y: 172 };
+  var LTn2 = { x: 306, y: 214 }, SQn2 = { x: 384, y: 214 };
+
+  // determine equilibrium path
+  var toT = sol.proposeTo === "T";
+  var path = { propT: toT, propL: !toT };
+  var s = "";
+
+  function line(a, b, on, dim) {
+    return '<line class="lnk ' + (on ? "path" : (dim ? "off" : "")) + '" x1="' + a.x + '" y1="' + a.y +
+      '" x2="' + b.x + '" y2="' + b.y + '"></line>';
+  }
+  function lab(a, b, t, on, dx, dy) {
+    var mx = (a.x + b.x) / 2 + (dx || 0), my = (a.y + b.y) / 2 + (dy || 0);
+    return '<text class="elabel ' + (on ? "path" : "") + '" x="' + mx + '" y="' + my + '" text-anchor="middle">' + t + '</text>';
+  }
+  // Payoff triples are shown only on the equilibrium outcome — the four
+  // off-path terminal nodes sit too close together to carry them legibly.
+  function outcome(pt, code, on) {
+    var pi = sol.pi[code];
+    var s = '<text class="out ' + (on ? "path" : "") + '" x="' + pt.x + '" y="' + (pt.y + 12) +
+            '" text-anchor="middle">' + code + '</text>';
+    if (on) {
+      s += '<text class="outsub" x="' + pt.x + '" y="' + (pt.y + 24) + '" text-anchor="middle">' +
+           pi.K.toFixed(2) + " · " + pi.L.toFixed(2) + " · " + pi.T.toFixed(2) + '</text>';
+    }
+    return s;
+  }
+
+  var eqLeft = sol.left, eqRight = sol.right;
+
+  // ---- left branch (propose to T) ----
+  s += line(root, lT, path.propT, !path.propT);
+  s += lab(root, lT, "propose to T", path.propT, -34, -4);
+  s += line(lT, KTn, path.propT && sol.townsAccept, !(path.propT && sol.townsAccept));
+  s += lab(lT, KTn, "accept", path.propT && sol.townsAccept, -14, -3);
+  s += line(lT, lLn, path.propT && !sol.townsAccept, !(path.propT && !sol.townsAccept));
+  s += lab(lT, lLn, "reject", path.propT && !sol.townsAccept, 16, -3);
+  s += line(lLn, LTn1, path.propT && !sol.townsAccept && sol.o1 === "LT", true);
+  s += line(lLn, SQn1, path.propT && !sol.townsAccept && sol.o1 === "SQ", true);
+
+  // ---- right branch (propose to L) ----
+  s += line(root, lL, path.propL, !path.propL);
+  s += lab(root, lL, "propose to L", path.propL, 34, -4);
+  s += line(lL, KLn, path.propL && sol.lordsAccept, !(path.propL && sol.lordsAccept));
+  s += lab(lL, KLn, "accept", path.propL && sol.lordsAccept, 14, -3);
+  s += line(lL, lTn, path.propL && !sol.lordsAccept, !(path.propL && !sol.lordsAccept));
+  s += lab(lL, lTn, "reject", path.propL && !sol.lordsAccept, -16, -3);
+  s += line(lTn, LTn2, path.propL && !sol.lordsAccept && sol.o2 === "LT", true);
+  s += line(lTn, SQn2, path.propL && !sol.lordsAccept && sol.o2 === "SQ", true);
+
+  // ---- decision nodes ----
+  function node(pt, who, anchor, dy) {
+    var col = who === "King" ? cssv("--azure") : who === "Lords" ? cssv("--gules") : cssv("--or");
+    return '<circle class="dot" cx="' + pt.x + '" cy="' + pt.y + '" r="4" fill="' + col + '"></circle>' +
+      '<text class="plabel" x="' + pt.x + '" y="' + (pt.y + (dy || -9)) + '" text-anchor="' + (anchor || "middle") +
+      '" fill="' + col + '">' + who + '</text>';
+  }
+  s += node(root, "King");
+  s += node(lT, "Towns", "middle", -9);
+  s += node(lL, "Lords", "middle", -9);
+  s += node(lLn, "Lords", "start", -8);
+  s += node(lTn, "Towns", "end", -8);
+
+  // ---- outcomes ----
+  s += outcome(KTn, "KT", path.propT && sol.townsAccept);
+  s += outcome(LTn1, "LT", path.propT && !sol.townsAccept && sol.o1 === "LT");
+  s += outcome(SQn1, "SQ", path.propT && !sol.townsAccept && sol.o1 === "SQ");
+  s += outcome(LTn2, "LT", path.propL && !sol.lordsAccept && sol.o2 === "LT");
+  s += outcome(SQn2, "SQ", path.propL && !sol.lordsAccept && sol.o2 === "SQ");
+  s += outcome(KLn, "KL", path.propL && sol.lordsAccept);
+
+  s += '<text class="outsub" x="4" y="10" text-anchor="start" style="opacity:.8">equilibrium payoffs: π' +
+       'ₖ · πʟ · πᴛ</text>';
+
+  svg.innerHTML = s;
+}
+
+/* ============================================================
+   CASE CARDS
+   ============================================================ */
+(function buildCases() {
+  var host = document.getElementById("caseCards");
+  CASES.forEach(function (c) {
+    var d = document.createElement("div");
+    d.className = "case " + c.eq;
+    var btn = c.preset
+      ? '<button class="preset" type="button" data-load="' + c.preset + '" style="align-self:flex-start;margin-top:4px">Load in solver ↑</button>'
+      : "";
+    d.innerHTML =
+      '<div class="yr">' + c.yr + ' &nbsp;·&nbsp; <span class="pill ' + c.eq + '">' + c.eq + '</span></div>' +
+      '<h4>' + c.title + '</h4>' +
+      '<p>' + c.body + '</p>' +
+      '<div class="mech">' + c.mech + '</div>' + btn;
+    host.appendChild(d);
+  });
+  host.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-load]");
+    if (!b) return;
+    loadPreset(b.dataset.load);
+    document.getElementById("solver").scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+})();
+
+/* ============================================================
+   MAP — War of the Public Weal, 1465
+   ============================================================ */
+var TOWNS = [
+["Tours",47.38,0.68,"royal","Royal Domain","Core Loire heartland; Louis trusted these towns completely"],
+["Poitiers",46.58,0.33,"royal","Royal Domain","Core Loire heartland; arrest of a pro-princely échevin shows some dissent"],
+["Orléans",47.92,1.90,"royal","Royal Domain","Core Loire heartland"],
+["Amboise",47.41,0.98,"royal","Royal Domain","Royal castle; Louis removed the sympathetic captain and entrusted the defence to the townspeople"],
+["Bordeaux",44.83,-0.57,"royal","South-West","Far from Paris but loyal; the jurade offered 2,000 men; lacked an alternative prince after the Lancastrian collapse"],
+["Périgueux",45.18,0.72,"royal","South-West","Loyal but not unequivocal; residents were threatened for failing to join the royal army"],
+["Bergerac",44.85,0.49,"contested","South-West","Local disturbances intersected with the conflict; loyalty uncertain"],
+["Amiens",49.90,2.30,"royal","Picardy","Strongly royalist despite Burgundian pressure; long-standing factions, but the échevins held for the king"],
+["Abbeville",50.10,1.83,"royal","Picardy","Remained a bastion of support for the king"],
+["Tournai",50.61,3.39,"royal","Picardy","Remained loyal to the king"],
+["Beauvais",49.43,2.08,"royal","Picardy","Not approached by league representatives; remained loyal"],
+["Compiègne",49.42,2.83,"royal","Picardy","Neighbour to Montdidier; remained royalist; the count of Étampes fled there"],
+["Reims",49.25,4.03,"royal","Champagne","Remained loyal to the king"],
+["Troyes",48.30,4.08,"royal","Champagne","Remained loyal to the king"],
+["Clermont-Ferrand",45.78,3.08,"royal","Auvergne","The royal receveur reported loyalty — but the duke of Bourbon was competing for support"],
+["Montferrand",45.79,3.12,"royal","Auvergne","Loyal per the royal receveur Mandonnier"],
+["Issoire",45.54,3.25,"royal","Auvergne","Loyal per the royal receveur Mandonnier"],
+["Brioude",45.30,3.38,"royal","Auvergne","Loyal per the royal receveur Mandonnier"],
+["Billom",45.73,3.34,"royal","Auvergne","Loyal per the royal receveur Mandonnier"],
+["Le Puy",45.04,3.88,"royal","Auvergne","The rulers favoured the king; the duke of Bourbon had support among the lower classes"],
+["Lyon",45.75,4.87,"contested","Auvergne","Officially loyal, but a faction in the consulate supported the princes; lost its fairs to Geneva as punishment"],
+["Rouen",49.43,1.08,"princely","Normandy","Led the Norman rebellion; townspeople at the forefront; sought an independent duchy under Charles of France"],
+["Évreux",49.02,1.15,"princely","Normandy","Taken by subterfuge — a Breton garrison entered while the inhabitants were at procession"],
+["Caen",49.18,-0.37,"princely","Normandy","Joined the Norman rebellion"],
+["Dijon",47.32,5.02,"princely","Burgundy","Town council loyal to the duke; organised pro-Burgundian processions; a significant royalist faction among the townspeople"],
+["Auxerre",47.80,3.57,"princely","Burgundy","Took an oath to support the princes; deep Burgundian faction control"],
+["Douai",50.37,3.08,"princely","Burgundy-Artois","Followed Philip the Good into rebellion"],
+["Mortagne",50.51,3.45,"princely","Burgundy-Artois","Took an oath to Charles the Bold as good and loyal subjects"],
+["Montdidier",49.65,2.47,"princely","Burgundy-Picardy","Threw off the rule of the royalist count of Étampes; opened its gates to the Burgundians"],
+["Bray-sur-Somme",49.94,2.72,"princely","Burgundy-Picardy","Welcomed Charles the Bold with an entry ceremony"],
+["Ancre",49.99,2.63,"princely","Burgundy-Picardy","Opened its gates to the Burgundians"],
+["Roye",49.70,2.79,"princely","Burgundy-Picardy","Opened its gates to the Burgundians"],
+["Bourges",47.08,2.40,"princely","Bourbon-Berry","Capital of the duchy; the royal standard was taken down and the ducal banner raised; strong commercial ties to the ducal household"],
+["Moulins",46.57,3.33,"princely","Bourbon-Berry","Ducal capital; wavered under siege but was initially princely"],
+["Gannat",46.13,3.16,"princely","Bourbon-Berry","Declared the duke of Bourbon was their lord; refused to recognise the king"],
+["Nantes",47.22,-1.55,"princely","Brittany","Followed Duke Francis against Louis XI"],
+["Rennes",48.08,-1.68,"princely","Brittany","Followed Duke Francis against Louis XI"],
+["Paris",48.87,2.33,"contested","Île-de-France","Held for the king by military force; a large Burgundian faction among the elites; multiple plots to admit league soldiers"],
+["Saint-Denis",48.94,2.36,"contested","Île-de-France","Opened its gates to the princes; symbolically significant as the royal mausoleum"],
+["Pont-Sainte-Maxence",49.30,2.63,"contested","Île-de-France","Opened its gates to the Burgundians"],
+["Lagny-sur-Marne",48.87,2.71,"contested","Île-de-France","Welcomed Charles the Bold; repaid with economic benefits"],
+["Montluçon",46.34,2.60,"contested","Bourbon-Berry","Initially rebel; surrendered to Louis after a siege; then rebelled again"],
+["Riom",45.89,3.11,"contested","Auvergne","The principal town providing a base for the princes during the Bourbonnais campaign"]
+];
+
+var FRANCE = [
+[2.40,51.00],[1.60,50.90],[1.55,50.10],[1.10,49.93],[0.10,49.50],[-0.20,49.30],[-1.20,49.40],
+[-1.60,49.70],[-1.90,49.00],[-1.50,48.60],[-2.80,48.60],[-4.00,48.70],[-4.80,48.40],[-4.30,47.90],
+[-2.80,47.50],[-2.20,47.20],[-1.90,46.70],[-1.20,46.30],[-1.10,45.60],[-1.00,45.00],[-1.25,44.50],
+[-1.45,43.70],[-1.75,43.35],[-0.80,42.90],[0.70,42.70],[1.70,42.50],[2.50,42.35],[3.05,42.50],
+[3.10,43.05],[4.15,43.40],[5.00,43.35],[5.40,43.30],[6.00,43.10],[7.00,43.50],[7.55,43.78],
+[7.00,44.20],[6.90,45.10],[6.80,45.90],[7.05,45.90],[6.80,46.40],[6.10,46.20],[6.10,46.60],
+[6.90,47.30],[7.60,47.60],[7.80,48.60],[8.20,49.00],[6.90,49.20],[6.40,49.50],[5.80,49.50],
+[5.80,50.00],[4.90,50.20],[4.20,50.00],[3.70,50.35],[3.20,50.50],[2.60,50.80]
+];
+
+var LOYALTY = {
+  royal:     { label: "Loyal to Louis XI",  color: function () { return cssv("--azure"); }, shape: "circle" },
+  princely:  { label: "Supported the princes", color: function () { return cssv("--gules"); }, shape: "square" },
+  contested: { label: "Contested",          color: function () { return cssv("--or"); },   shape: "triangle" }
+};
+
+var mapFilter = { royal: true, princely: true, contested: true };
+
+var redrawMapShapes = null;
+
+(function buildMap() {
+  var svg = document.getElementById("mapSvg");
+  var VB = 560, pad = 26;
+  var lons = FRANCE.map(function (p) { return p[0]; }).concat(TOWNS.map(function (t) { return t[2]; }));
+  var lats = FRANCE.map(function (p) { return p[1]; }).concat(TOWNS.map(function (t) { return t[1]; }));
+  var lon0 = Math.min.apply(null, lons) - .4, lon1 = Math.max.apply(null, lons) + .4;
+  var lat0 = Math.min.apply(null, lats) - .3, lat1 = Math.max.apply(null, lats) + .3;
+  var midLat = (lat0 + lat1) / 2, kx = Math.cos(midLat * Math.PI / 180);
+
+  var wDeg = (lon1 - lon0) * kx, hDeg = (lat1 - lat0);
+  var scale = Math.min((VB - 2 * pad) / wDeg, (VB - 2 * pad) / hDeg);
+  var offX = (VB - wDeg * scale) / 2, offY = (VB - hDeg * scale) / 2;
+
+  function px(lon) { return offX + (lon - lon0) * kx * scale; }
+  function py(lat) { return offY + (lat1 - lat) * scale; }
+
+  // Labelled towns, each with a hand-placed offset and anchor so the label
+  // clears both its own marker and its neighbours in the dense clusters.
+  var LABELS = {
+    "Paris":     [0, -9,  "middle"],
+    "Rouen":     [-7, 2.6, "end"],
+    "Caen":      [-7, 2.6, "end"],
+    "Bordeaux":  [-7, 2.6, "end"],
+    "Nantes":    [-7, 2.6, "end"],
+    "Rennes":    [-7, 2.6, "end"],
+    "Dijon":     [7, 2.6,  "start"],
+    "Lyon":      [7, 2.6,  "start"],
+    "Reims":     [7, 2.6,  "start"],
+    "Troyes":    [7, 2.6,  "start"],
+    "Bourges":   [7, 2.6,  "start"],
+    "Orléans":   [7, 2.6,  "start"],
+    "Poitiers":  [7, 2.6,  "start"],
+    "Tours":     [0, 11,   "middle"]
+    // Amiens and Clermont-Ferrand are deliberately unlabelled: both sit inside
+    // dense clusters (the Somme towns, the Auvergne group) where a label would
+    // overlap its neighbours' markers. Their names are on hover.
+  };
+
+  function render() {
+    var s = "";
+    // coastline
+    s += '<path class="coast" d="M ' + FRANCE.map(function (p) {
+      return px(p[0]).toFixed(1) + " " + py(p[1]).toFixed(1);
+    }).join(" L ") + ' Z"></path>';
+
+    // graticule
+    var soft = cssv("--rule-soft"), paper = cssv("--paper");
+    for (var lo = -4; lo <= 8; lo += 2) {
+      s += '<line x1="' + px(lo).toFixed(1) + '" y1="0" x2="' + px(lo).toFixed(1) + '" y2="' + VB +
+           '" stroke="' + soft + '" stroke-width=".5" opacity=".7"></line>';
+    }
+    for (var la = 43; la <= 51; la += 2) {
+      s += '<line x1="0" y1="' + py(la).toFixed(1) + '" x2="' + VB + '" y2="' + py(la).toFixed(1) +
+           '" stroke="' + soft + '" stroke-width=".5" opacity=".7"></line>';
+    }
+
+    // towns
+    TOWNS.forEach(function (t, i) {
+      var x = px(t[2]), y = py(t[1]), L = LOYALTY[t[3]], col = L.color(), g = "";
+      if (L.shape === "circle") {
+        g = '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="4.6" fill="' + col +
+            '" fill-opacity=".82" stroke="' + paper + '" stroke-width="1.1"></circle>';
+      } else if (L.shape === "square") {
+        g = '<rect x="' + (x - 4.2).toFixed(1) + '" y="' + (y - 4.2).toFixed(1) +
+            '" width="8.4" height="8.4" fill="' + col + '" fill-opacity=".82" stroke="' + paper + '" stroke-width="1.1"></rect>';
+      } else {
+        g = '<path d="M ' + x.toFixed(1) + ' ' + (y - 5.2).toFixed(1) + ' L ' + (x + 4.8).toFixed(1) + ' ' +
+            (y + 3.6).toFixed(1) + ' L ' + (x - 4.8).toFixed(1) + ' ' + (y + 3.6).toFixed(1) +
+            ' Z" fill="' + col + '" fill-opacity=".85" stroke="' + paper + '" stroke-width="1.1"></path>';
+      }
+      var LB = LABELS[t[0]], lbl = "";
+      if (LB) {
+        lbl = '<text class="tlabel" x="' + (x + LB[0]).toFixed(1) + '" y="' + (y + LB[1]).toFixed(1) +
+              '" text-anchor="' + LB[2] + '">' + t[0] + '</text>';
+      }
+      s += '<g class="town' + (mapFilter[t[3]] ? "" : " mute") + '" data-i="' + i + '" data-loy="' + t[3] +
+           '" tabindex="0" role="button" aria-label="' + t[0] + '">' + g + lbl + '<title>' + t[0] + '</title></g>';
+    });
+
+    svg.innerHTML = s;
+  }
+
+  render();
+  // exposed so a theme switch can re-render with the new token colours
+  redrawMapShapes = function () {
+    render();
+    Array.prototype.forEach.call(document.querySelectorAll("#mapLegend .lgd"), function (b) {
+      var sw = b.querySelector(".swatch");
+      if (sw) sw.style.background = LOYALTY[b.dataset.k].color();
+    });
+  };
+
+  // interaction
+  var card = document.getElementById("townCard");
+  function show(i) {
+    var t = TOWNS[i], L = LOYALTY[t[3]];
+    card.innerHTML =
+      '<div class="tn">' + t[0] + '</div>' +
+      '<div class="tr" style="color:' + L.color() + '">' + L.label + ' &nbsp;·&nbsp; ' + t[4] + '</div>' +
+      '<div class="tnote">' + t[5] + '.</div>';
+  }
+  svg.addEventListener("mouseover", function (e) {
+    var g = e.target.closest(".town"); if (g) show(+g.dataset.i);
+  });
+  svg.addEventListener("focusin", function (e) {
+    var g = e.target.closest(".town"); if (g) show(+g.dataset.i);
+  });
+  svg.addEventListener("click", function (e) {
+    var g = e.target.closest(".town"); if (g) show(+g.dataset.i);
+  });
+
+  // legend
+  var lg = document.getElementById("mapLegend");
+  Object.keys(LOYALTY).forEach(function (k) {
+    var n = TOWNS.filter(function (t) { return t[3] === k; }).length;
+    var L = LOYALTY[k];
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "lgd";
+    b.dataset.k = k;
+    var sw = L.shape === "circle" ? "border-radius:50%" : L.shape === "square" ? "" : "clip-path:polygon(50% 0,100% 100%,0 100%)";
+    b.innerHTML = '<span class="swatch" style="background:' + L.color() + ';' + sw + '"></span>' +
+                  L.label + '<span class="ct">' + n + '</span>';
+    b.addEventListener("click", function () {
+      mapFilter[k] = !mapFilter[k];
+      b.classList.toggle("off", !mapFilter[k]);
+      Array.prototype.forEach.call(svg.querySelectorAll(".town"), function (g) {
+        g.classList.toggle("mute", !mapFilter[g.dataset.loy]);
+      });
+    });
+    lg.appendChild(b);
+  });
+})();
+
+/* ============================================================
+   DYNAMICS — phase diagram + time series
+   ============================================================ */
+var DYN = {
+  g: 0.025, gamma: 0.038, dcay: 0.030, gL: 0.040, mu: 0.055, gammaL: 0.016,
+  kcoef: 0.11, lamBar: 0.15, kapBar: 0.10, maxT: 70
+};
+
+var dyn = {
+  W: 0.50, kappa: 0.40, lambda: 0.70,
+  t: 0, running: false, hist: [], regimes: [], done: null,
+  base: { tau: .28, phi: .30, alpha: .42, h: .50, r: .58, R: .55 }
+};
+
+var DYN_PRESETS = [
+  { id: "west", label: "W. Europe c. 1200", W: .50, kappa: .40, lambda: .70 },
+  { id: "east", label: "E. Europe c. 1200", W: .16, kappa: .30, lambda: .84 },
+  { id: "edge", label: "Just below W*",     W: .42, kappa: .38, lambda: .72 }
+];
+
+function dynParams() {
+  return {
+    W: dyn.W, kappa: dyn.kappa, lambda: dyn.lambda,
+    tau: dyn.base.tau, phi: dyn.base.phi, alpha: dyn.base.alpha,
+    h: dyn.base.h, r: dyn.base.r, R: dyn.base.R
+  };
+}
+
+function resetDyn(p) {
+  dyn.running = false;
+  dyn.t = 0; dyn.hist = []; dyn.regimes = []; dyn.done = null;
+  if (p) { dyn.W = p.W; dyn.kappa = p.kappa; dyn.lambda = p.lambda; }
+  dyn.hist.push({ W: dyn.W, k: dyn.kappa, l: dyn.lambda });
+  document.getElementById("runBtn").textContent = "▶ Run";
+  drawPhase(); drawTS(); updateReadout();
+}
+
+function stepDyn() {
+  if (dyn.done) return;
+  if (dyn.lambda <= DYN.lamBar) { dyn.done = "absolutism"; return; }
+  if (dyn.kappa <= DYN.kapBar)  { dyn.done = "kingless"; return; }
+  if (dyn.t >= DYN.maxT)        { dyn.done = "horizon"; return; }
+
+  var eq = solve(dynParams()).eq;
+  dyn.regimes.push(eq);
+
+  var W = dyn.W, k = dyn.kappa, l = dyn.lambda;
+  if (eq === "KT") {
+    dyn.W = Math.min(1, W * (1 + DYN.g));
+    dyn.kappa = Math.min(1, k + dyn.base.tau * W * DYN.kcoef);
+    dyn.lambda = Math.max(0, l - DYN.gamma * W);
+  } else if (eq === "KL") {
+    dyn.W = W * (1 - DYN.dcay);
+    dyn.kappa = Math.min(1, k + dyn.base.alpha * dyn.base.tau * W * DYN.kcoef);
+    dyn.lambda = l;
+  } else if (eq === "LT") {
+    dyn.W = Math.min(1, W * (1 + DYN.gL));
+    dyn.kappa = Math.max(0, k - DYN.mu * W);
+    dyn.lambda = Math.max(0, l - DYN.gammaL * W);
+  } else { // SQ
+    dyn.W = W * 0.995;
+  }
+  dyn.t++;
+  dyn.hist.push({ W: dyn.W, k: dyn.kappa, l: dyn.lambda });
+}
+
+/* ---------- canvas helpers ---------- */
+function fitCanvas(cv) {
+  var dpr = window.devicePixelRatio || 1;
+  var rect = cv.getBoundingClientRect();
+  if (rect.width === 0) return null;
+  var cssW = rect.width, cssH = cssW * (cv.height / cv.width || .69);
+  cv.style.height = cssH + "px";
+  if (cv.width !== Math.round(cssW * dpr) || cv.height !== Math.round(cssH * dpr)) {
+    cv.width = Math.round(cssW * dpr);
+    cv.height = Math.round(cssH * dpr);
+  }
+  var ctx = cv.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx: ctx, w: cssW, h: cssH };
+}
+
+var PH_ASPECT = 620 / 900, TS_ASPECT = 220 / 900;
+
+function phaseGeom(w, h) {
+  var m = { l: 46, r: 18, t: 18, b: 38 };
+  return {
+    m: m, iw: w - m.l - m.r, ih: h - m.t - m.b,
+    x: function (W) { return m.l + W * (w - m.l - m.r); },
+    y: function (l) { return m.t + (1 - l) * (h - m.t - m.b); }
+  };
+}
+
+function drawPhase() {
+  var cv = document.getElementById("phase");
+  cv.style.height = "";
+  var box = fitCanvas(cv); if (!box) return;
+  var ctx = box.ctx, w = box.w, h = box.h;
+  var G = phaseGeom(w, h);
+
+  ctx.clearRect(0, 0, w, h);
+
+  var C = {
+    rule: cssv("--rule"), soft: cssv("--rule-soft"), muted: cssv("--muted"),
+    ink: cssv("--ink"), az: cssv("--azure"), gu: cssv("--gules"), or: cssv("--or"),
+    paper: cssv("--paper")
+  };
+
+  // regions shading (uses current kappa)
+  var ka = dyn.kappa, tau = dyn.base.tau, al = dyn.base.alpha;
+  var pts = [];
+  for (var i = 0; i <= 120; i++) {
+    var lam = i / 120;
+    var ws = Wstar(lam, ka, tau, al);
+    pts.push({ lam: lam, ws: ws });
+  }
+
+  // KT region fill (right of boundary)
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(G.x(1), G.y(0));
+  pts.forEach(function (p) {
+    var wv = (p.ws === null) ? 1.02 : p.ws;
+    ctx.lineTo(G.x(Math.min(wv, 1.02)), G.y(p.lam));
+  });
+  ctx.lineTo(G.x(1), G.y(1));
+  ctx.closePath();
+  ctx.fillStyle = C.az; ctx.globalAlpha = .07; ctx.fill();
+  ctx.restore();
+
+  // KL region fill (left of boundary)
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(G.x(0), G.y(0));
+  pts.forEach(function (p) {
+    var wv = (p.ws === null) ? 1.02 : p.ws;
+    ctx.lineTo(G.x(Math.min(wv, 1.02)), G.y(p.lam));
+  });
+  ctx.lineTo(G.x(0), G.y(1));
+  ctx.closePath();
+  ctx.fillStyle = C.gu; ctx.globalAlpha = .07; ctx.fill();
+  ctx.restore();
+
+  // grid
+  ctx.strokeStyle = C.soft; ctx.lineWidth = 1;
+  for (var gx = 0; gx <= 1.0001; gx += .25) {
+    ctx.beginPath(); ctx.moveTo(G.x(gx), G.m.t); ctx.lineTo(G.x(gx), G.m.t + G.ih); ctx.stroke();
+  }
+  for (var gy = 0; gy <= 1.0001; gy += .25) {
+    ctx.beginPath(); ctx.moveTo(G.m.l, G.y(gy)); ctx.lineTo(G.m.l + G.iw, G.y(gy)); ctx.stroke();
+  }
+
+  // lambda-bar
+  ctx.save();
+  ctx.setLineDash([5, 4]); ctx.strokeStyle = C.az; ctx.lineWidth = 1.4; ctx.globalAlpha = .8;
+  ctx.beginPath(); ctx.moveTo(G.m.l, G.y(DYN.lamBar)); ctx.lineTo(G.m.l + G.iw, G.y(DYN.lamBar)); ctx.stroke();
+  ctx.restore();
+
+  // boundary curve
+  ctx.save();
+  ctx.strokeStyle = C.gu; ctx.lineWidth = 2.2; ctx.beginPath();
+  var started = false;
+  pts.forEach(function (p) {
+    if (p.ws === null) { started = false; return; }
+    var X = G.x(p.ws), Y = G.y(p.lam);
+    if (!started) { ctx.moveTo(X, Y); started = true; } else ctx.lineTo(X, Y);
+  });
+  ctx.stroke();
+  ctx.restore();
+
+  // axes
+  ctx.strokeStyle = C.rule; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(G.m.l, G.m.t); ctx.lineTo(G.m.l, G.m.t + G.ih); ctx.lineTo(G.m.l + G.iw, G.m.t + G.ih); ctx.stroke();
+
+  // trajectory
+  if (dyn.hist.length > 1) {
+    ctx.save();
+    ctx.lineWidth = 2.4; ctx.lineJoin = "round"; ctx.lineCap = "round";
+    for (var j = 1; j < dyn.hist.length; j++) {
+      var reg = dyn.regimes[j - 1] || "KT";
+      ctx.strokeStyle = reg === "KT" ? C.az : reg === "KL" ? C.gu : C.or;
+      ctx.beginPath();
+      ctx.moveTo(G.x(dyn.hist[j - 1].W), G.y(dyn.hist[j - 1].l));
+      ctx.lineTo(G.x(dyn.hist[j].W), G.y(dyn.hist[j].l));
+      ctx.stroke();
+    }
+    ctx.restore();
+    // start marker
+    var h0 = dyn.hist[0];
+    ctx.fillStyle = C.muted;
+    ctx.beginPath(); ctx.arc(G.x(h0.W), G.y(h0.l), 3.5, 0, 7); ctx.fill();
+  }
+
+  // current point
+  var eqNow = solve(dynParams()).eq;
+  var pc = eqNow === "KT" ? C.az : eqNow === "KL" ? C.gu : eqNow === "LT" ? C.or : C.muted;
+  ctx.save();
+  ctx.fillStyle = pc; ctx.strokeStyle = C.paper; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(G.x(dyn.W), G.y(dyn.lambda), 6.5, 0, 7); ctx.fill(); ctx.stroke();
+  ctx.restore();
+
+  // labels
+  ctx.fillStyle = C.muted;
+  ctx.font = '11px ui-monospace, SFMono-Regular, Menlo, monospace';
+  ctx.textAlign = "center";
+  ctx.fillText("W  (urban wealth)", G.m.l + G.iw / 2, h - 9);
+  ctx.save();
+  ctx.translate(13, G.m.t + G.ih / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText("λ  (lordly power)", 0, 0);
+  ctx.restore();
+
+  ctx.textAlign = "right";
+  ctx.fillStyle = C.az;
+  ctx.fillText("λ̲", G.m.l - 6, G.y(DYN.lamBar) + 4);
+
+  ctx.textAlign = "left";
+  ctx.font = '600 11px ui-monospace, SFMono-Regular, Menlo, monospace';
+  ctx.fillStyle = C.gu;
+  ctx.fillText("W*(λ, κ)", G.x(0.03), G.m.t + 14);
+  ctx.textAlign = "right";
+  ctx.fillStyle = C.az;
+  ctx.fillText("KT region", G.m.l + G.iw - 8, G.m.t + 14);
+  ctx.textAlign = "left";
+  ctx.fillStyle = C.gu;
+  ctx.fillText("KL region", G.x(0.03), G.m.t + 30);
+  ctx.textAlign = "center";
+  ctx.fillStyle = C.az; ctx.globalAlpha = .85;
+  ctx.fillText("absolutism", G.m.l + G.iw / 2, G.y(DYN.lamBar / 2) + 4);
+  ctx.globalAlpha = 1;
+
+  // axis ticks
+  ctx.fillStyle = C.muted;
+  ctx.font = '10px ui-monospace, SFMono-Regular, Menlo, monospace';
+  ctx.textAlign = "center";
+  [0, .25, .5, .75, 1].forEach(function (v) { ctx.fillText(v.toFixed(2), G.x(v), G.m.t + G.ih + 15); });
+  ctx.textAlign = "right";
+  [0, .25, .5, .75, 1].forEach(function (v) { ctx.fillText(v.toFixed(2), G.m.l - 7, G.y(v) + 3.5); });
+}
+
+function drawTS() {
+  var cv = document.getElementById("ts");
+  var box = fitCanvas(cv); if (!box) return;
+  var ctx = box.ctx, w = box.w, h = box.h;
+  var m = { l: 46, r: 18, t: 16, b: 24 };
+  var iw = w - m.l - m.r, ih = h - m.t - m.b;
+  ctx.clearRect(0, 0, w, h);
+
+  var C = { rule: cssv("--rule"), soft: cssv("--rule-soft"), muted: cssv("--muted"),
+            az: cssv("--azure"), gu: cssv("--gules"), or: cssv("--or") };
+
+  ctx.strokeStyle = C.soft; ctx.lineWidth = 1;
+  [0, .5, 1].forEach(function (v) {
+    var Y = m.t + (1 - v) * ih;
+    ctx.beginPath(); ctx.moveTo(m.l, Y); ctx.lineTo(m.l + iw, Y); ctx.stroke();
+  });
+  ctx.strokeStyle = C.rule; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(m.l, m.t); ctx.lineTo(m.l, m.t + ih); ctx.lineTo(m.l + iw, m.t + ih); ctx.stroke();
+
+  var n = Math.max(dyn.hist.length, 2), span = Math.max(DYN.maxT, n - 1);
+  function X(i) { return m.l + (i / span) * iw; }
+  function Y(v) { return m.t + (1 - v) * ih; }
+
+  var series = [
+    { k: "W", col: C.or,  lbl: "W" },
+    { k: "k", col: C.az,  lbl: "κ" },
+    { k: "l", col: C.gu,  lbl: "λ" }
+  ];
+  series.forEach(function (s) {
+    ctx.strokeStyle = s.col; ctx.lineWidth = 2; ctx.lineJoin = "round";
+    ctx.beginPath();
+    dyn.hist.forEach(function (pt, i) {
+      var xx = X(i), yy = Y(pt[s.k]);
+      if (i === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+    });
+    ctx.stroke();
+    if (dyn.hist.length) {
+      var last = dyn.hist[dyn.hist.length - 1];
+      ctx.fillStyle = s.col;
+      ctx.beginPath(); ctx.arc(X(dyn.hist.length - 1), Y(last[s.k]), 3, 0, 7); ctx.fill();
+      ctx.font = '600 11px ui-monospace, SFMono-Regular, Menlo, monospace';
+      ctx.textAlign = "left";
+      ctx.fillText(s.lbl, X(dyn.hist.length - 1) + 6, Y(last[s.k]) + 3.5);
+    }
+  });
+
+  ctx.fillStyle = C.muted;
+  ctx.font = '10px ui-monospace, SFMono-Regular, Menlo, monospace';
+  ctx.textAlign = "right";
+  ctx.fillText("1.0", m.l - 7, Y(1) + 3.5);
+  ctx.fillText("0", m.l - 7, Y(0) + 3.5);
+  ctx.textAlign = "center";
+  ctx.fillText("periods →", m.l + iw / 2, h - 7);
+}
+
+function updateReadout() {
+  document.getElementById("roW").textContent = dyn.W.toFixed(2);
+  document.getElementById("roK").textContent = dyn.kappa.toFixed(2);
+  document.getElementById("roL").textContent = dyn.lambda.toFixed(2);
+
+  var strip = document.getElementById("regimeStrip");
+  var cols = { KT: cssv("--azure"), KL: cssv("--gules"), LT: cssv("--or"), SQ: cssv("--muted") };
+  strip.innerHTML = dyn.regimes.map(function (r) {
+    return '<i style="flex:1;background:' + cols[r] + '"></i>';
+  }).join("") || '<i style="flex:1;background:transparent"></i>';
+
+  var eqNow = solve(dynParams()).eq;
+  var msg;
+  if (dyn.done === "absolutism") msg = "λ < λ̲ — lords irrelevant · royal absolutism";
+  else if (dyn.done === "kingless") msg = "κ < κ̲ — the king drops out · towns vs. lords";
+  else if (dyn.done === "horizon") msg = "horizon reached · regime " + eqNow;
+  else msg = "Period " + dyn.t + " · regime " + eqNow;
+  document.getElementById("epochLine").textContent = msg;
+}
+
+/* ---------- animation loop ---------- */
+var lastStep = 0;
+function loop(ts) {
+  if (dyn.running) {
+    if (ts - lastStep > 130) {
+      lastStep = ts;
+      stepDyn();
+      if (dyn.done) {
+        dyn.running = false;
+        document.getElementById("runBtn").textContent = "▶ Run";
+      }
+      drawPhase(); drawTS(); updateReadout();
+    }
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+/* ---------- dynamics controls ---------- */
+(function wireDyn() {
+  var runBtn = document.getElementById("runBtn");
+  runBtn.addEventListener("click", function () {
+    if (dyn.done) { resetDyn(); return; }
+    dyn.running = !dyn.running;
+    runBtn.textContent = dyn.running ? "❚❚ Pause" : "▶ Run";
+  });
+  document.getElementById("resetBtn").addEventListener("click", function () { resetDyn(); });
+
+  // click to place
+  var cv = document.getElementById("phase");
+  cv.addEventListener("click", function (e) {
+    var r = cv.getBoundingClientRect();
+    var G = phaseGeom(r.width, r.height);
+    var W = (e.clientX - r.left - G.m.l) / G.iw;
+    var lam = 1 - (e.clientY - r.top - G.m.t) / G.ih;
+    W = Math.max(.02, Math.min(1, W));
+    lam = Math.max(.02, Math.min(1, lam));
+    resetDyn({ W: W, kappa: dyn.kappa, lambda: lam });
+  });
+
+  var host = document.getElementById("dynPresets");
+  DYN_PRESETS.forEach(function (d) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "preset"; b.textContent = d.label;
+    b.addEventListener("click", function () { resetDyn({ W: d.W, kappa: d.kappa, lambda: d.lambda }); });
+    host.appendChild(b);
+  });
+
+  var SHOCKS = [
+    { t: "Commercial Revolution", d: "ΔW = +0.22", f: function () { dyn.W = Math.min(1, dyn.W + .22); } },
+    { t: "Black Death", d: "ΔW = −0.18", f: function () { dyn.W = Math.max(.02, dyn.W - .18); } },
+    { t: "Bouvines / succession crisis", d: "Δκ = −0.20", f: function () { dyn.kappa = Math.max(.02, dyn.kappa - .20); } },
+    { t: "Gunpowder", d: "Δκ = +0.15, Δλ = −0.18", f: function () { dyn.kappa = Math.min(1, dyn.kappa + .15); dyn.lambda = Math.max(0, dyn.lambda - .18); } }
+  ];
+  var sh = document.getElementById("shocks");
+  SHOCKS.forEach(function (s) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "shock";
+    b.innerHTML = "<b>" + s.t + "</b><span>" + s.d + "</span>";
+    b.addEventListener("click", function () {
+      s.f();
+      dyn.done = null;
+      dyn.hist.push({ W: dyn.W, k: dyn.kappa, l: dyn.lambda });
+      dyn.regimes.push(solve(dynParams()).eq);
+      drawPhase(); drawTS(); updateReadout();
+    });
+    sh.appendChild(b);
+  });
+})();
+
+/* ============================================================
+   NAV SCROLLSPY
+   ============================================================ */
+(function spy() {
+  var links = Array.prototype.slice.call(document.querySelectorAll("#nav ol a"));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var i = targets.indexOf(en.target);
+      links.forEach(function (l, j) { l.classList.toggle("on", j === i); });
+    });
+  }, { rootMargin: "-52px 0px -70% 0px", threshold: 0 });
+  targets.forEach(function (t) { if (t) io.observe(t); });
+})();
+
+/* ============================================================
+   HERO MARK — draw-in then light the KT edge
+   ============================================================ */
+(function heroAnim() {
+  var svg = document.getElementById("heroMark");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { setMark(svg, "KT"); return; }
+
+  var edges = svg.querySelectorAll(".edge");
+  Array.prototype.forEach.call(edges, function (e, i) {
+    var len = e.getTotalLength ? e.getTotalLength() : 200;
+    e.style.strokeDasharray = len;
+    e.style.strokeDashoffset = len;
+    e.style.transition = "stroke-dashoffset .85s cubic-bezier(.2,.7,.3,1) " + (i * .16 + .15) + "s, stroke .6s";
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { e.style.strokeDashoffset = 0; });
+    });
+  });
+  setTimeout(function () { setMark(svg, "KT"); }, 950);
+
+  // cycle slowly through the three coalitions so the mark states the thesis
+  var order = ["KT", "LT", "KL"], idx = 0;
+  setInterval(function () {
+    idx = (idx + 1) % order.length;
+    setMark(svg, order[idx]);
+  }, 3400);
+})();
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+loadPreset("philip");
+resetDyn({ W: .50, kappa: .40, lambda: .70 });
+
+window.addEventListener("resize", function () { drawPhase(); drawTS(); });
+window.addEventListener("themechange", function () {
+  drawPhase(); drawTS(); renderSolver();
+  if (redrawMapShapes) redrawMapShapes();
+});
+</script>
+
+</body></html>
