@@ -297,6 +297,10 @@ p { margin: 0 0 1.2em; }
 
 /* ---------- Paper entries (Research) -------------------------------------- */
 .paper-title { color: var(--brand); }
+
+/* interactive summary links (style after guillaumeblanc.com) */
+a.interactive-link { font-style: italic; color: #da4444; }
+a.interactive-link:hover { color: #b93636; }
 a .paper-title:hover, .paper-title a:hover { color: var(--accent-dark); }
 
 .paper-abstract {
