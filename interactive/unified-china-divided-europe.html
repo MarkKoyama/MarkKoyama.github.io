@@ -1,0 +1,1845 @@
+<!doctype html><html><head><title>Unified China and Divided Europe</title><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+
+
+<style>
+/* ============================================================
+   Tokens — "Steppe & Ink"
+   Cool blue-grey neutrals biased toward the China blue, so the
+   greys read as chosen rather than inherited. China = porcelain
+   blue, Europe = brass. Threat/damage is a reserved semantic hue
+   and never doubles as a series color.
+   Categorical palettes validated (lightness band, chroma floor,
+   CVD separation, normal-vision floor, contrast) in both modes.
+   ============================================================ */
+:root {
+  --ground:      #F4F6F7;
+  --panel:       #FFFFFF;
+  --panel-sunk:  #EDF0F2;
+  --ink:         #101E29;
+  --ink-2:       #41525F;
+  --ink-3:       #6D7E8B;
+  --rule:        #D8DEE3;
+  --rule-firm:   #B4C0C9;
+
+  --china:       #2D6A9F;
+  --europe:      #A8761A;
+  --other:       #7A4FA3;
+  --china-soft:  #7FA9C8;
+  --europe-soft: #CFAE72;
+  --threat:      #A6382D;
+  --threat-wash: rgba(166, 56, 45, 0.13);
+  --ok:          #2F6B4F;
+
+  --accent:      #2D6A9F;
+  --on-accent:   #FFFFFF;
+  --shadow:      0 1px 2px rgba(16,30,41,.05), 0 8px 26px -18px rgba(16,30,41,.28);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Hoefler Text", Charter, Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+  --measure: 34rem;
+  --plate: 62rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:      #0D1620;
+    --panel:       #141F2A;
+    --panel-sunk:  #101A24;
+    --ink:         #E2E9EF;
+    --ink-2:       #A7B6C3;
+    --ink-3:       #7C8D9B;
+    --rule:        #22313E;
+    --rule-firm:   #344757;
+
+    --china:       #4F94CC;
+    --europe:      #B8871F;
+    --other:       #9C74C9;
+    --china-soft:  #305F84;
+    --europe-soft: #7A5E23;
+    --threat:      #D0685A;
+    --threat-wash: rgba(208, 104, 90, 0.15);
+    --ok:          #5FA381;
+    --accent:      #4F94CC;
+    --on-accent:   #0D1620;
+    --shadow:      0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"] {
+  --ground:#0D1620; --panel:#141F2A; --panel-sunk:#101A24;
+  --ink:#E2E9EF; --ink-2:#A7B6C3; --ink-3:#7C8D9B;
+  --rule:#22313E; --rule-firm:#344757;
+  --china:#4F94CC; --europe:#B8871F; --other:#9C74C9;
+  --china-soft:#305F84; --europe-soft:#7A5E23;
+  --threat:#D0685A; --threat-wash:rgba(208,104,90,.15); --ok:#5FA381;
+  --accent:#4F94CC; --on-accent:#0D1620;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.9);
+}
+:root[data-theme="light"] {
+  --ground:#F4F6F7; --panel:#FFFFFF; --panel-sunk:#EDF0F2;
+  --ink:#101E29; --ink-2:#41525F; --ink-3:#6D7E8B;
+  --rule:#D8DEE3; --rule-firm:#B4C0C9;
+  --china:#2D6A9F; --europe:#A8761A; --other:#7A4FA3;
+  --china-soft:#7FA9C8; --europe-soft:#CFAE72;
+  --threat:#A6382D; --threat-wash:rgba(166,56,45,.13); --ok:#2F6B4F;
+  --accent:#2D6A9F; --on-accent:#FFFFFF;
+  --shadow:0 1px 2px rgba(16,30,41,.05), 0 8px 26px -18px rgba(16,30,41,.28);
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: .18em; text-decoration-thickness: .06em; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* ---------- layout ---------- */
+.wrap { max-width: var(--plate); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+.col  { max-width: var(--measure); }
+.stack { display: flex; flex-direction: column; }
+.gap-s  { gap: .7rem; }  .gap-m { gap: 1.15rem; }
+.gap-l  { gap: 2rem; }   .gap-xl { gap: 3.4rem; }
+
+section.band { padding: clamp(3rem, 7vw, 5.5rem) 0; border-top: 1px solid var(--rule); }
+
+/* ---------- type ---------- */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: .69rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex; align-items: baseline; gap: .6rem;
+}
+.eyebrow::before {
+  content: ""; width: 1.6rem; height: 1px; background: var(--rule-firm);
+  transform: translateY(-.25em);
+}
+h1, h2, h3 { margin: 0; font-weight: 600; text-wrap: balance; line-height: 1.14; letter-spacing: -.011em; }
+h1 { font-size: clamp(2.3rem, 6.2vw, 3.9rem); line-height: 1.03; letter-spacing: -.024em; }
+h2 { font-size: clamp(1.55rem, 3.4vw, 2.15rem); }
+h3 { font-size: 1.12rem; letter-spacing: 0; }
+.lede { font-size: 1.16rem; color: var(--ink-2); line-height: 1.55; }
+.note { font-size: .87rem; color: var(--ink-3); line-height: 1.5; }
+.src  { font-family: var(--mono); font-size: .69rem; letter-spacing: .04em; color: var(--ink-3); line-height: 1.55; }
+em.term { font-style: normal; font-weight: 600; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- masthead ---------- */
+.mast { padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.5rem, 4vw, 2.5rem); }
+.mast .kicker {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.byline { font-size: 1.02rem; color: var(--ink-2); }
+.byline b { font-weight: 600; color: var(--ink); }
+.cite-line { font-family: var(--mono); font-size: .73rem; color: var(--ink-3); letter-spacing: .02em; }
+
+.abstract {
+  border-left: 2px solid var(--rule-firm);
+  padding-left: 1.15rem;
+  font-size: 1.02rem;
+  color: var(--ink-2);
+}
+
+/* ---------- nav rail ---------- */
+.rail {
+  position: sticky; top: 0; z-index: 40;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: blur(9px) saturate(1.3);
+  border-bottom: 1px solid var(--rule);
+}
+.rail-in {
+  max-width: var(--plate); margin: 0 auto;
+  padding: .55rem clamp(1rem, 4vw, 2.5rem);
+  display: flex; align-items: center; gap: .2rem;
+  overflow-x: auto; scrollbar-width: none;
+}
+.rail-in::-webkit-scrollbar { display: none; }
+.rail a {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--ink-3); text-decoration: none;
+  padding: .38rem .6rem; border-radius: 3px; white-space: nowrap;
+  transition: color .16s, background .16s;
+}
+.rail a:hover { color: var(--ink); background: var(--panel-sunk); }
+.rail .spacer { flex: 1 0 1rem; }
+
+/* ---------- plates (figures) ---------- */
+.plate {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.plate-hd { padding: 1.05rem 1.25rem .55rem; display: flex; flex-direction: column; gap: .3rem; }
+.plate-hd .t { font-size: 1.02rem; font-weight: 600; letter-spacing: -.005em; }
+.plate-bd { padding: .25rem 1.25rem 1.05rem; }
+.plate-ft {
+  padding: .7rem 1.25rem .95rem; border-top: 1px solid var(--rule);
+  background: var(--panel-sunk);
+}
+.scroll-x { overflow-x: auto; }
+
+/* ---------- legend / keys ---------- */
+.legend { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; align-items: center; }
+.key { display: inline-flex; align-items: center; gap: .42rem; font-family: var(--mono); font-size: .69rem; letter-spacing: .04em; color: var(--ink-2); }
+.swatch { width: 11px; height: 11px; border-radius: 2px; flex: none; }
+.swatch.line { height: 3px; border-radius: 2px; width: 15px; }
+
+/* ---------- simulator ---------- */
+.sim { display: grid; grid-template-columns: 1fr; gap: 0; }
+@media (min-width: 900px) { .sim { grid-template-columns: 1fr 15.5rem; } }
+.sim-stage { padding: 1rem 1.25rem 1.15rem; min-width: 0; }
+.sim-side {
+  border-top: 1px solid var(--rule); background: var(--panel-sunk);
+  padding: 1.05rem 1.15rem 1.2rem; display: flex; flex-direction: column; gap: 1.05rem;
+}
+@media (min-width: 900px) { .sim-side { border-top: 0; border-left: 1px solid var(--rule); } }
+
+.presets { display: flex; gap: .4rem; flex-wrap: wrap; }
+.btn {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .07em; text-transform: uppercase;
+  padding: .45rem .7rem; border-radius: 3px; cursor: pointer;
+  border: 1px solid var(--rule-firm); background: var(--panel); color: var(--ink-2);
+  transition: border-color .15s, color .15s, background .15s;
+}
+.btn:hover { color: var(--ink); border-color: var(--ink-3); }
+.btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+.ctl { display: flex; flex-direction: column; gap: .22rem; }
+.ctl-top { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; }
+.ctl-lab { font-family: var(--mono); font-size: .68rem; letter-spacing: .05em; color: var(--ink-2); }
+.ctl-lab i { font-style: normal; color: var(--ink-3); }
+.ctl-val { font-family: var(--mono); font-size: .72rem; font-variant-numeric: tabular-nums; color: var(--ink); }
+input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 18px; background: transparent; cursor: pointer; margin: 0; }
+input[type="range"]::-webkit-slider-runnable-track { height: 2px; background: var(--rule-firm); border-radius: 2px; }
+input[type="range"]::-moz-range-track { height: 2px; background: var(--rule-firm); border-radius: 2px; }
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 13px; height: 13px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--panel); margin-top: -5.5px;
+  box-shadow: 0 0 0 1px var(--accent);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 13px; height: 13px; border-radius: 50%; background: var(--accent);
+  border: 2px solid var(--panel); box-shadow: 0 0 0 1px var(--accent);
+}
+
+.verdict { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.vcard {
+  border: 1px solid var(--rule); border-radius: 3px; background: var(--panel);
+  padding: .65rem .7rem; display: flex; flex-direction: column; gap: .28rem;
+  border-left-width: 3px;
+}
+.vcard.emp { border-left-color: var(--china); }
+.vcard.frag { border-left-color: var(--europe); }
+.vcard .vt { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.vcard .vv { font-family: var(--mono); font-size: 1.28rem; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.pill {
+  display: inline-flex; align-items: center; gap: .3rem; align-self: flex-start;
+  font-family: var(--mono); font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: .16rem .4rem; border-radius: 2px; border: 1px solid currentColor;
+}
+.pill.good { color: var(--ok); }
+.pill.bad  { color: var(--threat); }
+.pill::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+.readout { display: flex; flex-direction: column; gap: .38rem; }
+.rrow { display: flex; justify-content: space-between; gap: .6rem; font-family: var(--mono); font-size: .7rem; align-items: baseline; }
+.rrow span:first-child { color: var(--ink-3); letter-spacing: .03em; }
+.rrow span:last-child { font-variant-numeric: tabular-nums; color: var(--ink); }
+
+.state-line {
+  font-size: .93rem; color: var(--ink-2); border-top: 1px solid var(--rule);
+  padding-top: .75rem; line-height: 1.5;
+}
+.state-line b { color: var(--ink); font-weight: 600; }
+
+/* ---------- tables ---------- */
+table { border-collapse: collapse; width: 100%; font-size: .87rem; }
+th, td { padding: .48rem .7rem; text-align: right; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+thead th {
+  font-family: var(--mono); font-size: .64rem; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--ink-3); font-weight: 400; border-bottom-color: var(--rule-firm);
+}
+tbody td { font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: .8rem; }
+tbody td:first-child { font-family: var(--serif); font-size: .93rem; }
+tbody tr:last-child td { border-bottom: 0; }
+tr.hl td { background: var(--panel-sunk); font-weight: 600; }
+.bar-cell { position: relative; }
+.bar-cell .b {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  height: 60%; border-radius: 0 2px 2px 0; opacity: .17;
+}
+
+/* ---------- implication cards ---------- */
+.imps { display: grid; gap: .8rem; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .imps { grid-template-columns: 1fr 1fr; } }
+.imp {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+  padding: .95rem 1.05rem; display: flex; flex-direction: column; gap: .35rem;
+}
+.imp .n {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.imp .h { font-weight: 600; font-size: .99rem; }
+.imp .d { font-size: .89rem; color: var(--ink-2); line-height: 1.5; }
+
+/* ---------- stat row ---------- */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: .8rem; }
+.stat {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+  padding: .85rem .95rem; display: flex; flex-direction: column; gap: .18rem;
+}
+.stat .v { font-family: var(--mono); font-size: 1.55rem; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: .82rem; color: var(--ink-2); line-height: 1.4; }
+.stat .s { font-family: var(--mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+
+/* ---------- charts ---------- */
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ax-line { stroke: var(--rule-firm); stroke-width: 1; }
+.grid-line { stroke: var(--rule); stroke-width: 1; }
+.ax-txt { font-family: var(--mono); font-size: 9.5px; fill: var(--ink-3); letter-spacing: .04em; }
+.ax-title { font-family: var(--mono); font-size: 9px; fill: var(--ink-3); letter-spacing: .1em; text-transform: uppercase; }
+.dlabel { font-family: var(--mono); font-size: 9.5px; letter-spacing: .03em; }
+
+.tip {
+  position: absolute; pointer-events: none; opacity: 0; transform: translate(-50%, -118%);
+  background: var(--ink); color: var(--ground);
+  padding: .4rem .55rem; border-radius: 3px; font-family: var(--mono); font-size: .68rem;
+  line-height: 1.45; white-space: nowrap; z-index: 20; transition: opacity .1s;
+  box-shadow: 0 4px 14px -6px rgba(0,0,0,.5);
+}
+.tip b { font-weight: 600; }
+.tip .mut { opacity: .68; }
+.chart-host { position: relative; }
+
+/* ---------- hero diptych ---------- */
+.diptych { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--rule); }
+@media (min-width: 780px) { .diptych { grid-template-columns: 1fr 1fr; } }
+.dp { background: var(--panel); padding: 1rem 1.15rem 1.15rem; display: flex; flex-direction: column; gap: .5rem; }
+.dp-hd { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; flex-wrap: wrap; }
+.dp-hd .t { font-weight: 600; font-size: 1rem; }
+.dp-hd .s { font-family: var(--mono); font-size: .63rem; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
+.dp-out { font-size: .87rem; color: var(--ink-2); line-height: 1.45; }
+.dp-out b { color: var(--ink); font-weight: 600; }
+
+/* ---------- footer ---------- */
+footer { border-top: 1px solid var(--rule); padding: 2.5rem 0 3.5rem; }
+.cite-box {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+  padding: 1rem 1.15rem; font-family: var(--mono); font-size: .76rem; line-height: 1.6; color: var(--ink-2);
+}
+
+/* ---------- motion ---------- */
+.reveal { opacity: 0; transform: translateY(10px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+/* never let the entrance animation hide content in print or without JS */
+@media print { .reveal { opacity: 1 !important; transform: none !important; } }
+</style>
+
+<nav class="rail">
+  <div class="rail-in">
+    <a href="#puzzle">§2 The puzzle</a>
+    <a href="#threat">§2 Threats</a>
+    <a href="#model">§3 The model</a>
+    <a href="#evidence">§4 Evidence</a>
+    <a href="#apply">§5 Consequences</a>
+    <a href="#alt">§6 Alternatives</a>
+    <span class="spacer"></span>
+    <a href="#cite">Cite</a>
+  </div>
+</nav>
+
+<header class="mast">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m col">
+      <div class="kicker">International Economic Review · Vol. 59, No. 1 · February 2018</div>
+      <h1>Unified China and<br>Divided Europe</h1>
+      <div class="byline"><b>Chiu Yu Ko</b> · <b>Mark Koyama</b> · <b>Tuan&#8209;Hwee Sng</b></div>
+      <div class="cite-line">National University of Singapore · George Mason University</div>
+    </div>
+
+    <div class="abstract col">
+      A severe and unidirectional threat of invasion pushed China toward political
+      centralization. Europe faced a wider variety of smaller threats and stayed
+      fragmented. Centralization gave China lower taxes and faster population growth
+      in peacetime — and left it more exposed when the shock came.
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="plate reveal" id="hero-plate">
+    <div class="plate-hd">
+      <div class="eyebrow">The argument in one diagram</div>
+      <div class="t">Same military geography, opposite political equilibria</div>
+      <div class="note">Each panel is the model of §3 solved at its equilibrium. The continent runs left to right;
+        the red ramp is invasion damage spreading inland from a frontier, the filled curve is military strength
+        radiating from a capital. Where the curve clears the ramp, the interior is shielded.</div>
+    </div>
+    <div class="diptych" id="hero-diptych"></div>
+    <div class="plate-ft">
+      <div class="legend">
+        <span class="key"><span class="swatch" style="background:var(--threat)"></span>Invasion damage</span>
+        <span class="key"><span class="swatch" style="background:var(--china)"></span>Empire’s military</span>
+        <span class="key"><span class="swatch" style="background:var(--europe)"></span>Rival states’ militaries</span>
+        <span class="key"><span class="swatch" style="background:var(--ink-3);opacity:.35"></span>Territory shielded</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== §2 PUZZLE ============================== -->
+<section class="band" id="puzzle">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m col">
+      <div class="eyebrow">§2 · The puzzle</div>
+      <h2>One state, or a hundred</h2>
+      <p class="lede">Since Montesquieu, Europe’s success has been credited to its political
+        fragmentation. Yet for most of recorded history the richest region on earth was China —
+        and China was usually one empire.</p>
+      <p>Between AD&nbsp;0 and 1800, historical China, roughly the landmass from the Mongolian steppe to the South China Sea
+        answered to a single authority for <span class="num">1,008</span> years. Fewer than 80 states
+        ruled any part of China across those eighteen centuries. Europe, over the same span, went
+        from 37 sovereign states in AD&nbsp;600 to 61 by 900 and 114 by 1300 — and stayed that way.</p>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Figure 2</div>
+        <div class="t">Number of sovereign states, AD 0–1800</div>
+        <div class="note">Log scale. Since the Middle Ages there have been an order of magnitude
+          more states in Europe than in China.</div>
+      </div>
+      <div class="plate-bd chart-host" id="c-states"></div>
+      <div class="plate-ft stack gap-s">
+        <div class="legend">
+          <span class="key"><span class="swatch line" style="background:var(--china)"></span>China (annual)</span>
+          <span class="key"><span class="swatch line" style="background:var(--europe)"></span>Europe (century observations)</span>
+        </div>
+        <div class="src">SOURCES · Wei (2011) for China; Nussli (2010) for Europe. Nussli undercounts entities inside
+          the Holy Roman Empire, so the European series is a lower bound.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== §2 THREAT ============================== -->
+<section class="band" id="threat">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m col">
+      <div class="eyebrow">§2 · Two kinds of threat</div>
+      <h2>Rarer wars, worse wars</h2>
+      <p>Interstate war was ordinary in Europe and comparatively uncommon in China. But the
+        conflicts China did fight were far more destructive, because they were not border
+        adjustments between neighbours — they often involved the collapse of an entire empire.</p>
+      <p>Only two European wars before 1750 are estimated to have killed more than five million
+        people. Five such wars are recorded for China, and each one had a nomadic dimension.</p>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><div class="v" style="color:var(--china)">6 <span style="font-size:.55em;color:var(--ink-3)">of 7</span></div>
+        <div class="l">major waves of nomadic invasion across Eurasia since AD 1 that reached China</div>
+        <div class="s">Chaliand (2005)</div></div>
+      <div class="stat"><div class="v" style="color:var(--europe)">2 <span style="font-size:.55em;color:var(--ink-3)">of 7</span></div>
+        <div class="l">of the same waves that reached Western Europe</div>
+        <div class="s">Chaliand (2005)</div></div>
+      <div class="stat"><div class="v">1,008</div>
+        <div class="l">years China was ruled by a single authority, AD 0–1800</div>
+        <div class="s">Ko &amp; Sng (2013)</div></div>
+      <div class="stat"><div class="v">2.5</div>
+        <div class="l">nomadic attacks per decade, on average, 220 BC – AD 1839</div>
+        <div class="s">Bai &amp; Kung (2011)</div></div>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Figure 3(a)</div>
+        <div class="t">Recorded conflicts by century and type</div>
+        <div class="note">Europe fought many more conflicts; China’s were disproportionately against
+          the steppe. Shade encodes conflict type within each region’s hue.</div>
+      </div>
+      <div class="plate-bd chart-host" id="c-war"></div>
+      <div class="plate-ft stack gap-s">
+        <div class="legend">
+          <span class="key"><span class="swatch" style="background:var(--china)"></span>China · nomad</span>
+          <span class="key"><span class="swatch" style="background:var(--china-soft)"></span>China · other</span>
+          <span class="key"><span class="swatch" style="background:var(--europe)"></span>Europe · interstate</span>
+          <span class="key"><span class="swatch" style="background:var(--europe-soft)"></span>Europe · other</span>
+        </div>
+        <div class="src">SOURCE · Brecke (1999), Conflict Catalog.</div>
+      </div>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Figure 3(b)</div>
+        <div class="t">The twenty deadliest preindustrial conflicts</div>
+        <div class="note">Hover any point. The Thirty Years War is the only European conflict that
+          reaches the scale of China’s dynastic collapses.</div>
+      </div>
+      <div class="plate-bd chart-host" id="c-conf"></div>
+      <div class="plate-ft stack gap-s">
+        <div class="legend">
+          <span class="key"><span class="swatch" style="background:var(--china);border-radius:50%"></span>China</span>
+          <span class="key"><span class="swatch" style="background:var(--europe);border-radius:50%"></span>Europe</span>
+          <span class="key"><span class="swatch" style="background:var(--other);border-radius:50%"></span>Elsewhere</span>
+        </div>
+        <div class="src">SOURCE · White’s compilation of estimated conflict death tolls, as used in the paper.
+          All preindustrial death estimates are speculative; what matters is the order of magnitude.</div>
+      </div>
+    </div>
+
+    <div class="col stack gap-m">
+      <h3>Why direction matters</h3>
+      <p>Before 1800 every major invasion of China came from the north. Mountains, rainforest and
+        ocean sealed the other three flanks. Medieval Europe had no such luck: Vikings from the north; Arabs,
+        Berbers and Turks from the south and south-east; Magyars and Mongols from the east.</p>
+      <p>That is the asymmetry the model turns on. A threat that always arrives from <em class="term">one</em>
+        direction can be met by one army standing in one place. Threats arriving from
+        <em class="term">several</em> directions cannot.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== §3 MODEL ============================== -->
+<section class="band" id="model">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m col">
+      <div class="eyebrow">§3 · The model</div>
+      <h2>A continent on a line</h2>
+      <p>The continent is the interval <span class="num">[0,&nbsp;1]</span> with population spread evenly along it.
+        A threat of size <span class="num">Λ</span> strikes a frontier and decays inland at rate
+        <span class="num">α</span>. A regime picks a capital <span class="num">G</span> and buys military
+        <span class="num">M</span> at cost <span class="num">θM²</span>; its strength at distance
+        <span class="num">t</span> from the capital is <span class="num">M − βt²</span>. If the regime fails to
+        shield a fraction <span class="num">δ</span> of the continent, it is overthrown.</p>
+      <p>Capitals and armies below are the closed-form equilibrium of Propositions 1 and 2; the
+        shielded region and the damage that gets through are integrated across the continent.
+        Move the controls and watch which arrangement survives.</p>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Interactive · Propositions 1 &amp; 2</div>
+        <div class="t">Solve the continent</div>
+      </div>
+      <div class="sim">
+        <div class="sim-stage stack gap-m">
+          <div class="presets" role="group" aria-label="Scenario presets">
+            <button class="btn" id="p-china" aria-pressed="true">China — severe, one-sided</button>
+            <button class="btn" id="p-europe" aria-pressed="false">Europe — moderate, two-sided</button>
+          </div>
+
+          <div class="chart-host" id="sim-emp"></div>
+          <div class="chart-host" id="sim-frag"></div>
+
+          <div class="legend" style="padding-top:.2rem">
+            <span class="key"><span class="swatch" style="background:var(--threat)"></span>Damage from invasion</span>
+            <span class="key"><span class="swatch" style="background:var(--china)"></span>Military strength</span>
+            <span class="key"><span class="swatch" style="background:var(--ink-3);opacity:.35"></span>Shielded</span>
+            <span class="key"><span class="swatch line" style="background:var(--ink-3)"></span>Capital</span>
+          </div>
+        </div>
+
+        <div class="sim-side">
+          <div class="stack gap-s">
+            <div class="ctl">
+              <div class="ctl-top"><span class="ctl-lab">Λ <i>threat size</i></span><span class="ctl-val" id="v-L"></span></div>
+              <input type="range" id="s-L" min="0" max="1.5" step="0.005" aria-label="Threat size lambda">
+            </div>
+            <div class="ctl">
+              <div class="ctl-top"><span class="ctl-lab">α <i>damage decay</i></span><span class="ctl-val" id="v-a"></span></div>
+              <input type="range" id="s-a" min="0.1" max="2" step="0.01" aria-label="Damage decay alpha">
+            </div>
+            <div class="ctl">
+              <div class="ctl-top"><span class="ctl-lab">β <i>force decay</i></span><span class="ctl-val" id="v-b"></span></div>
+              <input type="range" id="s-b" min="0.5" max="20" step="0.05" aria-label="Military decay beta">
+            </div>
+            <div class="ctl">
+              <div class="ctl-top"><span class="ctl-lab">δ <i>must shield</i></span><span class="ctl-val" id="v-d"></span></div>
+              <input type="range" id="s-d" min="0.1" max="0.95" step="0.005" aria-label="Revolution threshold delta">
+            </div>
+            <div class="ctl">
+              <div class="ctl-top"><span class="ctl-lab">θ <i>military cost</i></span><span class="ctl-val" id="v-t"></span></div>
+              <input type="range" id="s-t" min="0.2" max="3" step="0.01" aria-label="Military cost theta">
+            </div>
+            <div class="presets" style="padding-top:.35rem">
+              <button class="btn" id="p-one" aria-pressed="true">One-sided</button>
+              <button class="btn" id="p-two" aria-pressed="false">Two-sided</button>
+            </div>
+          </div>
+
+          <div class="verdict">
+            <div class="vcard emp">
+              <span class="vt">Empire</span>
+              <span class="vv" id="v-Ve"></span>
+              <span class="pill" id="v-Pe"></span>
+            </div>
+            <div class="vcard frag">
+              <span class="vt">Two states</span>
+              <span class="vv" id="v-Vf"></span>
+              <span class="pill" id="v-Pf"></span>
+            </div>
+          </div>
+
+          <div class="readout" id="readout"></div>
+        </div>
+      </div>
+
+      <div class="plate-bd" style="padding-top:.9rem">
+        <div class="eyebrow" style="margin-bottom:.5rem">Viability across the threat range</div>
+        <div class="chart-host" id="sim-phase"></div>
+        <div class="note" style="margin-top:.5rem">Continent-wide net revenue under each arrangement, holding
+          everything but Λ fixed. A curve entering the shaded band means that arrangement can no longer
+          pay for its own defence. Values below −1 are clipped.</div>
+      </div>
+
+      <div class="plate-ft">
+        <div class="state-line" style="border-top:0;padding-top:0" id="verdict-text"></div>
+      </div>
+    </div>
+
+    <div class="col stack gap-m">
+      <h3>What the equilibrium implies</h3>
+      <p>Seven results fall out. Two are about who survives; the rest are about what survival costs
+        the people living there.</p>
+    </div>
+
+    <div class="imps reveal">
+      <div class="imp"><span class="n">Implication 1</span><span class="h">Competition is wasteful</span>
+        <span class="d">With no external threat an empire buys no military at all. Rival states still
+          arm against each other. Fragmentation burns resources for nothing.</span></div>
+      <div class="imp"><span class="n">Implication 2</span><span class="h">Competition is robust</span>
+        <span class="d">Because rivals over-arm, they end up shielding <em>more</em> than the minimum
+          δ. An empire shields exactly δ and not a metre more.</span></div>
+      <div class="imp"><span class="n">Implication 3</span><span class="h">Capitals sit off-centre</span>
+        <span class="d">Facing a one-sided threat the empire puts its capital at
+          <span class="num">1−δ</span>, on the threatened flank — not at the population centre.</span></div>
+      <div class="imp"><span class="n">Implication 4</span><span class="h">Empire wins one-sided fights</span>
+        <span class="d">One frontier, one army, and the whole continent’s revenue to pay for it.
+          Small states are squeezed out.</span></div>
+      <div class="imp"><span class="n">Implication 5</span><span class="h">States win two-sided fights</span>
+        <span class="d">An empire must defend two distant frontiers from one centre. When force
+          decays fast over distance (large β), that is ruinous.</span></div>
+      <div class="imp"><span class="n">Implication 6</span><span class="h">Empires tax less</span>
+        <span class="d">Cutting taxes buys loyalty more cheaply than buying soldiers. Rival states,
+          already over-armed, have no such need.</span></div>
+      <div class="imp" style="grid-column:1/-1"><span class="n">Implication 7</span><span class="h">Empires grow faster, and fall harder</span>
+        <span class="d">Lower taxes mean higher fertility in peacetime. But a smaller shielded
+          fraction means that when the invasion actually lands, the damage is deeper. Population
+          growth under centralization has a higher mean <em>and</em> a higher variance.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== §4 EVIDENCE ============================== -->
+<section class="band" id="evidence">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m col">
+      <div class="eyebrow">§4 · Evidence from China</div>
+      <h2>Did the steppe make the empire?</h2>
+      <p>China offers 2,060 years of decadal data. The frequency of nomadic attacks comes from
+        Bai and Kung (2011), who show that steppe incursions tracked exogenous swings in rainfall.
+        Political unification comes from Wei (2011).</p>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Data · 220 BC – AD 1839</div>
+        <div class="t">Nomadic attacks and political unification, by decade</div>
+        <div class="note">Shaded columns mark decades when a single regime ruled China.
+          Drag across the chart to read any decade.</div>
+      </div>
+      <div class="plate-bd chart-host" id="c-panel"></div>
+      <div class="plate-ft stack gap-s">
+        <div class="legend">
+          <span class="key"><span class="swatch" style="background:var(--threat)"></span>Nomadic attacks in the decade</span>
+          <span class="key"><span class="swatch" style="background:var(--china);opacity:.3"></span>China unified</span>
+          <span class="key"><span class="swatch line" style="background:var(--china)"></span>Number of regimes</span>
+        </div>
+        <div class="src">SOURCES · Bai and Kung (2011); Wei (2011). Reproduced from the paper’s replication data.</div>
+      </div>
+    </div>
+
+    <div class="col stack gap-m">
+      <h3>A test</h3>
+      <p>Intuitively, we expect an attack in the current decade to make unification <em class="term">less</em> likely: a state
+        under assault fractures. But as the model predicts, the long-run effect is consolidation. An attack in the <em class="term">previous</em> decade makes unification more
+        likely.</p>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Table 2, column (a) · replayed</div>
+        <div class="t">Response of P(unified) to nomadic pressure</div>
+        <div class="note">Simulated from the published ADL coefficients. A permanent increase of one
+          attack per decade converges on the paper’s long-run estimate.</div>
+      </div>
+      <div class="plate-bd stack gap-m">
+        <div class="presets">
+          <button class="btn" id="ir-perm" aria-pressed="true">Permanent +1 attack / decade</button>
+          <button class="btn" id="ir-once" aria-pressed="false">One-off spike</button>
+        </div>
+        <div class="chart-host" id="c-irf"></div>
+      </div>
+      <div class="plate-ft stack gap-s">
+        <div class="src">MODEL · y<sub>t</sub> = 0.906·y<sub>t−1</sub> − 0.283·y<sub>t−2</sub> + 0.256·y<sub>t−3</sub>
+          − 0.0120·x<sub>t</sub> + 0.0196·x<sub>t−1</sub>. Dependent variable is the unification dummy;
+          x is nomadic attacks per decade. 203 decadal observations.</div>
+      </div>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Tables 2–4</div>
+        <div class="t">Long-run effect of one additional nomadic attack per decade</div>
+      </div>
+      <div class="plate-bd scroll-x">
+        <table>
+          <thead><tr>
+            <th>Specification</th><th>Contemporaneous</th><th>One decade later</th>
+            <th>Long-run effect</th><th>Obs.</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>ADL, no controls</td><td>−1.20 pp**</td><td>+1.96 pp***</td><td class="bar-cell"><span class="b" style="width:31%;background:var(--china)"></span>+6.3 pp</td><td>203</td></tr>
+            <tr><td>VAR, with controls</td><td>—</td><td>+1.76 pp***</td><td class="bar-cell"><span class="b" style="width:41%;background:var(--china)"></span>+8.3 pp</td><td>203</td></tr>
+            <tr><td>IV — droughts &amp; floods</td><td>−8.74 pp</td><td>+13.4 pp**</td><td class="bar-cell"><span class="b" style="width:100%;background:var(--china)"></span>+20.4 pp</td><td>203</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="plate-ft stack gap-s">
+        <div class="note">The Wald statistic on the lagged attack terms is 11.36 — nomadic attacks
+          Granger-cause political unification at the 1% level. The IV estimate is suggestive only: climate plausibly affected unification through channels other than the steppe,
+          so the exclusion restriction is doubtful.</div>
+        <div class="src">*** p&lt;0.01 · ** p&lt;0.05 · * p&lt;0.1. Controls: droughts, floods, snow, low-temperature
+          disasters, temperature, nomadic-conquest periods, time trend.</div>
+      </div>
+    </div>
+
+    <div class="col stack gap-m">
+      <h3>And Europe?</h3>
+      <p>Europe cannot be tested the same way — state counts exist only at century intervals. But the
+        narrative fits. Rome fell when its military edge eroded <em class="term">and</em> threats
+        multiplied along a very long border. Justinian’s reconquest collapsed under the Avars and
+        Persians, then the Arabs. Charlemagne’s empire was pulled apart by Magyars, Vikings and
+        Muslims arriving on three different fronts.</p>
+      <p>After the eleventh century the Viking and Muslim threats receded — and, as the model
+        predicts, fragmentation simply persisted. The Mongol invasion of the thirteenth century
+        was too brief to provide a sustained impetus toward European unification.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== §5 CONSEQUENCES ============================== -->
+<section class="band" id="apply">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m col">
+      <div class="eyebrow">§5 · Consequences</div>
+      <h2>Where the capital sits, what the peasant pays</h2>
+      <p>If the model is right about why these political systems existed, it should also be right
+        about how they behaved. Three predictions, three bodies of evidence.</p>
+    </div>
+
+    <div class="imps reveal">
+      <div class="imp"><span class="n">Prediction · capitals</span><span class="h">Political centre ≠ population centre</span>
+        <span class="d">For 1,418 of the years between 221 BC and AD 1911, China’s capital was
+          Chang’an or Beijing — <span class="num">8.4</span> years in every ten. Neither was the
+          economic core. Under the Han only ~4% of the population lived in Chang’an’s region while
+          60% lived in the Guandong plain it was placed to shield. When the threat shifted east
+          toward Manchuria, the capital moved east to Beijing. Constantine did the same thing:
+          Constantinople covered the Danube and eastern
+          fronts at once.</span></div>
+      <div class="imp"><span class="n">Prediction · taxation</span><span class="h">The empire taxes less</span>
+        <span class="d">This reverses the traditional story that Chinese growth was strangled by a
+          rapacious state. Per-capita tax in Europe ran roughly four times China’s. Correcting for
+          silver being dearer in China — by measuring tax against a bare-bones subsistence basket —
+          leaves the gap intact: 27% of subsistence in Europe against 6% in China in 1750.</span></div>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Table 5</div>
+        <div class="t">Per-capita tax revenue, grams of silver</div>
+      </div>
+      <div class="plate-bd scroll-x">
+        <table>
+          <thead><tr><th>&nbsp;</th><th>1700</th><th>1750</th><th>1780</th><th>Total 1780 (t. silver)</th></tr></thead>
+          <tbody>
+            <tr><td>Dutch Republic</td><td>210.6</td><td>189.4</td><td class="bar-cell"><span class="b" style="width:100%;background:var(--europe)"></span>228.2</td><td>466.8</td></tr>
+            <tr><td>England</td><td>91.9</td><td>109.1</td><td class="bar-cell"><span class="b" style="width:75%;background:var(--europe)"></span>172.3</td><td>1,627.3</td></tr>
+            <tr><td>France</td><td>43.5</td><td>48.7</td><td class="bar-cell"><span class="b" style="width:34%;background:var(--europe)"></span>77.6</td><td>1,962.0</td></tr>
+            <tr><td>Spain</td><td>28.6</td><td>46.2</td><td class="bar-cell"><span class="b" style="width:26%;background:var(--europe)"></span>59.0</td><td>642.5</td></tr>
+            <tr class="hl"><td>European average</td><td>52.1</td><td>58.0</td><td class="bar-cell"><span class="b" style="width:34%;background:var(--europe)"></span>77.3</td><td>711.5</td></tr>
+            <tr class="hl"><td>China</td><td>10.4</td><td>11.8</td><td class="bar-cell"><span class="b" style="width:4%;background:var(--china)"></span>9.2</td><td>2,769.3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="plate-ft stack gap-s">
+        <div class="note">The last column is the point about scale: China raised three to four times
+          more total revenue than any single European state while taxing each subject roughly an
+          eighth as heavily. Size, not extraction, is what an empire is for.</div>
+        <div class="src">SOURCES · Karaman and Pamuk (2013); Sng (2014). European average includes Venice,
+          Austria, Russia, Prussia and Poland-Lithuania alongside the four shown.</div>
+      </div>
+    </div>
+
+    <div class="plate reveal">
+      <div class="plate-hd">
+        <div class="eyebrow">Figure 17</div>
+        <div class="t">Population, and the volatility of population growth</div>
+        <div class="note">Both series indexed to AD 1 = 100. The lower panel is the implied annual
+          growth rate between successive observations.</div>
+      </div>
+      <div class="plate-bd chart-host" id="c-pop"></div>
+      <div class="plate-ft stack gap-s">
+        <div class="legend">
+          <span class="key"><span class="swatch line" style="background:var(--china)"></span>China</span>
+          <span class="key"><span class="swatch line" style="background:var(--europe)"></span>Europe</span>
+        </div>
+        <div class="src">SOURCE · McEvedy and Jones (1978). Observations are 50–200 years apart, which
+          smooths the series and works <em>against</em> finding the difference the model predicts.</div>
+      </div>
+    </div>
+
+    <div class="col stack gap-m">
+      <p>Before AD 400 — when both ends of Eurasia were ruled by empires — the two population series
+        behave alike. The divergence in volatility appears only after China consolidates and Europe
+        fractures. That timing is the point.</p>
+      <p>Higher-frequency Chinese data from Cao (2000) makes the mechanism visible directly: the falls
+        of Xin, Han and Sui, the An Lushan Rebellion, the Jurchen and Mongol invasions, the ends of
+        Yuan and Ming — each leaves a crater. Between 1223 and 1292 China’s population fell by
+        roughly 30 million, a third of the total. Europe had exactly one continent-wide collapse
+        after Rome: the Black Death.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== §6 ALTERNATIVES ============================== -->
+<section class="band" id="alt">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m col">
+      <div class="eyebrow">§6 · What this does not explain</div>
+      <h2>The limits, stated plainly</h2>
+      <p>We are explicit in the paper that the steppe is not the whole story, and we name two things
+        our own mechanism cannot account for.</p>
+    </div>
+
+    <div class="imps reveal">
+      <div class="imp"><span class="n">Unexplained</span><span class="h">Europe fragments further after 1100</span>
+        <span class="d">External threats subsided, yet the number of states kept climbing. Tilly (1990)
+          points to the city-state corridor from England to northern Italy; Hoffman (2015) to the
+          Catholic Church blocking first the Emperor, then the Habsburgs.</span></div>
+      <div class="imp"><span class="n">Unexplained</span><span class="h">China’s interregna get shorter after 1300</span>
+        <span class="d">Chinese historians credit the imperial examinations, which dismantled the
+          regional aristocracies that had fractured medieval China.</span></div>
+      <div class="imp"><span class="n">Complementary</span><span class="h">Geography and topography</span>
+        <span class="d">Kennedy and Diamond invoke Europe’s coastlines and mountains. Hoffman (2015)
+          pushes back: average elevation is in fact higher in China, and no natural barrier separates
+          France from Germany. Two of us take this up quantitatively in
+          <a href="https://academic.oup.com/qje/article-abstract/138/2/1173/6979842" target="_blank" rel="noopener">The
+          Fractured-Land Hypothesis</a> (Fernández-Villaverde, Koyama, Lin and Sng, <i>QJE</i> 2023),
+          which finds topography sufficient but not necessary — a core region of highly productive
+          land in northern China delivers unification on its own.</span></div>
+      <div class="imp"><span class="n">Complementary</span><span class="h">Contingency</span>
+        <span class="d">The Investiture Controversy, the wars of religion, a logographic script in
+          China against a phonographic one in Europe — accidents that happened to reinforce the
+          centripetal and centrifugal tendencies already in place.</span></div>
+    </div>
+
+    <div class="col stack gap-m">
+      <p>Our argument is about sequencing, not monocausality. Multisided threats
+        fragmented Europe <em class="term">before</em> 1100. That initial fragmentation is what let a
+        rival Church and independent city-states entrench themselves — and those institutions then
+        kept Europe divided long after the invaders stopped coming. Tilly’s city-states and Hoffman’s
+        papacy are consequences of the first-millennium collapse as much as causes of what followed.</p>
+    </div>
+
+    <div class="col stack gap-m" style="border-top:1px solid var(--rule); padding-top:2rem">
+      <div class="eyebrow">§7 · Conclusion</div>
+      <p class="lede">Political centralization was stable in China and unstable in Europe, and the
+        difference paid off in opposite directions on different time horizons. Unity was efficient
+        in the short run — no wasteful arms race, lighter taxes, faster growth. Fragmentation was
+        robust in the long run.</p>
+      <p>The start-stop character of growth under empire — long expansions erased by catastrophic
+        contractions — is offered as one route into the larger puzzle: why the most populous economy
+        in the world came within a hair’s breadth of modern growth and did not get there.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="cite">
+  <div class="wrap stack gap-m">
+    <div class="col stack gap-s">
+      <div class="eyebrow">Citation</div>
+      <div class="cite-box">
+        Ko, Chiu Yu, Mark Koyama, and Tuan-Hwee Sng. “Unified China and Divided Europe.”
+        <i>International Economic Review</i> 59, no. 1 (February 2018): 285–327.
+        <br><br>doi:10.1111/iere.12270
+      </div>
+      <div class="note">This page reconstructs the paper’s figures from its own replication data and
+        solves the model of §3 in closed form. Regression coefficients are the published estimates;
+        nothing here is re-estimated.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   Data — extracted from the paper's replication files
+   ========================================================================== */
+const DATA = {"chinaStates":[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,4.0,4.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,4.0,4.0,6.0,6.0,5.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,4.0,5.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,5.0,5.0,6.0,8.0,8.0,9.0,10.0,10.0,10.0,9.0,9.0,9.0,10.0,10.0,10.0,10.0,9.0,9.0,9.0,9.0,8.0,8.0,8.0,7.0,7.0,7.0,7.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,4.0,4.0,4.0,4.0,4.0,3.0,3.0,3.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,6.0,7.0,8.0,8.0,7.0,4.0,3.0,3.0,2.0,2.0,2.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,3.0,3.0,3.0,5.0,6.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,8.0,8.0,8.0,8.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,8.0,8.0,8.0,8.0,8.0,9.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,7.0,7.0,6.0,6.0,6.0,6.0,6.0,6.0,5.0,5.0,5.0,5.0,4.0,4.0,4.0,3.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,2.0,3.0,3.0,4.0,5.0,5.0,5.0,5.0,5.0,6.0,6.0,6.0,5.0,4.0,4.0,4.0,3.0,2.0,2.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0,2.0,2.0,2.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],"europeStates":[[1,3],[100,4],[200,3],[300,5],[400,19],[500,32],[600,37],[700,57],[800,46],[900,61],[1000,49],[1100,44],[1200,68],[1300,114],[1400,119],[1500,103],[1600,104],[1700,96],[1800,64]],"warfare":[{"century":"15th","china_nomad":57,"china_other":93,"europe_interstate":238,"europe_other":66},{"century":"16th","china_nomad":67,"china_other":87,"europe_interstate":181,"europe_other":67},{"century":"17th","china_nomad":23,"china_other":9,"europe_interstate":128,"europe_other":110},{"century":"18th","china_nomad":18,"china_other":11,"europe_interstate":56,"europe_other":40}],"conflicts":[{"war":"Mongol Conquests","start":1206,"end":1227,"year":1216.5,"deaths":40.0,"region":"China"},{"war":"Fall of Ming Dynasty","start":1635,"end":1662,"year":1648.5,"deaths":25.0,"region":"China"},{"war":"Taiping Rebellion","start":1850,"end":1864,"year":1857.0,"deaths":20.0,"region":"China"},{"war":"Tamerlane's Conquests","start":1370,"end":1405,"year":1387.5,"deaths":17.0,"region":"Other"},{"war":"An Lushan Rebellion","start":755,"end":763,"year":759.0,"deaths":13.0,"region":"China"},{"war":"Fall of Former Han Dynasty","start":9,"end":24,"year":16.5,"deaths":10.0,"region":"China"},{"war":"Thirty Years War","start":1618,"end":1648,"year":1633.0,"deaths":7.5,"region":"Europe"},{"war":"Fall of Yuan Dynasty","start":1340,"end":1370,"year":1355.0,"deaths":7.5,"region":"China"},{"war":"The Deluge","start":1655,"end":1660,"year":1657.5,"deaths":5.0,"region":"Europe"},{"war":"Fall of Rurik Dynasty","start":1598,"end":1613,"year":1605.5,"deaths":5.0,"region":"Europe"},{"war":"Mughal's conquests","start":1658,"end":1707,"year":1682.5,"deaths":4.6,"region":"Other"},{"war":"Fall of Later Han dynasty","start":189,"end":280,"year":234.5,"deaths":4.1,"region":"China"},{"war":"Napoleonic Wars","start":1792,"end":1815,"year":1803.5,"deaths":4.0,"region":"Europe"},{"war":"Hundred Years War","start":1337,"end":1453,"year":1395.0,"deaths":3.5,"region":"Europe"},{"war":"French Wars of Religion","start":1562,"end":1598,"year":1580.0,"deaths":3.0,"region":"Europe"},{"war":"Wars of Peter the Great","start":1682,"end":1725,"year":1703.5,"deaths":3.0,"region":"Europe"},{"war":"Fang La Rebellion","start":1120,"end":1122,"year":1121.0,"deaths":2.0,"region":"China"},{"war":"Warring States","start":-475,"end":-221,"year":-348.0,"deaths":1.5,"region":"China"},{"war":"Seven Years War","start":1756,"end":1763,"year":1759.5,"deaths":1.5,"region":"Europe"},{"war":"Qin Unification","start":-221,"end":-210,"year":-215.5,"deaths":1.0,"region":"China"}],"population":[[-200,42.0,26.0],[1,53.0,31.0],[200,63.0,36.0],[400,53.0,31.0],[600,50.0,26.0],[800,50.0,29.0],[1000,66.0,36.0],[1100,105.0,44.0],[1200,115.0,58.0],[1300,86.0,79.0],[1400,81.0,60.0],[1500,110.0,81.0],[1600,160.0,100.0],[1650,140.0,105.0],[1700,160.0,120.0]],"panel":[[-220,0,1,1.0],[-210,0,0,5.1],[-200,1,1,1.0],[-190,2,1,1.0],[-180,1,1,1.0],[-170,2,1,1.0],[-160,1,1,1.0],[-150,3,1,1.0],[-140,0,1,1.0],[-130,3,1,1.0],[-120,1,1,1.0],[-110,2,1,1.0],[-100,0,1,1.0],[-90,1,1,1.0],[-80,4,1,1.0],[-70,1,1,1.0],[-60,2,1,1.0],[-50,0,1,1.0],[-40,0,1,1.0],[-30,0,1,1.0],[-20,0,1,1.0],[-10,0,1,1.0],[0,1,1,1.0],[10,1,1,1.0],[20,0,0,2.0],[30,3,0,1.6],[40,1,1,1.0],[50,2,1,1.0],[60,0,1,1.0],[70,3,1,1.0],[80,1,1,1.0],[90,5,1,1.0],[100,9,1,1.0],[110,9,1,1.0],[120,9,1,1.0],[130,2,1,1.0],[140,5,1,1.0],[150,5,1,1.0],[160,6,1,1.0],[170,10,1,1.0],[180,3,1,1.0],[190,0,1,1.0],[200,1,1,1.0],[210,0,1,1.0],[220,0,0,2.9],[230,0,0,3.0],[240,0,0,3.0],[250,0,0,3.0],[260,0,0,2.3],[270,4,0,2.0],[280,4,1,1.0],[290,2,1,1.0],[300,3,0,2.4],[310,11,0,3.2],[320,0,0,3.9],[330,3,0,3.4],[340,2,0,3.9],[350,0,0,3.3],[360,0,0,3.0],[370,0,0,2.0],[380,4,0,4.0],[390,6,0,5.0],[400,2,0,6.1],[410,5,0,4.7],[420,7,0,4.0],[430,1,0,2.2],[440,0,0,2.0],[450,0,0,2.0],[460,2,0,2.0],[470,1,0,2.0],[480,1,0,2.0],[490,1,0,2.0],[500,0,0,2.0],[510,0,0,2.0],[520,0,0,2.0],[530,0,0,2.6],[540,0,0,3.0],[550,0,0,3.0],[560,0,0,3.0],[570,0,0,2.7],[580,2,0,1.9],[590,0,1,1.0],[600,0,1,1.0],[610,2,0,3.6],[620,14,0,2.7],[630,1,1,1.0],[640,0,1,1.0],[650,0,1,1.0],[660,0,1,1.0],[670,0,1,1.0],[680,1,1,1.0],[690,2,1,1.0],[700,5,1,1.0],[710,3,1,1.0],[720,3,1,1.0],[730,1,1,1.0],[740,2,1,1.0],[750,1,0,1.5],[760,4,0,1.3],[770,4,1,1.0],[780,2,1,1.0],[790,0,1,1.0],[800,0,1,1.0],[810,1,1,1.0],[820,1,1,1.0],[830,0,1,1.0],[840,2,1,1.0],[850,0,1,1.0],[860,0,1,1.0],[870,0,1,1.0],[880,0,1,1.0],[890,0,1,1.0],[900,0,0,4.0],[910,2,0,7.4],[920,3,0,7.5],[930,0,0,8.2],[940,2,0,8.5],[950,0,0,8.1],[960,2,0,6.8],[970,2,0,4.3],[980,7,0,2.0],[990,4,0,2.0],[1000,4,0,2.0],[1010,1,0,2.0],[1020,1,0,2.0],[1030,1,0,2.0],[1040,3,0,2.0],[1050,2,0,2.0],[1060,2,0,2.0],[1070,5,0,2.0],[1080,8,0,2.0],[1090,6,0,2.0],[1100,0,0,2.0],[1110,0,0,2.0],[1120,7,0,2.0],[1130,0,0,2.0],[1140,0,0,2.0],[1150,0,0,2.0],[1160,0,0,2.0],[1170,0,0,2.0],[1180,0,0,2.0],[1190,1,0,2.0],[1200,2,0,2.0],[1210,12,0,2.8],[1220,8,0,3.0],[1230,19,0,2.4],[1240,8,0,2.0],[1250,12,0,2.0],[1260,11,0,2.0],[1270,20,0,1.9],[1280,0,1,1.0],[1290,1,1,1.0],[1300,0,1,1.0],[1310,0,1,1.0],[1320,1,1,1.0],[1330,0,1,1.0],[1340,0,1,1.0],[1350,0,0,3.9],[1360,1,0,4.2],[1370,5,0,1.1],[1380,1,1,1.0],[1390,0,1,1.0],[1400,1,1,1.0],[1410,1,1,1.0],[1420,1,1,1.0],[1430,5,1,1.0],[1440,4,1,1.0],[1450,5,1,1.0],[1460,9,1,1.0],[1470,4,1,1.0],[1480,7,1,1.0],[1490,3,1,1.0],[1500,7,1,1.0],[1510,7,1,1.0],[1520,5,1,1.0],[1530,5,1,1.0],[1540,13,1,1.0],[1550,13,1,1.0],[1560,9,1,1.0],[1570,5,1,1.0],[1580,8,1,1.0],[1590,4,1,1.0],[1600,3,1,1.0],[1610,6,1,1.0],[1620,7,1,1.0],[1630,4,1,1.0],[1640,4,0,2.3],[1650,0,0,2.1],[1660,0,1,1.0],[1670,2,1,1.0],[1680,1,1,1.0],[1690,0,1,1.0],[1700,0,1,1.0],[1710,2,1,1.0],[1720,0,1,1.0],[1730,0,1,1.0],[1740,0,1,1.0],[1750,0,1,1.0],[1760,0,1,1.0],[1770,0,1,1.0],[1780,0,1,1.0],[1790,1,1,1.0],[1800,0,1,1.0],[1810,0,1,1.0],[1820,1,1,1.0],[1830,0,1,1.0]]};
+
+/* ==========================================================================
+   Small chart toolkit (no dependencies)
+   ========================================================================== */
+const NS = "http://www.w3.org/2000/svg";
+const el = (n, a = {}, kids = []) => {
+  const e = document.createElementNS(NS, n);
+  for (const k in a) if (a[k] !== null && a[k] !== undefined) e.setAttribute(k, a[k]);
+  (Array.isArray(kids) ? kids : [kids]).forEach(c => e.appendChild(typeof c === "string" ? document.createTextNode(c) : c));
+  return e;
+};
+const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const lin = (d0, d1, r0, r1) => v => r0 + (v - d0) / (d1 - d0) * (r1 - r0);
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const fmt = (v, d = 2) => (v < 0 ? "−" : "") + Math.abs(v).toFixed(d);
+/* keep the verdict cards to ~5 glyphs however far the sliders are pushed */
+const fmtV = v => { const a = Math.abs(v); return fmt(v, a < 10 ? 2 : a < 100 ? 1 : 0); };
+
+function svgFrame(host, w, h) {
+  host.innerHTML = "";
+  const s = el("svg", { viewBox: `0 0 ${w} ${h}`, role: "img", preserveAspectRatio: "xMidYMid meet" });
+  host.appendChild(s);
+  return s;
+}
+function makeTip(host) {
+  const t = document.createElement("div");
+  t.className = "tip";
+  host.appendChild(t);
+  return {
+    show(x, y, html) { t.innerHTML = html; t.style.left = x + "px"; t.style.top = y + "px"; t.style.opacity = 1; },
+    hide() { t.style.opacity = 0; }
+  };
+}
+/* map svg user coords -> host pixel coords for tooltips */
+function pxMapper(host, svg, w) {
+  return (ux, uy) => {
+    const r = svg.getBoundingClientRect();
+    const k = r.width / w;
+    return [ux * k, uy * k];
+  };
+}
+
+/* ==========================================================================
+   §3 MODEL — closed-form equilibrium (Propositions 1 & 2)
+   ========================================================================== */
+const Y = 1; // taxable income normalised to 1
+
+function solveEmpire(p) {
+  const { L, alpha, beta, delta, theta, twoSided } = p;
+  const LI = 0.5 * alpha * (1 - delta);
+  const LII = Math.min(0.25 * beta * delta * delta + LI, 2 * LI);
+  const LIbar = 2 * LI;
+  let G, M, mode;
+  if (twoSided) {
+    if (L <= LI) { G = 0.5; M = 0; mode = "no military needed"; }
+    else if (L <= LII) { G = 1 - L / alpha - delta; M = 2 * (L - LI); mode = "defends one frontier, ignores the other"; }
+    else { G = 0.5; M = (L - LI) + beta * delta * delta / 4; mode = "central capital, defends both frontiers"; }
+  } else {
+    G = 1 - delta;
+    if (L <= LIbar) { M = 0; mode = "no military needed"; }
+    else { M = L - alpha * (1 - delta); mode = "capital pushed onto the threatened flank"; }
+  }
+  G = clamp(G, 0, 1);
+  return { G, M, LI, LII, LIbar, mode, V: Y - theta * M * M };
+}
+
+function solveFrag(p) {
+  const { L, alpha, beta, delta, theta, twoSided } = p;
+  const LI = 0.5 * alpha * (1 - delta);
+  let D = Math.cbrt(Y / (4 * theta * beta * beta));
+  let clampedD = false;
+  if (D > 1) { D = 1; clampedD = true; }
+  const Mcomp = clampedD ? Y / (4 * theta * beta) : Math.cbrt(Y * Y / (16 * theta * theta * beta));
+  const Gl = (1 - D) / 2, Gr = (1 + D) / 2;
+  /* Military needed to shield exactly δ. Two-sided: the shielded interval is
+     [(1−δ)/2, 1−(1−δ)/2] and its left edge always falls in regime l's half, so l
+     does the blocking. One-sided: the edge sits at 1−δ, which belongs to l when
+     δ ≥ ½ and to r otherwise — the paper states the δ ≥ ½ case, and the mirror
+     term covers the rest of the slider range. Below Λ_I (two-sided) or 2Λ_I
+     (one-sided) the threat dies out on its own and nothing extra is needed. */
+  const reachTwo = (beta / 4) * Math.pow(delta - D, 2);
+  const reachOne = (beta / 4) * Math.pow(2 * delta - 1 + (delta >= 0.5 ? -D : D), 2);
+  const LIII = LI - reachTwo + Mcomp;
+  const LIIIbar = 2 * LI - reachOne + Mcomp;
+  let Mreq;
+  if (twoSided) Mreq = L > LI ? (L - LI) + reachTwo : 0;
+  else Mreq = L > 2 * LI ? (L - 2 * LI) + reachOne : 0;
+  const M = Math.max(Mcomp, Mreq);
+  const binding = Mreq > Mcomp;
+  return { Gl, Gr, D, M, Mcomp, LIII, LIIIbar, binding, clampedD,
+           Vl: 0.5 * Y - theta * M * M, V: Y - 2 * theta * M * M };
+}
+
+/* Geometry: military strength, damage, shielded set, residual damage */
+const NGRID = 801;
+function analyse(regimes, p) {
+  const { L, alpha, beta, twoSided } = p;
+  const mil = [], dL = [], dR = [], xs = [];
+  for (let i = 0; i < NGRID; i++) {
+    const x = i / (NGRID - 1);
+    xs.push(x);
+    let m = 0;
+    for (const r of regimes) {
+      if (x >= r.lo - 1e-9 && x <= r.hi + 1e-9) { m = Math.max(0, r.M - beta * Math.pow(r.G - x, 2)); break; }
+    }
+    mil.push(m);
+    dL.push(Math.max(0, L - alpha * x));
+    dR.push(twoSided ? Math.max(0, L - alpha * (1 - x)) : 0);
+  }
+  const pL = new Array(NGRID).fill(false);
+  let blocked = false;
+  for (let i = 0; i < NGRID; i++) { if (mil[i] >= dL[i]) blocked = true; pL[i] = blocked; }
+  const pR = new Array(NGRID).fill(true);
+  if (twoSided) {
+    blocked = false;
+    for (let i = NGRID - 1; i >= 0; i--) { if (mil[i] >= dR[i]) blocked = true; pR[i] = blocked; }
+  }
+  /* trapezoidal weights so a fully shielded continent integrates to exactly 1 */
+  const prot = [], resid = [];
+  let shielded = 0, damage = 0;
+  const dx = 1 / (NGRID - 1);
+  for (let i = 0; i < NGRID; i++) {
+    const w = (i === 0 || i === NGRID - 1) ? dx / 2 : dx;
+    const ok = pL[i] && pR[i];
+    prot.push(ok);
+    if (ok) shielded += w;
+    const rl = pL[i] ? 0 : Math.max(0, dL[i] - mil[i]);
+    const rr = pR[i] ? 0 : Math.max(0, dR[i] - mil[i]);
+    resid.push(rl + rr);
+    damage += (rl + rr) * w;
+  }
+  return { xs, mil, dL, dR, prot, resid, shielded, damage };
+}
+
+/* ---- render one continent diagram ---- */
+function drawContinent(host, p, kind, opts = {}) {
+  const emp = kind === "empire";
+  const sol = emp ? solveEmpire(p) : solveFrag(p);
+  const regimes = emp
+    ? [{ G: sol.G, M: sol.M, lo: 0, hi: 1 }]
+    : [{ G: sol.Gl, M: sol.M, lo: 0, hi: 0.5 }, { G: sol.Gr, M: sol.M, lo: 0.5, hi: 1 }];
+  const A = analyse(regimes, p);
+
+  const W = 640, H = opts.h || 190;
+  const m = { t: 16, r: 14, b: 30, l: 14 };
+  const svg = svgFrame(host, W, H);
+  const tip = opts.tip === false ? null : makeTip(host);
+  const toPx = pxMapper(host, svg, W);
+
+  const yMax = Math.max(p.L, ...A.mil, 1e-6) * 1.18;
+  const X = lin(0, 1, m.l, W - m.r);
+  const Yc = lin(0, yMax, H - m.b, m.t);
+
+  const hue = emp ? cssv("--china") : cssv("--europe");
+  const g = el("g"); svg.appendChild(g);
+
+  /* shielded band along the baseline */
+  const base = H - m.b;
+  let i = 0;
+  while (i < NGRID) {
+    if (A.prot[i]) {
+      let j = i; while (j < NGRID && A.prot[j]) j++;
+      const x0 = X(A.xs[i]), x1 = X(A.xs[Math.min(j - 1, NGRID - 1)]);
+      g.appendChild(el("rect", { x: x0, y: base + 2, width: Math.max(1, x1 - x0), height: 7,
+        fill: cssv("--ink-3"), opacity: .35, rx: 1 }));
+      i = j;
+    } else i++;
+  }
+
+  /* damage areas */
+  const areaPath = (vals) => {
+    let d = `M ${X(0)} ${Yc(0)}`;
+    for (let k = 0; k < NGRID; k++) d += ` L ${X(A.xs[k]).toFixed(2)} ${Yc(vals[k]).toFixed(2)}`;
+    d += ` L ${X(1)} ${Yc(0)} Z`;
+    return d;
+  };
+  g.appendChild(el("path", { d: areaPath(A.dL), fill: cssv("--threat"), opacity: .16 }));
+  g.appendChild(el("path", { d: areaPath(A.dL), fill: "none", stroke: cssv("--threat"), "stroke-width": 2, "stroke-linejoin": "round" }));
+  if (p.twoSided) {
+    g.appendChild(el("path", { d: areaPath(A.dR), fill: cssv("--threat"), opacity: .16 }));
+    g.appendChild(el("path", { d: areaPath(A.dR), fill: "none", stroke: cssv("--threat"), "stroke-width": 2, "stroke-linejoin": "round" }));
+  }
+
+  /* military curves, one per regime, with a 2px surface gap between them */
+  regimes.forEach(r => {
+    const pts = [];
+    for (let k = 0; k < NGRID; k++) {
+      const x = A.xs[k];
+      if (x < r.lo - 1e-9 || x > r.hi + 1e-9) continue;
+      pts.push([X(x), Yc(Math.max(0, r.M - p.beta * Math.pow(r.G - x, 2)))]);
+    }
+    if (!pts.length) return;
+    let d = `M ${pts[0][0].toFixed(2)} ${Yc(0)}`;
+    pts.forEach(pt => { d += ` L ${pt[0].toFixed(2)} ${pt[1].toFixed(2)}`; });
+    d += ` L ${pts[pts.length - 1][0].toFixed(2)} ${Yc(0)} Z`;
+    g.appendChild(el("path", { d, fill: hue, opacity: .19 }));
+    let dl = `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
+    pts.forEach(pt => { dl += ` L ${pt[0].toFixed(2)} ${pt[1].toFixed(2)}`; });
+    g.appendChild(el("path", { d: dl, fill: "none", stroke: hue, "stroke-width": 2, "stroke-linejoin": "round" }));
+
+    /* capital stem */
+    const cx = X(r.G), cy = Yc(Math.max(0, r.M));
+    g.appendChild(el("line", { x1: cx, y1: base, x2: cx, y2: cy, stroke: cssv("--ink-3"), "stroke-width": 1, "stroke-dasharray": "2 2" }));
+    g.appendChild(el("circle", { cx, cy, r: 4, fill: hue, stroke: cssv("--panel"), "stroke-width": 2 }));
+  });
+
+  /* border between the two states */
+  if (!emp) {
+    g.appendChild(el("line", { x1: X(.5), y1: m.t - 6, x2: X(.5), y2: base + 12,
+      stroke: cssv("--rule-firm"), "stroke-width": 1, "stroke-dasharray": "3 3" }));
+    g.appendChild(el("text", { x: X(.5), y: m.t - 9, "text-anchor": "middle", class: "ax-txt" }, "border"));
+  }
+
+  /* baseline + frontier ticks */
+  g.appendChild(el("line", { x1: X(0), y1: base, x2: X(1), y2: base, class: "ax-line" }));
+  g.appendChild(el("text", { x: X(0), y: H - 8, class: "ax-txt", "text-anchor": "start" },
+    p.twoSided ? "frontier" : "frontier"));
+  g.appendChild(el("text", { x: X(1), y: H - 8, class: "ax-txt", "text-anchor": "end" },
+    p.twoSided ? "frontier" : "interior"));
+
+  /* row identity + shielded readout */
+  g.appendChild(el("text", { x: X(0), y: m.t - 4, class: "dlabel", fill: hue, "font-weight": "600" },
+    emp ? "ONE EMPIRE" : "TWO RIVAL STATES"));
+  g.appendChild(el("text", { x: X(1), y: m.t - 4, class: "dlabel", "text-anchor": "end", fill: cssv("--ink-3") },
+    `shielded ${(A.shielded * 100).toFixed(0)}%`));
+
+  /* hover */
+  if (tip) {
+    const hit = el("rect", { x: X(0), y: 0, width: X(1) - X(0), height: H, fill: "transparent", style: "cursor:crosshair" });
+    const cross = el("line", { y1: m.t - 6, y2: base, stroke: cssv("--ink-3"), "stroke-width": 1, opacity: 0 });
+    g.appendChild(cross); g.appendChild(hit);
+    hit.addEventListener("pointermove", ev => {
+      const r = svg.getBoundingClientRect();
+      const ux = (ev.clientX - r.left) / r.width * W;
+      const x = clamp((ux - m.l) / (W - m.l - m.r), 0, 1);
+      const k = Math.round(x * (NGRID - 1));
+      cross.setAttribute("x1", X(A.xs[k])); cross.setAttribute("x2", X(A.xs[k])); cross.setAttribute("opacity", .5);
+      const [px, py] = toPx(X(A.xs[k]), m.t + 6);
+      tip.show(px, py, `<b>position ${A.xs[k].toFixed(2)}</b><br>
+        <span class="mut">military</span> ${A.mil[k].toFixed(3)}<br>
+        <span class="mut">damage</span> ${Math.max(A.dL[k], A.dR[k]).toFixed(3)}<br>
+        <span class="mut">${A.prot[k] ? "shielded" : "net loss " + A.resid[k].toFixed(3)}</span>`);
+    });
+    hit.addEventListener("pointerleave", () => { cross.setAttribute("opacity", 0); tip.hide(); });
+  }
+  return { sol, A };
+}
+
+/* ---- phase diagram: net revenue vs threat size ---- */
+function drawPhase(host, p) {
+  const W = 640, H = 210, m = { t: 16, r: 96, b: 34, l: 52 };
+  const svg = svgFrame(host, W, H);
+  const tip = makeTip(host);
+  const toPx = pxMapper(host, svg, W);
+
+  const Lmax = 1.5;
+  const N = 260;
+  const ve = [], vf = [];
+  for (let i = 0; i <= N; i++) {
+    const L = Lmax * i / N;
+    const q = { ...p, L };
+    ve.push([L, solveEmpire(q).V]);
+    vf.push([L, solveFrag(q).V]);
+  }
+  const lo = -1, hi = 1.08;
+  const X = lin(0, Lmax, m.l, W - m.r), Yc = lin(lo, hi, H - m.b, m.t);
+
+  /* grid */
+  [-1, -0.5, 0, 0.5, 1].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: Yc(v), y2: Yc(v),
+      class: v === 0 ? "ax-line" : "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: Yc(v) + 3.5, class: "ax-txt", "text-anchor": "end" }, fmt(v, 1)));
+  });
+  for (let v = 0; v <= Lmax + 1e-9; v += 0.25) {
+    svg.appendChild(el("text", { x: X(v), y: H - 16, class: "ax-txt", "text-anchor": "middle" }, v.toFixed(2)));
+  }
+  svg.appendChild(el("text", { x: (m.l + W - m.r) / 2, y: H - 3, class: "ax-title", "text-anchor": "middle" }, "Threat size Λ"));
+  svg.appendChild(el("text", { x: m.l, y: m.t - 6, class: "ax-title" }, "Net revenue"));
+
+  /* nonviable region below zero */
+  svg.appendChild(el("rect", { x: m.l, y: Yc(0), width: W - m.r - m.l, height: (H - m.b) - Yc(0),
+    fill: cssv("--threat"), opacity: .055 }));
+  svg.appendChild(el("text", { x: m.l + 6, y: H - m.b - 6, class: "ax-txt", fill: cssv("--threat") }, "nonviable"));
+
+  const path = (arr, col) => {
+    let d = "", pen = false;
+    arr.forEach(([L, v]) => {
+      if (v < lo - .4 || v > hi + .4) { pen = false; return; }
+      const c = `${X(L).toFixed(2)} ${Yc(clamp(v, lo, hi)).toFixed(2)}`;
+      d += (pen ? " L " : " M ") + c; pen = true;
+    });
+    svg.appendChild(el("path", { d, fill: "none", stroke: col, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+  };
+  path(vf, cssv("--europe"));
+  path(ve, cssv("--china"));
+
+  /* direct labels at the right edge; both curves bottom out together once the
+     threat is overwhelming, so nudge them apart when they would overprint */
+  let ye = Yc(clamp(ve[ve.length - 1][1], lo, hi));
+  let yf = Yc(clamp(vf[vf.length - 1][1], lo, hi));
+  if (Math.abs(ye - yf) < 13) {
+    const mid = (ye + yf) / 2;
+    ye = mid - 7; yf = mid + 7;                       /* empire above, states below */
+    if (ve[ve.length - 1][1] < vf[vf.length - 1][1]) { ye = mid + 7; yf = mid - 7; }
+  }
+  svg.appendChild(el("text", { x: W - m.r + 8, y: ye + 3.5, class: "dlabel", fill: cssv("--china") }, "Empire"));
+  svg.appendChild(el("text", { x: W - m.r + 8, y: yf + 3.5, class: "dlabel", fill: cssv("--europe") }, "Two states"));
+
+  /* collapse thresholds */
+  const firstCross = arr => {
+    for (let i = 1; i < arr.length; i++) if (arr[i - 1][1] >= 0 && arr[i][1] < 0) return arr[i][0];
+    return null;
+  };
+  [[firstCross(ve), cssv("--china"), "empire falls"], [firstCross(vf), cssv("--europe"), "states fall"]].forEach(([L, col, t]) => {
+    if (L === null) return;
+    svg.appendChild(el("circle", { cx: X(L), cy: Yc(0), r: 3.5, fill: col, stroke: cssv("--panel"), "stroke-width": 2 }));
+  });
+
+  /* current Λ marker — a caret rather than a text label, which would collide
+     with the axis title whenever Λ sits near the left of the range */
+  const lx = X(clamp(p.L, 0, Lmax));
+  svg.appendChild(el("line", { x1: lx, x2: lx, y1: m.t - 2, y2: H - m.b,
+    stroke: cssv("--ink"), "stroke-width": 1, "stroke-dasharray": "3 2", opacity: .5 }));
+  svg.appendChild(el("path", { d: `M ${lx - 4} ${m.t - 8} L ${lx + 4} ${m.t - 8} L ${lx} ${m.t - 2} Z`,
+    fill: cssv("--ink-2") }));
+
+  /* hover */
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.r - m.l, height: H - m.b - m.t, fill: "transparent", style: "cursor:crosshair" });
+  const cr = el("line", { y1: m.t, y2: H - m.b, stroke: cssv("--ink-3"), "stroke-width": 1, opacity: 0 });
+  svg.appendChild(cr); svg.appendChild(hit);
+  hit.addEventListener("pointermove", ev => {
+    const r = svg.getBoundingClientRect();
+    const ux = (ev.clientX - r.left) / r.width * W;
+    const L = clamp((ux - m.l) / (W - m.r - m.l) * Lmax, 0, Lmax);
+    const i = Math.round(L / Lmax * N);
+    cr.setAttribute("x1", X(ve[i][0])); cr.setAttribute("x2", X(ve[i][0])); cr.setAttribute("opacity", .45);
+    const [px, py] = toPx(X(ve[i][0]), m.t + 4);
+    tip.show(px, py, `<b>Λ = ${ve[i][0].toFixed(2)}</b><br>
+      <span class="mut">empire</span> ${fmt(ve[i][1])}<br>
+      <span class="mut">two states</span> ${fmt(vf[i][1])}`);
+  });
+  hit.addEventListener("pointerleave", () => { cr.setAttribute("opacity", 0); tip.hide(); });
+}
+
+/* ---- simulator wiring ---- */
+const PRESETS = {
+  china:  { L: 0.60, alpha: 0.5, beta: 6.5, delta: 0.80, theta: 1, twoSided: false },
+  europe: { L: 0.12, alpha: 0.5, beta: 6.5, delta: 0.80, theta: 1, twoSided: true }
+};
+const S = { ...PRESETS.china };
+
+const $ = id => document.getElementById(id);
+const sliders = [["s-L", "L", "v-L", 3], ["s-a", "alpha", "v-a", 2], ["s-b", "beta", "v-b", 2],
+                 ["s-d", "delta", "v-d", 2], ["s-t", "theta", "v-t", 2]];
+
+function syncInputs() {
+  sliders.forEach(([sid, key, vid, dp]) => { $(sid).value = S[key]; $(vid).textContent = S[key].toFixed(dp); });
+  $("p-one").setAttribute("aria-pressed", String(!S.twoSided));
+  $("p-two").setAttribute("aria-pressed", String(S.twoSided));
+  const isC = !S.twoSided && Math.abs(S.L - PRESETS.china.L) < 1e-9 && Math.abs(S.beta - PRESETS.china.beta) < 1e-9 && Math.abs(S.delta - PRESETS.china.delta) < 1e-9;
+  const isE = S.twoSided && Math.abs(S.L - PRESETS.europe.L) < 1e-9 && Math.abs(S.beta - PRESETS.europe.beta) < 1e-9 && Math.abs(S.delta - PRESETS.europe.delta) < 1e-9;
+  $("p-china").setAttribute("aria-pressed", String(isC));
+  $("p-europe").setAttribute("aria-pressed", String(isE));
+}
+
+function renderSim() {
+  const e = drawContinent($("sim-emp"), S, "empire");
+  const f = drawContinent($("sim-frag"), S, "frag");
+  drawPhase($("sim-phase"), S);
+
+  const eOK = e.sol.V >= 0, fOK = f.sol.Vl >= 0;
+  $("v-Ve").textContent = fmtV(e.sol.V);
+  $("v-Vf").textContent = fmtV(f.sol.V);
+  $("v-Ve").style.color = eOK ? cssv("--ink") : cssv("--threat");
+  $("v-Vf").style.color = fOK ? cssv("--ink") : cssv("--threat");
+  $("v-Pe").className = "pill " + (eOK ? "good" : "bad");
+  $("v-Pe").textContent = eOK ? "viable" : "collapses";
+  $("v-Pf").className = "pill " + (fOK ? "good" : "bad");
+  $("v-Pf").textContent = fOK ? "viable" : "collapses";
+
+  $("readout").innerHTML = [
+    ["Capital G*", e.sol.G.toFixed(3)],
+    ["Empire military M*", e.sol.M.toFixed(3)],
+    ["Each state's M*", f.sol.M.toFixed(3)],
+    ["Distance between capitals", f.sol.D.toFixed(3)],
+    ["Shielded — empire", (e.A.shielded * 100).toFixed(0) + "%"],
+    ["Shielded — two states", (f.A.shielded * 100).toFixed(0) + "%"],
+    ["Damage if threat lands — empire", e.A.damage.toFixed(3)],
+    ["Damage if threat lands — states", f.A.damage.toFixed(3)]
+  ].map(([a, b]) => `<div class="rrow"><span>${a}</span><span>${b}</span></div>`).join("");
+
+  let verdict;
+  if (eOK && !fOK) verdict = `<b>Political centralization is the only survivor.</b> Under a ${S.twoSided ? "two" : "one"}-sided threat of this size, each small state must field almost the same army as the empire while commanding half the tax base. The empire absorbs the cost; the states do not. This is Implication 4 — and our account of why China kept reassembling itself.`;
+  else if (!eOK && fOK) verdict = `<b>Fragmentation is the only survivor.</b> The empire has to cover two distant frontiers from a single centre, and with force decaying at β&nbsp;=&nbsp;${S.beta.toFixed(1)} that is ruinous. Two states each defend a frontier from close range. This is Implication 5 — our account of Rome, the Carolingians, and why no one reassembled Europe.`;
+  else if (eOK && fOK) verdict = e.sol.V > f.sol.V
+    ? `<b>Both arrangements survive; the empire is the efficient one.</b> Rival states are still arming against each other, which is pure waste when the external threat is this manageable (Implication 1). Note that the states nonetheless shield ${(f.A.shielded * 100).toFixed(0)}% of the continent against the empire's ${(e.A.shielded * 100).toFixed(0)}% — over-arming buys robustness the empire never pays for (Implication 2).`
+    : `<b>Both arrangements survive, and fragmentation raises more net revenue.</b> The empire's cost of covering distant frontiers from one centre now exceeds what the states waste competing with each other.`;
+  else verdict = `<b>Neither arrangement is fiscally viable.</b> The threat exceeds what this continent can defend against at any political scale — the model has no equilibrium to offer here, only conquest.`;
+  $("verdict-text").innerHTML = verdict;
+}
+
+function bindSim() {
+  sliders.forEach(([sid, key, vid, dp]) => {
+    $(sid).addEventListener("input", ev => {
+      S[key] = parseFloat(ev.target.value);
+      $(vid).textContent = S[key].toFixed(dp);
+      syncInputs(); renderSim();
+    });
+  });
+  $("p-one").addEventListener("click", () => { S.twoSided = false; syncInputs(); renderSim(); });
+  $("p-two").addEventListener("click", () => { S.twoSided = true; syncInputs(); renderSim(); });
+  $("p-china").addEventListener("click", () => { Object.assign(S, PRESETS.china); syncInputs(); renderSim(); });
+  $("p-europe").addEventListener("click", () => { Object.assign(S, PRESETS.europe); syncInputs(); renderSim(); });
+  syncInputs(); renderSim();
+}
+
+/* ---- hero diptych ---- */
+function buildHero() {
+  const host = $("hero-diptych");
+  host.innerHTML = "";
+  [["china", "China", "One-sided · severe"], ["europe", "Europe", "Two-sided · moderate"]].forEach(([k, name, sub]) => {
+    const p = PRESETS[k];
+    const card = document.createElement("div");
+    card.className = "dp";
+    card.innerHTML = `<div class="dp-hd"><span class="t">${name}</span><span class="s">${sub}</span></div>
+      <div class="chart-host" data-slot="a"></div>
+      <div class="chart-host" data-slot="b"></div>
+      <div class="dp-out" data-slot="o"></div>`;
+    host.appendChild(card);
+    const e = drawContinent(card.querySelector('[data-slot="a"]'), p, "empire", { h: 150 });
+    const f = drawContinent(card.querySelector('[data-slot="b"]'), p, "frag", { h: 150 });
+    const eOK = e.sol.V >= 0, fOK = f.sol.Vl >= 0;
+    card.querySelector('[data-slot="o"]').innerHTML = k === "china"
+      ? `Empire <b>survives</b> (net revenue ${fmt(e.sol.V)}); two rival states <b>cannot</b> (${fmt(f.sol.Vl)} each).
+         One army, one frontier, the whole continent paying for it.`
+      : `Empire <b>cannot</b> survive (${fmt(e.sol.V)}); two rival states <b>can</b> (${fmt(f.sol.Vl)} each).
+         Two frontiers cannot be covered from one centre.`;
+  });
+}
+
+/* ==========================================================================
+   Figure 2 — number of states
+   ========================================================================== */
+function drawStates() {
+  const host = $("c-states");
+  const W = 900, H = 300, m = { t: 18, r: 68, b: 40, l: 44 };
+  const svg = svgFrame(host, W, H);
+  const tip = makeTip(host);
+  const toPx = pxMapper(host, svg, W);
+
+  const X = lin(0, 1800, m.l, W - m.r);
+  const LY = v => Math.log(Math.max(v, 1));
+  const Yc = lin(LY(1), LY(130), H - m.b, m.t);
+
+  [1, 5, 25, 125].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: Yc(LY(v)), y2: Yc(LY(v)), class: "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: Yc(LY(v)) + 3.5, class: "ax-txt", "text-anchor": "end" }, String(v)));
+  });
+  for (let y = 0; y <= 1800; y += 300) {
+    svg.appendChild(el("text", { x: X(y), y: H - 18, class: "ax-txt", "text-anchor": "middle" }, y === 0 ? "AD 0" : String(y)));
+  }
+  svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, class: "ax-line" }));
+  svg.appendChild(el("text", { x: m.l, y: m.t - 6, class: "ax-title" }, "States"));
+  svg.appendChild(el("text", { x: (m.l + W - m.r) / 2, y: H - 4, class: "ax-title", "text-anchor": "middle" }, "Year"));
+
+  /* China — annual step line */
+  let dC = "";
+  DATA.chinaStates.forEach((v, y) => {
+    if (v === null) return;
+    const px = X(y), py = Yc(LY(v));
+    dC += (dC ? ` L ${px.toFixed(2)} ${py.toFixed(2)}` : `M ${px.toFixed(2)} ${py.toFixed(2)}`);
+  });
+  svg.appendChild(el("path", { d: dC, fill: "none", stroke: cssv("--china"), "stroke-width": 1.6, "stroke-linejoin": "round" }));
+
+  /* Europe — century observations, linearly interpolated */
+  let dE = "";
+  DATA.europeStates.forEach(([y, v], i) => {
+    const px = X(y), py = Yc(LY(v));
+    dE += (i ? ` L ${px.toFixed(2)} ${py.toFixed(2)}` : `M ${px.toFixed(2)} ${py.toFixed(2)}`);
+  });
+  svg.appendChild(el("path", { d: dE, fill: "none", stroke: cssv("--europe"), "stroke-width": 2.4, "stroke-linejoin": "round", "stroke-dasharray": "7 4" }));
+  DATA.europeStates.forEach(([y, v]) => {
+    svg.appendChild(el("circle", { cx: X(y), cy: Yc(LY(v)), r: 3, fill: cssv("--europe"), stroke: cssv("--panel"), "stroke-width": 1.6 }));
+  });
+
+  /* direct labels */
+  const lastE = DATA.europeStates[DATA.europeStates.length - 1];
+  svg.appendChild(el("text", { x: W - m.r + 8, y: Yc(LY(lastE[1])) + 3.5, class: "dlabel", fill: cssv("--europe") }, "Europe"));
+  svg.appendChild(el("text", { x: W - m.r + 8, y: Yc(LY(1)) + 3.5, class: "dlabel", fill: cssv("--china") }, "China"));
+
+  /* annotations that carry the argument */
+  const note = (year, text, dy) => {
+    svg.appendChild(el("line", { x1: X(year), x2: X(year), y1: m.t + 2, y2: H - m.b, stroke: cssv("--rule-firm"), "stroke-width": 1, "stroke-dasharray": "2 3" }));
+    svg.appendChild(el("text", { x: X(year) + 5, y: m.t + dy, class: "ax-txt", fill: cssv("--ink-3") }, text));
+  };
+  note(476, "Fall of the West", 10);
+  note(843, "Carolingian partition", 22);
+
+  /* hover */
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.r - m.l, height: H - m.b - m.t, fill: "transparent", style: "cursor:crosshair" });
+  const cr = el("line", { y1: m.t, y2: H - m.b, stroke: cssv("--ink-3"), "stroke-width": 1, opacity: 0 });
+  svg.appendChild(cr); svg.appendChild(hit);
+  const eAt = y => {
+    const a = DATA.europeStates;
+    if (y <= a[0][0]) return a[0][1];
+    for (let i = 1; i < a.length; i++) if (y <= a[i][0]) {
+      const t = (y - a[i - 1][0]) / (a[i][0] - a[i - 1][0]);
+      return a[i - 1][1] + t * (a[i][1] - a[i - 1][1]);
+    }
+    return a[a.length - 1][1];
+  };
+  hit.addEventListener("pointermove", ev => {
+    const r = svg.getBoundingClientRect();
+    const ux = (ev.clientX - r.left) / r.width * W;
+    const y = Math.round(clamp((ux - m.l) / (W - m.r - m.l) * 1800, 0, 1800));
+    cr.setAttribute("x1", X(y)); cr.setAttribute("x2", X(y)); cr.setAttribute("opacity", .45);
+    const [px, py] = toPx(X(y), m.t + 4);
+    tip.show(px, py, `<b>AD ${y}</b><br><span class="mut">China</span> ${DATA.chinaStates[y]} states<br><span class="mut">Europe</span> ≈${eAt(y).toFixed(0)} states`);
+  });
+  hit.addEventListener("pointerleave", () => { cr.setAttribute("opacity", 0); tip.hide(); });
+}
+
+/* ==========================================================================
+   Figure 3(a) — warfare composition
+   ========================================================================== */
+function drawWar() {
+  const host = $("c-war");
+  const W = 900, H = 290, m = { t: 18, r: 20, b: 48, l: 44 };
+  const svg = svgFrame(host, W, H);
+  const tip = makeTip(host);
+  const toPx = pxMapper(host, svg, W);
+
+  const groups = DATA.warfare;
+  const maxV = 310;
+  const Yc = lin(0, maxV, H - m.b, m.t);
+  const gw = (W - m.l - m.r) / groups.length;
+  const bw = Math.min(52, gw * 0.3);
+
+  [0, 100, 200, 300].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: Yc(v), y2: Yc(v), class: v === 0 ? "ax-line" : "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: Yc(v) + 3.5, class: "ax-txt", "text-anchor": "end" }, String(v)));
+  });
+  svg.appendChild(el("text", { x: m.l, y: m.t - 6, class: "ax-title" }, "Conflicts"));
+
+  groups.forEach((g, gi) => {
+    const cx = m.l + gw * (gi + 0.5);
+    const cols = [
+      { x: cx - bw * 0.62, segs: [[g.china_nomad, cssv("--china"), "nomad"], [g.china_other, cssv("--china-soft"), "other"]], lab: "China" },
+      { x: cx + bw * 0.62, segs: [[g.europe_interstate, cssv("--europe"), "interstate"], [g.europe_other, cssv("--europe-soft"), "other"]], lab: "Europe" }
+    ];
+    cols.forEach(col => {
+      let acc = 0;
+      col.segs.forEach(([v, c, nm]) => {
+        const y0 = Yc(acc + v), y1 = Yc(acc);
+        const h = Math.max(0, y1 - y0 - 2); /* 2px surface gap between stacked segments */
+        const r = el("rect", { x: col.x - bw / 2, y: y0, width: bw, height: h, fill: c, rx: 2 });
+        r.addEventListener("pointerenter", ev => {
+          const [px, py] = toPx(col.x, y0);
+          tip.show(px, py, `<b>${col.lab} · ${g.century} c.</b><br><span class="mut">${nm}</span> ${v} conflicts`);
+        });
+        r.addEventListener("pointerleave", () => tip.hide());
+        svg.appendChild(r);
+        acc += v;
+      });
+      svg.appendChild(el("text", { x: col.x, y: Yc(acc) - 7, class: "dlabel", "text-anchor": "middle", fill: cssv("--ink-2") }, String(acc)));
+      svg.appendChild(el("text", { x: col.x, y: H - m.b + 15, class: "ax-txt", "text-anchor": "middle" }, col.lab));
+    });
+    svg.appendChild(el("text", { x: cx, y: H - m.b + 32, class: "ax-title", "text-anchor": "middle" }, g.century + " century"));
+  });
+}
+
+/* ==========================================================================
+   Figure 3(b) — deadliest conflicts
+   ========================================================================== */
+function drawConflicts() {
+  const host = $("c-conf");
+  const W = 900, H = 330, m = { t: 22, r: 24, b: 44, l: 48 };
+  const svg = svgFrame(host, W, H);
+  const tip = makeTip(host);
+  const toPx = pxMapper(host, svg, W);
+
+  const X = lin(-400, 1900, m.l, W - m.r);
+  const Yc = lin(0, 42, H - m.b, m.t);
+  const col = r => r === "China" ? cssv("--china") : r === "Europe" ? cssv("--europe") : cssv("--other");
+
+  [0, 10, 20, 30, 40].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: Yc(v), y2: Yc(v), class: v === 0 ? "ax-line" : "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: Yc(v) + 3.5, class: "ax-txt", "text-anchor": "end" }, String(v)));
+  });
+  for (let y = -300; y <= 1800; y += 300) {
+    svg.appendChild(el("text", { x: X(y), y: H - 18, class: "ax-txt", "text-anchor": "middle" },
+      y < 0 ? Math.abs(y) + " BC" : (y === 0 ? "AD 0" : String(y))));
+  }
+  svg.appendChild(el("text", { x: m.l, y: m.t - 7, class: "ax-title" }, "Deaths (m)"));
+  svg.appendChild(el("text", { x: (m.l + W - m.r) / 2, y: H - 4, class: "ax-title", "text-anchor": "middle" }, "Year"));
+
+  /* label only the conflicts that carry the argument */
+  /* labels on the right-hand conflicts anchor leftward so nothing runs off the plot */
+  const LABEL = { "Mongol Conquests": [10, -10], "Fall of Ming Dynasty": [-11, -8], "Thirty Years War": [-11, -10],
+                  "An Lushan Rebellion": [10, -8], "Taiping Rebellion": [-11, 4], "Fall of Former Han Dynasty": [12, 4], "Warring States": [12, 3] };
+
+  /* two passes: every mark and its label first, then every hit target on top,
+     so a later dot can never sit above an earlier dot's hover area */
+  const ordered = DATA.conflicts.slice().sort((a, b) => a.deaths - b.deaths);
+  ordered.forEach(c => {
+    const cx = X(c.year), cy = Yc(c.deaths);
+    /* 2px surface ring keeps overlapping marks readable */
+    svg.appendChild(el("circle", { cx, cy, r: 6, fill: col(c.region), stroke: cssv("--panel"), "stroke-width": 2 }));
+    if (LABEL[c.war]) {
+      const [dx, dy] = LABEL[c.war];
+      svg.appendChild(el("text", { x: cx + dx, y: cy + dy, class: "dlabel", fill: cssv("--ink-2"),
+        "text-anchor": dx < 0 ? "end" : "start" }, c.war));
+    }
+  });
+  /* Nearest-point hover. Per-dot hit circles would let a later mark swallow an
+     earlier one wherever the scatter is dense, so a single overlay finds the
+     closest conflict instead — every point stays reachable. */
+  const pts = ordered.map(c => ({ c, cx: X(c.year), cy: Yc(c.deaths) }));
+  const ring = el("circle", { r: 10, fill: "none", stroke: cssv("--ink"), "stroke-width": 1.5, opacity: 0 });
+  svg.appendChild(ring);
+  const over = el("rect", { x: m.l, y: m.t - 12, width: W - m.r - m.l, height: H - m.b - m.t + 12,
+    fill: "transparent", style: "cursor:crosshair" });
+  svg.appendChild(over);
+  over.addEventListener("pointermove", ev => {
+    const r = svg.getBoundingClientRect(), k = W / r.width;
+    const ux = (ev.clientX - r.left) * k, uy = (ev.clientY - r.top) * k;
+    let best = null, bd = Infinity;
+    pts.forEach(pt => { const d = (pt.cx - ux) ** 2 + (pt.cy - uy) ** 2; if (d < bd) { bd = d; best = pt; } });
+    if (!best || bd > 60 * 60) { ring.setAttribute("opacity", 0); tip.hide(); return; }
+    ring.setAttribute("cx", best.cx); ring.setAttribute("cy", best.cy); ring.setAttribute("opacity", .6);
+    const [px, py] = toPx(best.cx, best.cy - 11);
+    tip.show(px, py, `<b>${best.c.war}</b><br><span class="mut">${best.c.start}–${best.c.end} · ${best.c.region}</span><br>${best.c.deaths}m estimated deaths`);
+  });
+  over.addEventListener("pointerleave", () => { ring.setAttribute("opacity", 0); tip.hide(); });
+}
+
+/* ==========================================================================
+   §4 — decadal panel: attacks + unification
+   ========================================================================== */
+function drawPanel() {
+  const host = $("c-panel");
+  const W = 900, H = 300, m = { t: 16, r: 20, b: 40, l: 44 };
+  const splitY = 168;
+  const svg = svgFrame(host, W, H);
+  const tip = makeTip(host);
+  const toPx = pxMapper(host, svg, W);
+
+  const y0 = -220, y1 = 1840;
+  const X = lin(y0, y1, m.l, W - m.r);
+  const YA = lin(0, 21, splitY - 26, m.t);          /* attacks panel */
+  const YR = lin(0, 9, H - m.b, splitY + 4);        /* regimes panel */
+  const bw = Math.max(1.4, (W - m.l - m.r) / DATA.panel.length - 0.6);
+
+  /* unified bands behind everything */
+  let i = 0;
+  while (i < DATA.panel.length) {
+    if (DATA.panel[i][2] === 1) {
+      let j = i; while (j < DATA.panel.length && DATA.panel[j][2] === 1) j++;
+      const xa = X(DATA.panel[i][0]), xb = X(DATA.panel[Math.min(j, DATA.panel.length - 1)][0]);
+      svg.appendChild(el("rect", { x: xa, y: m.t - 4, width: Math.max(1, xb - xa), height: H - m.b - m.t + 4,
+        fill: cssv("--china"), opacity: .11 }));
+      i = j;
+    } else i++;
+  }
+
+  /* attacks bars */
+  [0, 10, 20].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: YA(v), y2: YA(v), class: v === 0 ? "ax-line" : "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: YA(v) + 3.5, class: "ax-txt", "text-anchor": "end" }, String(v)));
+  });
+  DATA.panel.forEach(([yr, atk]) => {
+    if (!atk) return;
+    const h = YA(0) - YA(atk);
+    svg.appendChild(el("rect", { x: X(yr) - bw / 2, y: YA(atk), width: bw, height: h, fill: cssv("--threat"), rx: Math.min(1.2, bw / 2) }));
+  });
+  svg.appendChild(el("text", { x: m.l, y: m.t - 6, class: "ax-title" }, "Nomadic attacks"));
+
+  /* regimes line */
+  [1, 5, 9].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: YR(v), y2: YR(v), class: v === 1 ? "ax-line" : "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: YR(v) + 3.5, class: "ax-txt", "text-anchor": "end" }, String(v)));
+  });
+  let d = "";
+  DATA.panel.forEach(([yr, , , reg], k) => { d += (k ? " L " : "M ") + `${X(yr).toFixed(2)} ${YR(clamp(reg, 0, 9)).toFixed(2)}`; });
+  svg.appendChild(el("path", { d, fill: "none", stroke: cssv("--china"), "stroke-width": 1.6, "stroke-linejoin": "round" }));
+  svg.appendChild(el("text", { x: m.l, y: splitY - 2, class: "ax-title" }, "Regimes in China"));
+
+  for (let y = -200; y <= 1800; y += 400) {
+    svg.appendChild(el("text", { x: X(y), y: H - 16, class: "ax-txt", "text-anchor": "middle" },
+      y < 0 ? Math.abs(y) + " BC" : "AD " + y));
+  }
+
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.r - m.l, height: H - m.b - m.t, fill: "transparent", style: "cursor:crosshair" });
+  const cr = el("line", { y1: m.t, y2: H - m.b, stroke: cssv("--ink"), "stroke-width": 1, opacity: 0 });
+  svg.appendChild(cr); svg.appendChild(hit);
+  hit.addEventListener("pointermove", ev => {
+    const r = svg.getBoundingClientRect();
+    const ux = (ev.clientX - r.left) / r.width * W;
+    const yr = (ux - m.l) / (W - m.r - m.l) * (y1 - y0) + y0;
+    let best = 0, bd = 1e9;
+    DATA.panel.forEach((row, k) => { const dd = Math.abs(row[0] - yr); if (dd < bd) { bd = dd; best = k; } });
+    const row = DATA.panel[best];
+    cr.setAttribute("x1", X(row[0])); cr.setAttribute("x2", X(row[0])); cr.setAttribute("opacity", .5);
+    const [px, py] = toPx(X(row[0]), m.t + 2);
+    const lab = row[0] < 0 ? `${Math.abs(row[0])}s BC` : `AD ${row[0]}s`;
+    tip.show(px, py, `<b>${lab}</b><br><span class="mut">attacks</span> ${row[1]}<br><span class="mut">regimes</span> ${row[3]}<br><span class="mut">${row[2] ? "unified" : "divided"}</span>`);
+  });
+  hit.addEventListener("pointerleave", () => { cr.setAttribute("opacity", 0); tip.hide(); });
+}
+
+/* ==========================================================================
+   §4 — ADL impulse response (published Table 2a coefficients)
+   ========================================================================== */
+const ADL = { p1: 0.906, p2: -0.283, p3: 0.256, m0: -0.0120, m1: 0.0196 };
+let irfMode = "perm";
+
+function irfPath(mode, T) {
+  const y = [], x = k => (mode === "perm" ? (k >= 0 ? 1 : 0) : (k === 0 ? 1 : 0));
+  for (let t = 0; t < T; t++) {
+    const v = ADL.p1 * (y[t - 1] || 0) + ADL.p2 * (y[t - 2] || 0) + ADL.p3 * (y[t - 3] || 0)
+            + ADL.m0 * x(t) + ADL.m1 * x(t - 1);
+    y.push(v);
+  }
+  return y;
+}
+
+function drawIRF() {
+  const host = $("c-irf");
+  const W = 900, H = 250, m = { t: 20, r: 92, b: 42, l: 52 };
+  const svg = svgFrame(host, W, H);
+  const tip = makeTip(host);
+  const toPx = pxMapper(host, svg, W);
+
+  const T = 40;
+  const y = irfPath(irfMode, T);
+  const lo = -0.02, hi = 0.075;
+  const X = lin(0, T - 1, m.l, W - m.r), Yc = lin(lo, hi, H - m.b, m.t);
+
+  [-0.02, 0, 0.02, 0.04, 0.06].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: Yc(v), y2: Yc(v), class: Math.abs(v) < 1e-9 ? "ax-line" : "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: Yc(v) + 3.5, class: "ax-txt", "text-anchor": "end" }, (v * 100).toFixed(0) + " pp"));
+  });
+  for (let t = 0; t < T; t += 5) svg.appendChild(el("text", { x: X(t), y: H - 18, class: "ax-txt", "text-anchor": "middle" }, String(t)));
+  svg.appendChild(el("text", { x: (m.l + W - m.r) / 2, y: H - 4, class: "ax-title", "text-anchor": "middle" }, "Decades since the change in nomadic pressure"));
+  svg.appendChild(el("text", { x: m.l, y: m.t - 7, class: "ax-title" }, "Change in P(unified)"));
+
+  /* long-run reference for the permanent case */
+  if (irfMode === "perm") {
+    const LR = (ADL.m0 + ADL.m1) / (1 - ADL.p1 - ADL.p2 - ADL.p3);
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: Yc(LR), y2: Yc(LR), stroke: cssv("--ink-3"), "stroke-width": 1, "stroke-dasharray": "4 3" }));
+    svg.appendChild(el("text", { x: W - m.r + 8, y: Yc(LR) + 3.5, class: "dlabel", fill: cssv("--ink-2") }, `long run +${(LR * 100).toFixed(1)} pp`));
+  }
+
+  /* area + line */
+  let ar = `M ${X(0)} ${Yc(0)}`;
+  y.forEach((v, t) => { ar += ` L ${X(t).toFixed(2)} ${Yc(clamp(v, lo, hi)).toFixed(2)}`; });
+  ar += ` L ${X(T - 1)} ${Yc(0)} Z`;
+  svg.appendChild(el("path", { d: ar, fill: cssv("--china"), opacity: .15 }));
+  let ln = "";
+  y.forEach((v, t) => { ln += (t ? " L " : "M ") + `${X(t).toFixed(2)} ${Yc(clamp(v, lo, hi)).toFixed(2)}`; });
+  svg.appendChild(el("path", { d: ln, fill: "none", stroke: cssv("--china"), "stroke-width": 2.2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+
+  /* emphasised endpoint + the sign flip at t=0/1 */
+  svg.appendChild(el("circle", { cx: X(T - 1), cy: Yc(clamp(y[T - 1], lo, hi)), r: 4, fill: cssv("--china"), stroke: cssv("--panel"), "stroke-width": 2 }));
+  svg.appendChild(el("circle", { cx: X(0), cy: Yc(y[0]), r: 4, fill: cssv("--threat"), stroke: cssv("--panel"), "stroke-width": 2 }));
+  svg.appendChild(el("text", { x: X(0) + 9, y: Yc(y[0]) + 14, class: "dlabel", fill: cssv("--threat") }, "the state fractures first"));
+
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.r - m.l, height: H - m.b - m.t, fill: "transparent", style: "cursor:crosshair" });
+  const cr = el("line", { y1: m.t, y2: H - m.b, stroke: cssv("--ink-3"), "stroke-width": 1, opacity: 0 });
+  svg.appendChild(cr); svg.appendChild(hit);
+  hit.addEventListener("pointermove", ev => {
+    const r = svg.getBoundingClientRect();
+    const ux = (ev.clientX - r.left) / r.width * W;
+    const t = clamp(Math.round((ux - m.l) / (W - m.r - m.l) * (T - 1)), 0, T - 1);
+    cr.setAttribute("x1", X(t)); cr.setAttribute("x2", X(t)); cr.setAttribute("opacity", .45);
+    const [px, py] = toPx(X(t), Yc(clamp(y[t], lo, hi)) - 6);
+    tip.show(px, py, `<b>decade ${t}</b><br>${(y[t] * 100 >= 0 ? "+" : "−")}${Math.abs(y[t] * 100).toFixed(2)} pp`);
+  });
+  hit.addEventListener("pointerleave", () => { cr.setAttribute("opacity", 0); tip.hide(); });
+}
+
+/* ==========================================================================
+   Figure 17 — population level and growth volatility
+   ========================================================================== */
+function drawPop() {
+  const host = $("c-pop");
+  const W = 900, H = 380, m = { t: 18, r: 66, b: 40, l: 50 };
+  const split = 210;
+  const svg = svgFrame(host, W, H);
+  const tip = makeTip(host);
+  const toPx = pxMapper(host, svg, W);
+
+  const P = DATA.population;
+  const base = P.find(r => r[0] === 1);
+  const idx = P.map(([y, c, e]) => [y, c / base[1] * 100, e / base[2] * 100]);
+
+  const X = lin(-200, 1700, m.l, W - m.r);
+  const YL = lin(0, 340, split - 34, m.t);
+  const YG = lin(-0.35, 0.55, H - m.b, split + 12);
+
+  /* --- level panel --- */
+  [0, 100, 200, 300].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: YL(v), y2: YL(v), class: v === 0 ? "ax-line" : "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: YL(v) + 3.5, class: "ax-txt", "text-anchor": "end" }, String(v)));
+  });
+  svg.appendChild(el("text", { x: m.l, y: m.t - 6, class: "ax-title" }, "Population index, AD 1 = 100"));
+
+  const series = [[1, cssv("--china"), "China"], [2, cssv("--europe"), "Europe"]];
+  series.forEach(([j, c, nm]) => {
+    let d = "";
+    idx.forEach((r, k) => { d += (k ? " L " : "M ") + `${X(r[0]).toFixed(2)} ${YL(r[j]).toFixed(2)}`; });
+    svg.appendChild(el("path", { d, fill: "none", stroke: c, "stroke-width": 2.2, "stroke-linejoin": "round" }));
+    idx.forEach(r => svg.appendChild(el("circle", { cx: X(r[0]), cy: YL(r[j]), r: 2.8, fill: c, stroke: cssv("--panel"), "stroke-width": 1.5 })));
+    const last = idx[idx.length - 1];
+    svg.appendChild(el("text", { x: W - m.r + 8, y: YL(last[j]) + 3.5, class: "dlabel", fill: c }, nm));
+  });
+
+  /* --- growth panel --- */
+  const grow = j => {
+    const out = [];
+    for (let k = 1; k < P.length; k++) {
+      const dt = P[k][0] - P[k - 1][0];
+      out.push([P[k][0], (Math.pow(P[k][j] / P[k - 1][j], 1 / dt) - 1) * 100]);
+    }
+    return out;
+  };
+  [-0.3, 0, 0.3].forEach(v => {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: YG(v), y2: YG(v), class: Math.abs(v) < 1e-9 ? "ax-line" : "grid-line" }));
+    svg.appendChild(el("text", { x: m.l - 8, y: YG(v) + 3.5, class: "ax-txt", "text-anchor": "end" }, v.toFixed(1) + "%"));
+  });
+  svg.appendChild(el("text", { x: m.l, y: split + 4, class: "ax-title" }, "Implied annual growth rate"));
+
+  series.forEach(([j, c, nm]) => {
+    const g = grow(j);
+    let d = "";
+    g.forEach((r, k) => { d += (k ? " L " : "M ") + `${X(r[0]).toFixed(2)} ${YG(clamp(r[1], -0.35, 0.55)).toFixed(2)}`; });
+    svg.appendChild(el("path", { d, fill: "none", stroke: c, "stroke-width": 2, "stroke-linejoin": "round" }));
+  });
+
+  /* volatility callout — the whole point of the figure */
+  const sd = j => {
+    const g = grow(j).map(r => r[1]);
+    const mu = g.reduce((a, b) => a + b, 0) / g.length;
+    return Math.sqrt(g.reduce((a, b) => a + (b - mu) ** 2, 0) / g.length);
+  };
+  svg.appendChild(el("text", { x: W - m.r + 8, y: YG(0.5), class: "dlabel", fill: cssv("--china") }, `China s.d. ${sd(1).toFixed(2)}`));
+  svg.appendChild(el("text", { x: W - m.r + 8, y: YG(0.5) + 13, class: "dlabel", fill: cssv("--europe") }, `Europe s.d. ${sd(2).toFixed(2)}`));
+
+  for (let y = -200; y <= 1700; y += 300) {
+    svg.appendChild(el("text", { x: X(y), y: H - 16, class: "ax-txt", "text-anchor": "middle" },
+      y < 0 ? Math.abs(y) + " BC" : (y === 0 ? "AD 0" : "AD " + y)));
+  }
+
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.r - m.l, height: H - m.b - m.t, fill: "transparent", style: "cursor:crosshair" });
+  const cr = el("line", { y1: m.t, y2: H - m.b, stroke: cssv("--ink"), "stroke-width": 1, opacity: 0 });
+  svg.appendChild(cr); svg.appendChild(hit);
+  hit.addEventListener("pointermove", ev => {
+    const r = svg.getBoundingClientRect();
+    const ux = (ev.clientX - r.left) / r.width * W;
+    const yr = (ux - m.l) / (W - m.r - m.l) * 1900 - 200;
+    let best = 0, bd = 1e9;
+    P.forEach((row, k) => { const dd = Math.abs(row[0] - yr); if (dd < bd) { bd = dd; best = k; } });
+    const row = P[best];
+    cr.setAttribute("x1", X(row[0])); cr.setAttribute("x2", X(row[0])); cr.setAttribute("opacity", .5);
+    const [px, py] = toPx(X(row[0]), m.t + 2);
+    tip.show(px, py, `<b>${row[0] < 0 ? Math.abs(row[0]) + " BC" : "AD " + row[0]}</b><br>
+      <span class="mut">China</span> ${row[1]}m<br><span class="mut">Europe</span> ${row[2]}m`);
+  });
+  hit.addEventListener("pointerleave", () => { cr.setAttribute("opacity", 0); tip.hide(); });
+}
+
+/* ==========================================================================
+   Boot
+   ========================================================================== */
+function renderAll() {
+  buildHero();
+  drawStates();
+  drawWar();
+  drawConflicts();
+  drawPanel();
+  drawIRF();
+  drawPop();
+  renderSim();
+}
+
+function boot() {
+  bindSim();
+  renderAll();
+
+  $("ir-perm").addEventListener("click", () => {
+    irfMode = "perm";
+    $("ir-perm").setAttribute("aria-pressed", "true");
+    $("ir-once").setAttribute("aria-pressed", "false");
+    drawIRF();
+  });
+  $("ir-once").addEventListener("click", () => {
+    irfMode = "once";
+    $("ir-perm").setAttribute("aria-pressed", "false");
+    $("ir-once").setAttribute("aria-pressed", "true");
+    drawIRF();
+  });
+
+  /* Scroll reveal. Content must never be able to get stuck invisible, so this is
+     strictly additive: no observer support, or a jump that skips past a block,
+     and everything simply shows. */
+  const nodes = [...document.querySelectorAll(".reveal")];
+  const showAll = () => nodes.forEach(n => n.classList.add("in"));
+  if (!("IntersectionObserver" in window)) showAll();
+  else {
+    const io = new IntersectionObserver(
+      es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+      { threshold: 0, rootMargin: "0px 0px -6% 0px" }
+    );
+    nodes.forEach(n => io.observe(n));
+    /* anything the reader has already scrolled past stays visible */
+    const sweep = () => nodes.forEach(n => {
+      if (n.getBoundingClientRect().top < window.innerHeight) { n.classList.add("in"); io.unobserve(n); }
+    });
+    window.addEventListener("scroll", sweep, { passive: true });
+    window.addEventListener("beforeprint", showAll);
+  }
+
+  /* redraw on theme change and on resize (colours are read from tokens) */
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  mq.addEventListener("change", () => setTimeout(renderAll, 40));
+  new MutationObserver(() => setTimeout(renderAll, 40))
+    .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  let rt;
+  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(renderAll, 180); });
+}
+
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+else boot();
+</script>
+
+</body></html>
