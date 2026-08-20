@@ -203,12 +203,21 @@ h2.sec{font-family:"Bodoni Moda",Didot,serif; font-size:clamp(1.7rem,4.5vw,2.6re
   .s-t{grid-column:2}
   .off{grid-template-columns:2.5rem 1fr}
 }
+
+/* back to main site */
+.backlink{display:inline-block;margin:0 0 1.4rem;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);
+  text-decoration:none;border-bottom:1px solid transparent;transition:color .18s,border-color .18s}
+.backlink:hover,.backlink:focus-visible{color:var(--sepia);border-bottom-color:var(--rule)}
+.backlink span{display:inline-block;transition:transform .18s}
+.backlink:hover span{transform:translateX(-3px)}
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <div class="wrap">
+    <a class="backlink rv" href="../Teaching.html"><span>&larr;</span>&nbsp; Mark Koyama &middot; Teaching</a>
     <p class="eyebrow rv">Hamilton Center · University of Florida · Fall 2026</p>
     <h1 class="rv">ISS 4931</h1>
     <p class="subtitle rv">Big Problems in PPEL — Challenges&nbsp;of&nbsp;the&nbsp;Twentieth&nbsp;Century</p>
