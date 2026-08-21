@@ -7,224 +7,191 @@
 <meta name="description" content="Challenges of the Twentieth Century — course page, schedule, and readings. Hamilton School, University of Florida, Fall 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700;6..96,900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
 <style>
-:root{
-  --parchment:#f6f0e4; --parchment-2:#efe7d7; --card:#fbf7ee;
-  --ink:#2b1e12; --ink-soft:#5c4a37; --ink-faint:#8b775e;
-  --sepia:#704214; --oxblood:#7b2d26; --verdigris:#3f5f57;
-  --rule:#d8cab0; --rule-soft:#e6dcc8;
-  --shadow:rgba(64,44,20,.10);
-  --grain:.035;
-}
-:root[data-theme=dark]{
-  --parchment:#14100b; --parchment-2:#1b1610; --card:#1e1811;
-  --ink:#ece2d0; --ink-soft:#b6a48b; --ink-faint:#8a7860;
-  --sepia:#c99a5b; --oxblood:#c9736a; --verdigris:#8fb3a8;
-  --rule:#3a3025; --rule-soft:#2b241b;
-  --shadow:rgba(0,0,0,.4);
-  --grain:.05;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme=light]){
-    --parchment:#14100b; --parchment-2:#1b1610; --card:#1e1811;
-    --ink:#ece2d0; --ink-soft:#b6a48b; --ink-faint:#8a7860;
-    --sepia:#c99a5b; --oxblood:#c9736a; --verdigris:#8fb3a8;
-    --rule:#3a3025; --rule-soft:#2b241b;
-    --shadow:rgba(0,0,0,.4);
-    --grain:.05;
-  }
-}
+/* ISS 4931 course page — extends the site stylesheet (../styles.css).
+   Colours, type and spacing all come from the shared :root tokens. */
+
+:root{ --faint:#8a7d74; }
+
 *{box-sizing:border-box}
-html{scroll-behavior:smooth; scroll-padding-top:5.5rem}
-body{
-  margin:0; background:var(--parchment); color:var(--ink);
-  font-family:"EB Garamond",Georgia,serif; font-size:19px; line-height:1.62;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
-}
-body::before{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:var(--grain);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode:multiply;
-}
-:root[data-theme=dark] body::before{mix-blend-mode:screen}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme=light]) body::before{mix-blend-mode:screen}
-}
+html{scroll-behavior:smooth; scroll-padding-top:5rem}
+body{ background:var(--bg); color:var(--ink); }
 
-.wrap{max-width:1080px; margin:0 auto; padding:0 clamp(1.1rem,4vw,3rem)}
-a{color:var(--sepia); text-decoration-thickness:1px; text-underline-offset:.18em}
-a:hover{color:var(--oxblood)}
+.wrap{max-width:1140px; margin:0 auto; padding:0 30px}
 
-/* ── masthead ─────────────────────────────────────────── */
-.masthead{position:relative; padding:clamp(3rem,9vh,6rem) 0 2.2rem; border-bottom:2px solid var(--ink)}
+/* ── course masthead ──────────────────────────────────── */
+.masthead{padding:52px 0 30px}
 .eyebrow{
-  font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.28em;
-  text-transform:uppercase; color:var(--oxblood); margin:0 0 1.4rem;
+  font-family:var(--sans); font-size:.78rem; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent-dark); margin:0 0 14px;
 }
-h1{
-  font-family:"Bodoni Moda",Didot,serif; font-weight:900;
-  font-size:clamp(2.9rem,9.5vw,6.4rem); line-height:.94; letter-spacing:-.015em;
-  margin:0 0 .35rem; font-variation-settings:"opsz" 96;
+.masthead h1{
+  font-family:var(--serif); font-weight:600; font-size:clamp(2.6rem,7vw,4rem);
+  line-height:1.02; color:var(--brand); margin:0 0 6px; letter-spacing:-.01em;
 }
 .subtitle{
-  font-family:"Bodoni Moda",Didot,serif; font-style:italic; font-weight:400;
-  font-size:clamp(1.2rem,3.4vw,2.05rem); line-height:1.15; color:var(--sepia); margin:0 0 2rem;
+  font-family:var(--serif); font-weight:400; font-style:italic;
+  font-size:clamp(1.15rem,2.6vw,1.6rem); line-height:1.25; color:var(--muted);
+  margin:0 0 26px; max-width:34ch;
 }
 .facts{
-  display:flex; flex-wrap:wrap; gap:.5rem 2.4rem;
-  font-family:"IBM Plex Mono",monospace; font-size:.76rem; letter-spacing:.06em; color:var(--ink-soft);
+  display:flex; flex-wrap:wrap; gap:8px 30px; padding-top:18px;
+  border-top:1px solid var(--line);
+  font-family:var(--sans); font-size:.82rem; color:var(--muted);
 }
-.facts b{color:var(--ink); font-weight:500}
+.facts b{color:var(--brand); font-weight:600}
 
-/* ── nav ──────────────────────────────────────────────── */
+/* ── in-page nav ──────────────────────────────────────── */
 .nav{
-  position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--parchment) 88%,transparent);
-  backdrop-filter:blur(10px); border-bottom:1px solid var(--rule);
+  position:sticky; top:60px; z-index:40; background:rgba(255,253,247,.94);
+  backdrop-filter:saturate(160%) blur(8px);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
 }
 .nav-in{
-  max-width:1080px; margin:0 auto; padding:.55rem clamp(1.1rem,4vw,3rem);
-  display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;
+  max-width:1140px; margin:0 auto; padding:0 30px;
+  display:flex; align-items:center; gap:26px; flex-wrap:wrap; min-height:48px;
 }
 .nav a{
-  font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
-  text-decoration:none; color:var(--ink-soft); padding:.42rem .62rem; border-radius:2px; white-space:nowrap;
+  font-family:var(--sans); font-size:.82rem; font-weight:500; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); padding:4px 0;
+  border-bottom:2px solid transparent; text-decoration:none; white-space:nowrap;
 }
-.nav a:hover{color:var(--ink); background:var(--parchment-2)}
-.nav a.on{color:var(--oxblood); box-shadow:inset 0 -2px 0 var(--oxblood)}
+.nav a:hover{color:var(--brand); border-bottom-color:var(--accent); text-decoration:none}
+.nav a.on{color:var(--brand); border-bottom-color:var(--brand)}
 .nav .sp{flex:1}
-.tog{
-  font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
-  background:none; border:1px solid var(--rule); color:var(--ink-soft);
-  padding:.34rem .6rem; border-radius:2px; cursor:pointer;
-}
-.tog:hover{border-color:var(--sepia); color:var(--ink)}
 
 /* ── intro / legend ───────────────────────────────────── */
-.lede{padding:3rem 0 0; max-width:66ch}
-.lede p{margin:0 0 1.1rem}
-.lede .big{font-size:1.16rem; color:var(--ink)}
+.lede{padding:44px 0 0; max-width:68ch}
+.lede p{margin:0 0 16px}
+.lede .big{font-size:1.12rem; color:var(--ink)}
 .legend{
-  margin:2.4rem 0 0; padding:1.1rem 1.3rem; background:var(--card);
-  border:1px solid var(--rule); border-left:3px solid var(--sepia);
-  font-size:.92rem; color:var(--ink-soft); max-width:66ch;
+  margin:32px 0 0; padding:20px 24px; background:var(--card);
+  border:1px solid var(--line); border-left:4px solid var(--accent);
+  border-radius:8px; box-shadow:var(--shadow-sm);
+  font-size:.94rem; color:var(--muted); max-width:68ch;
 }
-.legend strong{color:var(--ink)}
+.legend strong{color:var(--brand); font-family:var(--serif)}
 
 /* ── part dividers ────────────────────────────────────── */
-.part{margin:5.5rem 0 0; padding-top:2rem; border-top:2px solid var(--ink)}
-.part-head{display:grid; grid-template-columns:auto 1fr; gap:clamp(1rem,3vw,2.4rem); align-items:baseline}
+.part{margin:72px 0 0; padding-top:30px; border-top:2px solid var(--line)}
+.part-head{display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center}
 .part-num{
-  font-family:"Bodoni Moda",Didot,serif; font-weight:900; font-size:clamp(3.4rem,11vw,7rem);
-  line-height:.8; color:var(--oxblood); font-variation-settings:"opsz" 96;
+  font-family:var(--serif); font-weight:600; font-size:clamp(2.4rem,6vw,3.6rem);
+  line-height:1; color:var(--accent);
 }
-.part-t{font-family:"Bodoni Moda",Didot,serif; font-size:clamp(1.35rem,3.6vw,2.3rem); font-weight:400; line-height:1.1; margin:0}
-.part-sub{font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint); margin:.6rem 0 0}
+.part-t{font-family:var(--serif); font-size:clamp(1.4rem,3.4vw,2.1rem); font-weight:600; color:var(--brand); line-height:1.15; margin:0}
+.part-sub{font-family:var(--sans); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:6px 0 0}
 
 /* ── blocks + readings ────────────────────────────────── */
-.block{margin:3.2rem 0 0}
+.block{margin:44px 0 0}
 .block-t{
-  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--oxblood); margin:0 0 .2rem;
+  font-family:var(--serif); font-size:1.3rem; font-weight:600; color:var(--brand);
+  margin:0 0 6px; padding-bottom:8px; border-bottom:2px solid var(--line); position:relative;
 }
-.block-q{font-style:italic; color:var(--ink-soft); margin:0 0 1.3rem; max-width:62ch}
+.block-t::before{content:""; position:absolute; left:0; bottom:-2px; width:64px; height:2px; background:var(--accent)}
+.block-q{font-style:italic; color:var(--muted); margin:14px 0 18px; max-width:64ch}
 
-.reads{list-style:none; margin:0 0 1.6rem; padding:0; border-left:2px solid var(--rule-soft)}
-.reads li{padding:.42rem 0 .42rem 1.1rem; font-size:.95rem; line-height:1.5}
-.reads .star{color:var(--oxblood); font-weight:600}
+.reads{list-style:none; margin:0 0 22px; padding:0 0 0 18px; border-left:3px solid var(--line-soft)}
+.reads li{padding:7px 0; font-size:.95rem; line-height:1.55}
+.reads .star{color:var(--brand); font-weight:700}
 .badge{
-  display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.6rem; letter-spacing:.1em;
-  text-transform:uppercase; padding:.16rem .42rem; border-radius:2px; margin-left:.4rem;
-  vertical-align:.1em; text-decoration:none; white-space:nowrap;
+  display:inline-block; font-family:var(--sans); font-size:.66rem; font-weight:600; letter-spacing:.08em;
+  text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-left:6px;
+  vertical-align:.08em; text-decoration:none; white-space:nowrap;
 }
-.b-open{background:color-mix(in srgb,var(--verdigris) 16%,transparent); color:var(--verdigris); border:1px solid color-mix(in srgb,var(--verdigris) 34%,transparent)}
-a.b-open:hover{background:var(--verdigris); color:var(--parchment)}
-.b-canvas{background:color-mix(in srgb,var(--ink-faint) 13%,transparent); color:var(--ink-faint); border:1px solid var(--rule)}
+.b-open{background:#f3e9d4; color:var(--accent-dark); border:1px solid #e0cfa8}
+a.b-open:hover{background:var(--accent); color:#fff; text-decoration:none}
+.b-canvas{background:#efe9e2; color:var(--muted); border:1px solid var(--line)}
 
 /* ── optional listening ───────────────────────────────── */
 .listen{
-  margin:0 0 1.6rem; padding:.9rem 1.15rem; background:var(--card);
-  border:1px solid var(--rule); border-left:3px solid var(--verdigris);
+  margin:0 0 22px; padding:16px 20px; background:var(--card);
+  border:1px solid var(--line); border-left:4px solid var(--brand-soft); border-radius:8px;
 }
-.listen p{margin:0; font-size:.92rem; line-height:1.55; color:var(--ink-soft)}
+.listen p{margin:0; font-size:.93rem; line-height:1.55; color:var(--muted)}
 .listen strong{color:var(--ink)}
 .listen-t{
-  font-family:"IBM Plex Mono",monospace; font-size:.62rem !important; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--verdigris); margin:0 0 .4rem !important;
+  font-family:var(--sans); font-size:.7rem !important; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--brand-soft); margin:0 0 6px !important;
 }
 
 /* ── session ledger ───────────────────────────────────── */
 .sess{
-  display:grid; grid-template-columns:3.4rem 7.2rem 1fr; gap:0 1.1rem; align-items:baseline;
-  padding:.72rem 0 .72rem .2rem; border-top:1px solid var(--rule-soft); position:relative;
+  display:grid; grid-template-columns:3rem 7rem 1fr; gap:0 18px; align-items:baseline;
+  padding:11px 0 11px 4px; border-top:1px solid var(--line-soft);
   transition:background .18s ease, padding-left .18s ease;
 }
-.sess:hover{background:var(--card); padding-left:.55rem}
-.sess:last-child{border-bottom:1px solid var(--rule-soft)}
-.s-no{font-family:"IBM Plex Mono",monospace; font-size:.82rem; color:var(--oxblood); font-weight:500}
-.s-date{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--ink-faint); letter-spacing:.02em}
-.s-t{font-size:1.02rem; line-height:1.4}
-.sess.exam{background:color-mix(in srgb,var(--oxblood) 8%,transparent); border-left:3px solid var(--oxblood); padding-left:.6rem}
-.sess.exam .s-t{font-weight:600; letter-spacing:.03em; text-transform:uppercase; font-size:.92rem}
-.sess.exam .s-no{color:var(--oxblood)}
-.off{
-  grid-template-columns:3.4rem 7.2rem 1fr; color:var(--ink-faint); font-style:italic;
-  background:repeating-linear-gradient(135deg,transparent,transparent 7px,var(--rule-soft) 7px,var(--rule-soft) 8px);
-}
-.off:hover{background:repeating-linear-gradient(135deg,transparent,transparent 7px,var(--rule-soft) 7px,var(--rule-soft) 8px); padding-left:.2rem}
+.sess:hover{background:var(--card); padding-left:10px}
+.sess:last-child{border-bottom:1px solid var(--line-soft)}
+.s-no{font-family:var(--sans); font-size:.82rem; font-weight:600; color:var(--accent-dark)}
+.s-date{font-family:var(--sans); font-size:.78rem; color:var(--muted)}
+.s-t{font-size:1rem; line-height:1.45}
+.sess.exam{background:#f6ece9; border-left:4px solid var(--brand); padding-left:12px; border-radius:0 4px 4px 0}
+.sess.exam .s-t{font-family:var(--sans); font-weight:600; font-size:.86rem; letter-spacing:.05em; text-transform:uppercase; color:var(--brand)}
+.sess.exam .s-no{color:var(--brand)}
+.off{grid-template-columns:3rem 7rem 1fr; color:var(--muted); font-style:italic; background:#f2ece0}
+.off:hover{background:#f2ece0; padding-left:4px}
 .off .s-t{font-size:.92rem}
 
 /* ── media ────────────────────────────────────────────── */
-.media-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(275px,1fr)); gap:1.1rem; margin:1.8rem 0 0}
-.mcard{background:var(--card); border:1px solid var(--rule); padding:1.15rem 1.25rem; position:relative}
-.mcard h4{font-family:"Bodoni Moda",Didot,serif; font-size:1.14rem; font-weight:700; margin:0 0 .12rem; line-height:1.2}
-.mcard .meta{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.08em; color:var(--ink-faint); margin:0 0 .6rem}
-.mcard p{margin:0; font-size:.9rem; line-height:1.5; color:var(--ink-soft)}
-.mcard .for{font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--oxblood); margin:.7rem 0 0}
-
-/* ── footer ───────────────────────────────────────────── */
-footer{margin:6rem 0 0; padding:2.2rem 0 4rem; border-top:2px solid var(--ink); font-size:.88rem; color:var(--ink-faint)}
-footer p{margin:0 0 .5rem; max-width:66ch}
-
-h2.sec{font-family:"Bodoni Moda",Didot,serif; font-size:clamp(1.7rem,4.5vw,2.6rem); font-weight:700; margin:0 0 .3rem; line-height:1.1}
-
-/* ── entrance ─────────────────────────────────────────── */
-@media (prefers-reduced-motion:no-preference){
-  .rv{opacity:0; transform:translateY(14px); animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards}
-  @keyframes rise{to{opacity:1; transform:none}}
-  .masthead .eyebrow{animation-delay:.05s} .masthead h1{animation-delay:.13s}
-  .masthead .subtitle{animation-delay:.24s} .masthead .facts{animation-delay:.34s}
+.media-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; margin:26px 0 0}
+.mcard{
+  background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+  border-radius:8px; padding:20px 22px; box-shadow:var(--shadow-sm);
+  transition:box-shadow .2s ease, transform .2s ease;
 }
+.mcard:hover{box-shadow:var(--shadow-md); transform:translateY(-2px)}
+.mcard h4{font-family:var(--serif); font-size:1.16rem; font-weight:600; color:var(--brand); margin:0 0 3px; line-height:1.2}
+.mcard .meta{font-family:var(--sans); font-size:.76rem; color:var(--muted); margin:0 0 10px}
+.mcard p{margin:0; font-size:.92rem; line-height:1.55; color:var(--ink)}
+.mcard .for{font-family:var(--sans); font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-dark); margin:12px 0 0}
+
+/* ── page footer note ─────────────────────────────────── */
+.endnote{margin:76px 0 0; padding:28px 0 8px; border-top:2px solid var(--line); font-size:.9rem; color:var(--muted)}
+.endnote p{margin:0 0 8px; max-width:68ch}
+.endnote strong{color:var(--brand); font-family:var(--serif)}
+.colophon{font-family:var(--sans); font-size:.76rem; letter-spacing:.06em; color:var(--faint); margin-top:20px}
+
+h2.sec{font-family:var(--serif); font-size:clamp(1.6rem,4vw,2.2rem); font-weight:600; color:var(--brand); margin:0 0 4px; line-height:1.15}
+
 @media (max-width:640px){
-  body{font-size:17.5px}
-  .sess{grid-template-columns:2.5rem 1fr; gap:0 .8rem}
-  .s-date{grid-column:2; font-size:.7rem; margin-bottom:.1rem}
+  .wrap,.nav-in{padding:0 20px}
+  .sess{grid-template-columns:2.4rem 1fr; gap:0 12px}
+  .s-date{grid-column:2; font-size:.72rem; margin-bottom:2px}
   .s-t{grid-column:2}
-  .off{grid-template-columns:2.5rem 1fr}
+  .off{grid-template-columns:2.4rem 1fr}
+  .nav{top:0}
+  .nav-in{gap:16px}
 }
-
-/* back to main site */
-.backlink{display:inline-block;margin:0 0 1.4rem;font-family:'IBM Plex Mono',ui-monospace,monospace;
-  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);
-  text-decoration:none;border-bottom:1px solid transparent;transition:color .18s,border-color .18s}
-.backlink:hover,.backlink:focus-visible{color:var(--sepia);border-bottom-color:var(--rule)}
-.backlink span{display:inline-block;transition:transform .18s}
-.backlink:hover span{transform:translateX(-3px)}
 </style>
 </head>
 <body>
 
+<nav class="site-nav">
+	<div class="site-nav__inner">
+		<a class="site-nav__brand" href="../index.html">Mark Koyama</a>
+		<div class="site-nav__links">
+			<a href="../index.html">Home</a>
+			<a href="../Research.html">Research</a>
+			<a href="../Teaching.html" class="is-active">Teaching</a>
+			<a href="../About_files/CV26.pdf">CV</a>
+			<a href="https://markkoyama.substack.com">Substack</a>
+		</div>
+	</div>
+</nav>
+
 <header class="masthead">
   <div class="wrap">
-    <a class="backlink rv" href="../Teaching.html"><span>&larr;</span>&nbsp; Mark Koyama &middot; Teaching</a>
-    <p class="eyebrow rv">Hamilton School · University of Florida · Fall 2026</p>
-    <h1 class="rv">ISS 4931</h1>
-    <p class="subtitle rv">Big Problems in PPEL — Challenges&nbsp;of&nbsp;the&nbsp;Twentieth&nbsp;Century</p>
-    <div class="facts rv">
+    <p class="eyebrow">Hamilton School · University of Florida · Fall 2026</p>
+    <h1>ISS 4931</h1>
+    <p class="subtitle">Big Problems in PPEL — Challenges&nbsp;of&nbsp;the&nbsp;Twentieth&nbsp;Century</p>
+    <div class="facts">
       <span><b>MWF</b> 9:35–10:25</span>
       <span>Room <b>TBD</b></span>
       <span>Prof. <b>Mark Koyama</b></span>
-      <span><b>35</b> meetings</span>
+      <span><b>36</b> meetings</span>
       <span>Aug 21 – Dec 2</span>
     </div>
   </div>
@@ -237,9 +204,8 @@ h2.sec{font-family:"Bodoni Moda",Didot,serif; font-size:clamp(1.7rem,4.5vw,2.6re
     <a href="#p2">Part II</a>
     <a href="#p3">Part III</a>
     <a href="#media">Screening&nbsp;Room</a>
-    <a href="ISS_4931_Fall2026_Syllabus.pdf">Syllabus&nbsp;PDF</a>
     <span class="sp"></span>
-    <button class="tog" id="tog">Dark</button>
+    <a href="ISS_4931_Fall2026_Syllabus.pdf">Syllabus&nbsp;PDF</a>
   </div>
 </nav>
 
@@ -535,7 +501,7 @@ h2.sec{font-family:"Bodoni Moda",Didot,serif; font-size:clamp(1.7rem,4.5vw,2.6re
     </div>
   </div>
 
-  <p style="max-width:66ch; color:var(--ink-soft)">None of this is required unless announced in class.
+  <p style="max-width:66ch; color:var(--muted)">None of this is required unless announced in class.
   It is here because some arguments land better on screen than on the page — and because several of
   these are simply worth your time.</p>
 
@@ -621,40 +587,26 @@ h2.sec{font-family:"Bodoni Moda",Didot,serif; font-size:clamp(1.7rem,4.5vw,2.6re
   </div>
 </section>
 
-<footer>
-  <div>
-    <p><strong>Course materials.</strong> Lecture slides, scanned chapters, and the readings marked
-    <span class="badge b-canvas">Canvas</span> above are posted on the course Canvas site. You will
-    need to be logged in and enrolled. This page hosts no copyrighted material; where a reading is
-    freely available, it links to the publisher or the author.</p>
-    <p><strong>Contact.</strong> Prof. Mark Koyama · office hours by request.</p>
-    <p style="margin-top:1.4rem; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--ink-faint)">
-      ISS 4931 · Hamilton School · University of Florida · Fall 2026 · schedule subject to revision
-    </p>
-  </div>
-</footer>
+<div class="endnote">
+  <p><strong>Course materials.</strong> Lecture slides, scanned chapters, and the readings marked
+  <span class="badge b-canvas">Canvas</span> above are posted on the course Canvas site. You will
+  need to be logged in and enrolled. This page hosts no copyrighted material; where a reading is
+  freely available, it links to the publisher or the author.</p>
+  <p><strong>Contact.</strong> Prof. Mark Koyama · office hours by request.</p>
+  <p class="colophon">ISS 4931 · Hamilton School · University of Florida · Fall 2026 · schedule subject to revision</p>
+</div>
 
 </main>
 
+<footer class="site-footer">
+	<div class="site-footer__inner">
+		<span>&copy; 2026 Mark Koyama</span>
+		<span><a href="../index.html">Home</a> &middot; <a href="../Teaching.html">Teaching</a> &middot; <a href="https://scholar.google.com/citations?user=sgvcMpYAAAAJ&hl=en">Google Scholar</a></span>
+	</div>
+</footer>
+
 <script>
 (function(){
-  var root=document.documentElement, tog=document.getElementById('tog');
-  var saved=null; try{saved=localStorage.getItem('iss4931-theme')}catch(e){}
-  if(saved) root.setAttribute('data-theme',saved);
-  function cur(){
-    var a=root.getAttribute('data-theme');
-    if(a) return a;
-    return matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
-  }
-  function paint(){ tog.textContent = cur()==='dark' ? 'Light' : 'Dark'; }
-  paint();
-  tog.addEventListener('click',function(){
-    var next = cur()==='dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem('iss4931-theme',next)}catch(e){}
-    paint();
-  });
-
   // active section in nav
   var links=[].slice.call(document.querySelectorAll('.nav a[href^="#"]'));
   var map={}; links.forEach(function(l){ var t=document.querySelector(l.getAttribute('href')); if(t) map[t.id]=l; });
