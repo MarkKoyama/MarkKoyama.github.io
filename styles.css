@@ -368,6 +368,80 @@ a .paper-title:hover, .paper-title a:hover { color: var(--accent-dark); }
 }
 .paper-list p:last-child { border-bottom: none; }
 
+/* research page tabs (Selected / By Theme / Chronological) */
+.research-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 28px;
+  margin: 30px 0 0;
+  border-bottom: 2px solid var(--line);
+}
+.research-tab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  padding: 10px 0;
+  font-family: var(--sans);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+}
+.research-tab:hover { color: var(--brand); border-bottom-color: var(--accent); }
+.research-tab[aria-selected="true"] { color: var(--brand); border-bottom-color: var(--brand); }
+.research-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.research-panel[hidden] { display: none; }
+
+.theme-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+}
+.theme-index a {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: .8rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--brand-soft);
+}
+.theme-index a:hover { border-color: var(--accent); text-decoration: none; }
+.theme-group h3 { scroll-margin-top: 80px; }
+
+.year-head {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--brand);
+  margin: 34px 0 2px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.entry-tag {
+  display: block;
+  width: max-content;
+  margin-bottom: 4px;
+  padding: 1px 7px;
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
 /* ---------- Course cards (Teaching) --------------------------------------- */
 .course-card {
   background: var(--card);
